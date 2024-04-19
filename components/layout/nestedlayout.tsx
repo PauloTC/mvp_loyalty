@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import Footer from "../footer/footer";
+import Image from "next/image";
 
 type Props = {
   children: ReactNode;
@@ -7,9 +9,11 @@ type Props = {
 const NestedLayout: React.FC<Props> = ({ children }) => {
   return (
     <section>
-      <p>Header</p>
+      <div className="dl-container dl-py-5 sm:dl-py-6">
+        <Image alt="logo" width={82} height={24} src="/logo.png" />
+      </div>
       <div>{children}</div>
-      <p>Footer</p>
+      <Footer />
     </section>
   );
 };
