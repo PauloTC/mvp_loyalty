@@ -22,6 +22,7 @@ const config: Config = {
         "my-white": "#FCFCFC",
         "my-gray": "#F7F7F7",
         "brand-primary-medium": "#EC3A0E",
+        "link-blue":'#0064D1'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
