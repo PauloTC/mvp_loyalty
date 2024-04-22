@@ -71,7 +71,7 @@ export default async function HomePage() {
             className="dl-hidden md:dl-flex"
             width={703}
             height={240}
-            src="/home/home_banner.png"
+            src="/home/banner.svg"
             alt="banner"
           />
         </div>
