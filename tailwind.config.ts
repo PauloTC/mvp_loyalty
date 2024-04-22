@@ -38,6 +38,7 @@ const config: Config = {
         "4.5": "1.125rem",
       },
       margin: {
+        "7.5": "1.875rem",
         "25": "6.25rem",
       },
       height: {
