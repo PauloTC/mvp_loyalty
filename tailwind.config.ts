@@ -41,6 +41,9 @@ const config: Config = {
         "25": "6.25rem",
       },
     },
+    fontFamily:{
+      'alicorpSans':["AlicorpSans"]
+    }
   },
   plugins: [],
 };
