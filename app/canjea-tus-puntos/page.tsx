@@ -1,6 +1,6 @@
 "use-client";
-import NestedLayout from "@/components/layout/nestedlayout";
-import PrincipalBanner from "@/components/banner/banner";
+import NestedLayout from "@/components/layout";
+import PrincipalBanner from "@/components/banner";
 import Image from "next/image";
 
 export default async function OrdersPage() {
