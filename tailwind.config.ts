@@ -41,6 +41,15 @@ const config: Config = {
       margin: {
         "25": "6.25rem",
       },
+      height: {
+        26: "6.5rem",
+        30: "7.5rem",
+        76.5: "19.125rem",
+      },
+      width: {
+        100: "25rem",
+        120: "30rem",
+      },
     },
     fontFamily:{
       'alicorpSans':["AlicorpSans"]
