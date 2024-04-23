@@ -14,10 +14,10 @@ export default function LoginForm() {
   const router = useRouter();
 
   // prettier-ignore
-  const validLogins = {
+  const validLogins: { [key: string]: string } = {
     "user1": "password1",
     "user2": "password2",
-  }
+  };
 
   const handleLogin = (event: any) => {
     event.preventDefault();
