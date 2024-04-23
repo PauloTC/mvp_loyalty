@@ -68,17 +68,41 @@ export default function Login() {
 
       </div>
 
-      <DlModal
-      description="Para ayudarte a recuperar tu contraseña, se te redirigirá a WhatsApp.
-      ¿Deseas continuar?"
-      open={modalOpen}
-      okText="Ir a whatsapp"
-      onCancel={handleCloseModal}
+      <DlModal 
+      open={modalOpen}  
       closeable
-      backgroundImage="/login/WsppImage.png"
-      title="Recuperar contraseña"
+      okText="Ir a whatsapp"
+     
+      style={{paddingTop:"24px",minWidth:"20rem",}}
+      >
+        <div className="  dl-gap-4  " style={{
+          alignItems:"center",
+          display:"flex",
+          flexDirection:'column'
+        }}>
+          <div className=" dl-flex dl-flex-col dl-items-center  dl-gap-4">
+          <img   className="dl-block max-md:dl-w-full max-md:dl-h-[8rem]" src="/login/WsppImage.svg" alt="whatsapp" />
+          <h2 className="dl-font-alicorpSans dl-font-bold max-md:dl-text-center max-md:dl-leading-10 dl-text-[2rem]">Recuperar contraseña</h2>
+          </div>
+          <div className="dl-flex dl-flex-col dl-items-center dl-mt-3 max-md:dl-mt-0">
+          <p className=" dl-font-alicorpSans dl-font-normal dl-text-center  max-sm:dl-text-[0.9rem] dl-leading-4 ">Para ayudarte a recuperar tu contraseña, se te redirigirá a WhatsApp.</p>
+          <p className="dl-font-alicorpSans dl-font-semibold dl-text-[#6C6C6C] dl-leading-4 dl-tex-sm">¿Deseas continuar?</p>
+          </div>
 
-/>
+          <div className="dl-flex  max-md:dl-flex-col-reverse dl-justify-start-between dl-gap-4 dl-w-full dl-pb-4 dl-py-8 max-md:dl-py-1  dl-px-6 ">
+
+             <DlButton block  size="md" variant="tertiary" onClick={handleCloseModal}>
+               Cancelar
+             </DlButton>
+             <DlButton block
+              size="md">
+              Ir a whatsapp
+             </DlButton>
+          </div>
+     
+        </div>
+      </DlModal>
+
     </div>
 
   );
