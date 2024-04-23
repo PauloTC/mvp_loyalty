@@ -28,7 +28,7 @@ export default async function HomePage() {
   return (
     <NestedLayout>
       <PrincipalBanner />
-      <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-flex dl-flex-wrap dl-justify-between dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
+      <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-items-center dl-flex dl-flex-wrap dl-justify-between dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
         {actions.map((action, index) => (
           <li key={index} className="dl-w-80">
             <h3 className="dl-text-base dl-font-semibold dl-mb-2">
