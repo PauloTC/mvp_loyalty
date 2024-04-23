@@ -40,6 +40,7 @@ const config: Config = {
       margin: {
         "7.5": "1.875rem",
         "25": "6.25rem",
+        "18": "4.5rem",
       },
       height: {
         26: "6.5rem",
@@ -47,6 +48,7 @@ const config: Config = {
         76.5: "19.125rem",
       },
       width: {
+        66: "16.5rem",
         100: "25rem",
         120: "30rem",
       },
