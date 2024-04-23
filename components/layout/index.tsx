@@ -9,8 +9,18 @@ type Props = {
 const NestedLayout: React.FC<Props> = ({ children }) => {
   return (
     <section>
-      <div className="dl-container dl-py-5 sm:dl-py-6">
+      <div className="dl-container dl-py-5 sm:dl-py-6 dl-flex dl-justify-between">
         <Image alt="logo" width={82} height={24} src="/logo.png" />
+        <a
+          href="/"
+          style={{ outline: "none" }}
+          className="
+            dl-font-semibold dl-px-4
+            dl-text-brand-primary-medium 
+            dl-text-base"
+        >
+          Cerrar sesión
+        </a>
       </div>
       <div>{children}</div>
       <Footer />

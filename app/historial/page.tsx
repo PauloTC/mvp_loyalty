@@ -1,4 +1,4 @@
-import NestedLayout from "@/components/layout/nestedlayout";
+import NestedLayout from "@/components/layout";
 
 export default async function HistoryPage() {
   return (
