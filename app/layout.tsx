@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import "../public/font.css";
 import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
-
+import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
+import { AuthProvider } from "../contexts/AuthContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,8 +31,11 @@ export default function RootLayout({
     }
 </Script>
       </head>
-      <body>{children}
+ 
+   
+      <body>
       <GoogleTagManager gtmId="GTM-NPCLFNHG"/>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

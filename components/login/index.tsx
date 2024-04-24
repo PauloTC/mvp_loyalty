@@ -1,28 +1,48 @@
 "use client";
 import { DlInput } from "@alicorpdigital/dali-react";
 import { DlCheckbox } from "@alicorpdigital/dali-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DlButton } from "@alicorpdigital/dali-react";
 import { DlModal } from "@alicorpdigital/dali-react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
+
+type User = {
+  username: string;
+  password: string;
+  score: number;
+};
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [users, setUsers] = useState<User[]>([]);
+
+  const { setUser } = useContext(AuthContext);
 
   const router = useRouter();
 
-  // prettier-ignore
-  const validLogins: { [key: string]: string } = {
-    "user1": "password1",
-    "user2": "password2",
-  };
+  useEffect(() => {
+    fetch("https://my-json-server.typicode.com/paulotc/mvp_loyalty_db/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  });
 
   const handleLogin = (event: any) => {
     event.preventDefault();
 
-    if (validLogins[username] === password) {
+    const user = users.find(
+      (user) => user.username === username && user.password === password
+    );
+
+    if (user) {
+      setUser({
+        name: username,
+        score: user.score,
+      });
+      localStorage.setItem("user", JSON.stringify(user));
       router.push("/home");
     } else {
       alert("Nombre de usuario o contraseña incorrectos");
@@ -36,7 +56,7 @@ export default function LoginForm() {
   return (
     <>
       <form className="dl-pb-10 dl-flex dl-flex-col">
-        <div className="dl-grid dl-gap-4">
+        <div className="dl-grid dl-gap-4 dl-mb-6">
           <DlInput
             size="lg"
             label="Nombre de usuario"
@@ -53,7 +73,7 @@ export default function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="dl-my-6 dl-flex dl-items-start sm:dl-items-center dl-gap-2">
+        {/* <div className="dl-my-6 dl-flex dl-items-start sm:dl-items-center dl-gap-2">
           <DlCheckbox size="lg"></DlCheckbox>
           <span>
             He leído y aceptado los{" "}
@@ -61,7 +81,7 @@ export default function LoginForm() {
               Términos & Condiciones
             </a>
           </span>
-        </div>
+        </div> */}
 
         <DlButton onClick={() => handleLogin(event)} block>
           Ingresar

@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
+import { useContext } from "react";
 import Footer from "../footer/footer";
 import Image from "next/image";
 import classNames from "classnames";
+import { AuthContext } from "../../contexts/AuthContext";
 
 type Props = {
   children: ReactNode;
@@ -9,6 +11,8 @@ type Props = {
 };
 
 const NestedLayout: React.FC<Props> = ({ children, hideOnMobile }) => {
+  // const { logout } = useContext(AuthContext);
+
   return (
     <section>
       <div
@@ -23,16 +27,16 @@ const NestedLayout: React.FC<Props> = ({ children, hideOnMobile }) => {
         )}
       >
         <Image alt="logo" width={82} height={24} src="/logo.png" />
-        <a
-          href="/"
+        <button
+          // onClick={logout}
           style={{ outline: "none" }}
           className="
-            dl-font-semibold dl-px-4
-            dl-text-brand-primary-medium 
-            dl-text-base"
+              dl-font-semibold dl-px-4
+              dl-text-brand-primary-medium 
+              dl-text-base"
         >
           Cerrar sesión
-        </a>
+        </button>
       </div>
       <div>{children}</div>
       <Footer />
