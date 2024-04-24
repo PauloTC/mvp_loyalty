@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "../public/font.css";
+import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+<Script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPWL0BQD2"></Script>
+<Script id="google-analytics">
+  {`  window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-DTPWL0BQD2');
+      `
+    }
+</Script>
+      </head>
+      <body>{children}
+      <GoogleTagManager gtmId="GTM-NPCLFNHG"/>
+      </body>
     </html>
   );
 }
