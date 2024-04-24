@@ -12,8 +12,8 @@ export default function PrincipalBanner() {
             Canjea rápido y fácil{" "}
           </h3>
           <p className="dl-hidden sm:dl-block dl-text-base dl-mb-6">
-            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-            consectetur, adipisci velit...
+            Canjea productos con los puntos acumulados por tus compras.
+            Recompensamos tu esfuerzo diario.
           </p>
           <div
             className="
