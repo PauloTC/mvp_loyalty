@@ -18,12 +18,6 @@ export function AuthProvider(props) {
     }
   }, []);
 
-  useEffect(() => {
-    if (user) {
-      router.push("/home");
-    }
-  }, [user]);
-
   const logout = () => {
     setUser(null);
     localStorage.removeItem("user");

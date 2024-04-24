@@ -20,9 +20,15 @@ export default function LoginForm() {
   const [modalOpen, setModalOpen] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
 
-  const { setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/home");
+    }
+  }, [user]);
 
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/paulotc/mvp_loyalty_db/users")
