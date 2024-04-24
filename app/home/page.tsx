@@ -3,7 +3,7 @@ import NestedLayout from "@/components/layout";
 import PrincipalBanner from "@/components/banner";
 import NeedHelp from "@/components/help";
 
-export default async function HomePage() {
+export default function HomePage() {
   const actions = [
     {
       title: "Canjea tus puntos",
@@ -26,7 +26,7 @@ export default async function HomePage() {
   ];
 
   return (
-    <NestedLayout>
+    <NestedLayout hideOnMobile={false}>
       <PrincipalBanner />
       <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-items-center dl-flex dl-flex-wrap dl-justify-between dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
         {actions.map((action, index) => (

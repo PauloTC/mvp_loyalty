@@ -1,15 +1,27 @@
 import { ReactNode } from "react";
 import Footer from "../footer/footer";
 import Image from "next/image";
+import classNames from "classnames";
 
 type Props = {
   children: ReactNode;
+  hideOnMobile: boolean;
 };
 
-const NestedLayout: React.FC<Props> = ({ children }) => {
+const NestedLayout: React.FC<Props> = ({ children, hideOnMobile }) => {
   return (
     <section>
-      <div className="dl-container dl-py-5 sm:dl-py-6 dl-flex dl-justify-between">
+      <div
+        className={classNames(
+          hideOnMobile ? "sm:dl-flex" : "",
+          "dl-hidden",
+          "dl-container",
+          "dl-mx-auto",
+          "dl-py-5",
+          "sm:dl-py-6",
+          "dl-justify-between"
+        )}
+      >
         <Image alt="logo" width={82} height={24} src="/logo.png" />
         <a
           href="/"

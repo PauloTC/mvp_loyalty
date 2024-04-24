@@ -3,9 +3,9 @@ import NestedLayout from "@/components/layout";
 import PrincipalBanner from "@/components/banner";
 import Image from "next/image";
 
-export default async function OrdersPage() {
+export default function OrdersPage() {
   return (
-    <NestedLayout>
+    <NestedLayout hideOnMobile={true}>
       <PrincipalBanner />
 
       <section className="dl-container dl-mb-16">

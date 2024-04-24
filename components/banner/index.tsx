@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default async function PrincipalBanner() {
+export default function PrincipalBanner() {
   return (
     <section
       className="dl-flex dl-justify-center md:dl-justify-between xl:dl-justify-center dl-mb-6 md:dl-mb-12"

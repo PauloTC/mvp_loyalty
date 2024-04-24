@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default async function NeedHelp() {
+export default function NeedHelp() {
   return (
     <section
       className="

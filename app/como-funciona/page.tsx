@@ -3,9 +3,9 @@ import PrincipalBanner from "@/components/banner";
 import NeedHelp from "@/components/help";
 import Image from "next/image";
 
-export default async function HowItWorksPage() {
+export default function HowItWorksPage() {
   return (
-    <NestedLayout>
+    <NestedLayout hideOnMobile={true}>
       <ul className=" dl-mb-8 sm:dl-mb-0 dl-flex dl-py-5 dl-container dl-gap-2">
         <a href="/home" className="dl-flex sm:dl-hidden">
           <Image
