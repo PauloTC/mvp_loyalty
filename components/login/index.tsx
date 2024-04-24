@@ -25,7 +25,7 @@ export default function LoginForm() {
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
+    if (user?.username) {
       router.push("/home");
     }
   }, [user]);
@@ -34,7 +34,7 @@ export default function LoginForm() {
     fetch("https://my-json-server.typicode.com/paulotc/mvp_loyalty_db/users")
       .then((response) => response.json())
       .then((data) => setUsers(data));
-  });
+  }, []);
 
   const handleLogin = (event: any) => {
     event.preventDefault();
