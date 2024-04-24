@@ -13,8 +13,8 @@ const NestedLayout: React.FC<Props> = ({ children, hideOnMobile }) => {
     <section>
       <div
         className={classNames(
-          hideOnMobile ? "sm:dl-flex" : "",
-          "dl-hidden",
+          hideOnMobile ? "dl-hidden sm:dl-flex" : "",
+          "dl-flex",
           "dl-container",
           "dl-mx-auto",
           "dl-py-5",

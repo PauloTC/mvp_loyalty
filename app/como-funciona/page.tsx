@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function HowItWorksPage() {
   return (
     <NestedLayout hideOnMobile={true}>
-      <ul className=" dl-mb-8 sm:dl-mb-0 dl-flex dl-py-5 dl-container dl-gap-2">
+      <ul className=" dl-mb-8 sm:dl-mb-0 dl-flex dl-py-5 dl-container dl-mx-auto dl-gap-2">
         <a href="/home" className="dl-flex sm:dl-hidden">
           <Image
             alt="arrow_left"
@@ -15,7 +15,9 @@ export default function HowItWorksPage() {
             src="/orders/arrow_left.svg"
           />
         </a>
-        <li className="dl-hidden sm:dl-block dl-text-sm">Inicio</li>
+        <a href="/home" className="dl-hidden sm:dl-block dl-text-sm">
+          Inicio
+        </a>
         <Image
           className="dl-hidden sm:dl-block"
           alt="breadcrumb_arrow"
