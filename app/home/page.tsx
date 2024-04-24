@@ -37,7 +37,6 @@ export default function HomePage() {
             </h3>
             <div className="dl-border dl-max-h-36 dl-rounded-lg">
               <Image
-                layout="responsive"
                 width={320}
                 height={88}
                 src={action.image}

@@ -9,7 +9,7 @@ export function AuthProvider(props) {
   const { children } = props;
   const router = useRouter();
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ score: 0 });
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -19,9 +19,9 @@ export function AuthProvider(props) {
   }, []);
 
   const logout = () => {
+    router.push("/login");
     setUser(null);
     localStorage.removeItem("user");
-    router.push("/login");
   };
 
   const data = {

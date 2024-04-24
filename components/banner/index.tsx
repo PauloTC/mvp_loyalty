@@ -49,7 +49,6 @@ export default function PrincipalBanner() {
         </div>
 
         <Image
-          layout="responsive"
           className="dl-hidden md:dl-flex"
           width={703}
           height={240}
