@@ -1,8 +1,8 @@
-import NestedLayout from "@/components/layout/nestedlayout";
+import NestedLayout from "@/components/layout";
 
-export default async function HistoryPage() {
+export default function HistoryPage() {
   return (
-    <NestedLayout>
+    <NestedLayout hideOnMobile={true}>
       <section>
         <h4>Mira tu historial</h4>
       </section>
