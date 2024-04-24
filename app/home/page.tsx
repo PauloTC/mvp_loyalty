@@ -2,6 +2,7 @@ import Image from "next/image";
 import NestedLayout from "@/components/layout";
 import PrincipalBanner from "@/components/banner";
 import NeedHelp from "@/components/help";
+import { AuthProvider } from "../../contexts/AuthContext";
 
 export default function HomePage() {
   const actions = [

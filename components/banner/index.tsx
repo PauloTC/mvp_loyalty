@@ -1,6 +1,11 @@
+"use client";
 import Image from "next/image";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function PrincipalBanner() {
+  const { user } = useContext(AuthContext);
+
   return (
     <section
       className="dl-flex dl-justify-center md:dl-justify-between xl:dl-justify-center dl-mb-6 md:dl-mb-12"
@@ -31,7 +36,7 @@ export default function PrincipalBanner() {
             <div className="dl-flex dl-flex-col">
               <span className="dl-text-my-white">Puntos disponibles</span>
               <p className="dl-text-1.5xl lg:dl-text-4.5xl dl-font-bold dl-text-my-white">
-                1,785 pts
+                {user?.score.toLocaleString()} pts
               </p>
             </div>
             <Image
