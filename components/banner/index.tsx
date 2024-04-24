@@ -1,6 +1,7 @@
+'use client';
 import Image from "next/image";
 
-export default async function PrincipalBanner() {
+export default function PrincipalBanner() {
   return (
     <section
       className="dl-flex dl-justify-center md:dl-justify-between xl:dl-justify-center dl-mb-6 md:dl-mb-12"
@@ -18,8 +19,8 @@ export default async function PrincipalBanner() {
           <div
             className="
                 dl-flex
-                dl-bg-gradient-to-r dl-from-cyan-500 
-                dl-to-blue-500 
+                dl-bg-gradient-to-r dl-from-cyan-500
+                dl-to-blue-500
                 dl-rounded-t-none
                 dl-rounded-b-2xl
                 sm:dl-rounded-2xl
