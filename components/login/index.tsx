@@ -21,15 +21,21 @@ export default function LoginForm() {
   const [modalOpen, setModalOpen] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
 
-  const { setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (user?.username) {
+      router.push("/home");
+    }
+  }, [user]);
 
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/paulotc/mvp_loyalty_db/users")
       .then((response) => response.json())
       .then((data) => setUsers(data));
-  });
+  }, []);
 
   const handleLogin = (event: any) => {
     event.preventDefault();

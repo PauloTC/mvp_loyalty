@@ -1,9 +1,6 @@
 import { ReactNode } from "react";
-import { useContext } from "react";
 import Footer from "../footer/footer";
-import Image from "next/image";
-import classNames from "classnames";
-import { AuthContext } from "../../contexts/AuthContext";
+import HeaderComponent from "../header";
 
 type Props = {
   children: ReactNode;
@@ -11,33 +8,9 @@ type Props = {
 };
 
 const NestedLayout: React.FC<Props> = ({ children, hideOnMobile }) => {
-  // const { logout } = useContext(AuthContext);
-
   return (
     <section>
-      <div
-        className={classNames(
-          hideOnMobile ? "dl-hidden sm:dl-flex" : "",
-          "dl-flex",
-          "dl-container",
-          "dl-mx-auto",
-          "dl-py-5",
-          "sm:dl-py-6",
-          "dl-justify-between"
-        )}
-      >
-        <Image alt="logo" width={82} height={24} src="/logo.png" />
-        <button
-          // onClick={logout}
-          style={{ outline: "none" }}
-          className="
-              dl-font-semibold dl-px-4
-              dl-text-brand-primary-medium 
-              dl-text-base"
-        >
-          Cerrar sesión
-        </button>
-      </div>
+      <HeaderComponent hideOnMobile={hideOnMobile} />
       <div>{children}</div>
       <Footer />
     </section>
