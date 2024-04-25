@@ -1,7 +1,12 @@
-'use client';
+"use client";
+
 import Image from "next/image";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function PrincipalBanner() {
+  const { user } = useContext(AuthContext);
+
   return (
     <section
       className="dl-flex dl-justify-center md:dl-justify-between xl:dl-justify-center dl-mb-6 md:dl-mb-12"
@@ -13,8 +18,8 @@ export default function PrincipalBanner() {
             Canjea rápido y fácil{" "}
           </h3>
           <p className="dl-hidden sm:dl-block dl-text-base dl-mb-6">
-            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-            consectetur, adipisci velit...
+            Canjea productos con los puntos acumulados por tus compras.
+            Recompensamos tu esfuerzo diario.
           </p>
           <div
             className="
@@ -32,7 +37,7 @@ export default function PrincipalBanner() {
             <div className="dl-flex dl-flex-col">
               <span className="dl-text-my-white">Puntos disponibles</span>
               <p className="dl-text-1.5xl lg:dl-text-4.5xl dl-font-bold dl-text-my-white">
-                1,785 pts
+                {user?.score.toLocaleString()} pts
               </p>
             </div>
             <Image
@@ -45,7 +50,6 @@ export default function PrincipalBanner() {
         </div>
 
         <Image
-          layout="responsive"
           className="dl-hidden md:dl-flex"
           width={703}
           height={240}

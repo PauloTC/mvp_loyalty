@@ -61,7 +61,7 @@ const items = [
 
 const OrdersPage = () => {
   return (
-    <NestedLayout>
+    <NestedLayout hideOnMobile={true}>
       <PrincipalBanner />
       <section className='dl-flex dl-mb-16'>
         <div className="dl-container dl-grid dl-grid-cols-1 lg:dl-grid-cols-4 xl:dl-grid-cols-5 lg:dl-gap-14 dl-mx-auto">

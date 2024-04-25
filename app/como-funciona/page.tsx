@@ -3,10 +3,10 @@ import PrincipalBanner from "@/components/banner";
 import NeedHelp from "@/components/help";
 import Image from "next/image";
 
-export default async function HowItWorksPage() {
+export default function HowItWorksPage() {
   return (
-    <NestedLayout>
-      <ul className=" dl-mb-8 sm:dl-mb-0 dl-flex dl-py-5 dl-container dl-gap-2">
+    <NestedLayout hideOnMobile={true}>
+      <div className="dl-border-b-2 sm:dl-border-b-0 dl-mb-8 sm:dl-mb-0 dl-flex dl-py-5 dl-container dl-mx-auto dl-gap-2">
         <a href="/home" className="dl-flex sm:dl-hidden">
           <Image
             alt="arrow_left"
@@ -15,7 +15,9 @@ export default async function HowItWorksPage() {
             src="/orders/arrow_left.svg"
           />
         </a>
-        <li className="dl-hidden sm:dl-block dl-text-sm">Inicio</li>
+        <a href="/home" className="dl-hidden sm:dl-block dl-text-sm">
+          Inicio
+        </a>
         <Image
           className="dl-hidden sm:dl-block"
           alt="breadcrumb_arrow"
@@ -23,13 +25,13 @@ export default async function HowItWorksPage() {
           height={11}
           src="/orders/arrow.svg"
         />
-        <li className="dl-hidden sm:dl-block dl-text-black sm:dl-text-brand-primary-medium dl-font-bold dl-text-sm">
+        <p className="dl-hidden sm:dl-block dl-text-black sm:dl-text-brand-primary-medium dl-font-bold dl-text-sm">
           Cómo funciona
-        </li>
-        <li className="dl-text-base dl-font-semibold sm:dl-hidden">
+        </p>
+        <p className="dl-text-base dl-font-semibold sm:dl-hidden">
           ¿Cómo funciona?
-        </li>
-      </ul>
+        </p>
+      </div>
       <div className="dl-hidden sm:dl-block">
         <PrincipalBanner />
       </div>
@@ -84,7 +86,7 @@ export default async function HowItWorksPage() {
                   />
                 </div>
                 <p className="dl-w-48 sm:dl-w-72 dl-text-sm dl-w-66 dl-ml-2">
-                  Las compras hechas los días que te visita tu vendedor
+                  Las compras hechas los días que te visita tu vendedor {""}
                   <b>no acumularán puntos</b>
                 </p>
               </div>

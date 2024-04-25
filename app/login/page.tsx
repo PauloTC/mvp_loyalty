@@ -1,18 +1,16 @@
 "use client";
 import Image from "next/image";
 
-import { DlButton } from "@alicorpdigital/dali-react";
 import React, { useState } from "react";
 import LoginForm from "@/components/login";
 
 export default function LoginPage() {
   const [modalOpen, setModalOpen] = useState(false);
-
   return (
     <div className="dl-flex  dl-flex-col md:dl-flex-row  dl-column dl-h-[100vh]">
       <div className=" dl-h-[10.125rem]  md:dl-w-4/5 md:dl-h-[100vh]  dl-flex dl-justify-center  dl-items-center dl-align-items dl-bg-[#F2F7FF]  ">
         <img
-          className=" dl-block  dl-w-[148.27px] dl-h-[8.22rem] md:dl-w-[33.063rem] md:dl-h-[468.89px] "
+          className="dl-block  dl-w-[148.27px] dl-h-[8.22rem] md:dl-w-[33.063rem] md:dl-h-[468.89px] "
           src="./login/Frame.svg"
           alt="insumaHands"
         />
