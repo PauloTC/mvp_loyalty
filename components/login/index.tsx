@@ -50,7 +50,7 @@ export default function LoginForm() {
         score: user.score,
       });
       localStorage.setItem("user", JSON.stringify(user));
-      sendGTMEvent({event:'loginUser',usuario:user.username,fecha:new Date().toLocaleString()})
+      sendGTMEvent({event:'loginUser',usuario:user.username,fecha:new Date().toLocaleString()});
       router.push("/home");
     } else {
       alert("Nombre de usuario o contraseña incorrectos");

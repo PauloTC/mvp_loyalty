@@ -1,8 +1,16 @@
 "use client";
 import { DlModal } from "@alicorpdigital/dali-react";
+import { sendGTMEvent } from "@next/third-parties/google";
 import Image from "next/image";
 
 export function ConfirmationModal() {
+  const redemptionConfirmationHandler = () => {
+    const storageData=localStorage.getItem('user');
+    if(storageData){
+      const user = JSON.parse(storageData);
+      sendGTMEvent({event:'pedidoUser',usuario:user.username,fecha:new Date().toLocaleString()});
+    }    
+  };
   return (
     <DlModal open={true}>
       <div className="dl-flex dl-flex-col dl-items-center">
@@ -27,7 +35,8 @@ export function ConfirmationModal() {
             Cancelar
           </button>
           <button
-            style={{ outline: "none" }}
+            style={{ outline: "none" }}           
+            onClick={redemptionConfirmationHandler}
             className="
             dl-w-44 dl-h-12 
             dl-flex dl-justify-center 
