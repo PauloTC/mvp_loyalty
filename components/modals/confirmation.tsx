@@ -20,10 +20,11 @@ export const ModalConfirmation = (props: Props) => {
         <h2 className="dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
           ¿Confirmamos?
         </h2>
-        <p className="dl-text-center dl-text-sm dl-w-93 dl-text-neutrals-dark">
+        <p className="dl-text-center dl-text-sm dl-text-neutrals-dark">
           Canjearemos tus puntos por los productos seleccionados.
         </p>
-        <div className="dl-flex dl-justify-center dl-mt-8 dl-gap-4">
+        {/* <div className="dl-flex dl-justify-center dl-mt-8 dl-gap-4"> */}
+        <div className="dl-flex dl-flex-col-reverse lg:dl-flex-row dl-mt-8 dl-gap-4">
           <button
             style={{ outline: "none" }}
             onClick={onClose}
