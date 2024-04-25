@@ -7,6 +7,7 @@ import { DlButton } from "@alicorpdigital/dali-react";
 import { DlModal } from "@alicorpdigital/dali-react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 type User = {
   username: string;
@@ -43,6 +44,7 @@ export default function LoginForm() {
         score: user.score,
       });
       localStorage.setItem("user", JSON.stringify(user));
+      sendGTMEvent({event:'loginUser',usuario:user.username,fecha:new Date().toLocaleString()})
       router.push("/home");
     } else {
       alert("Nombre de usuario o contraseña incorrectos");
