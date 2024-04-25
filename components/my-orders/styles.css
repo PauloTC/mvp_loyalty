@@ -1,3 +1,12 @@
+.my-orders {
+  /* border: 1px solid red;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFF; */
+  background-color: #FFF;
+}
 
 .my-orders .dl-card-product__head {
   min-width: 102px;
@@ -19,4 +28,12 @@
 
 .my-orders .dl-action-button > i {
   display: none;
+}
+
+.my-orders-background {
+  background: linear-gradient(102.96deg, #177FF2 35.36%, #0853CC 85.41%);
+  padding: 8px 24px;
+  color: #FCFCFC;
+  justify-content: space-between;
+  align-items: center;
 }
