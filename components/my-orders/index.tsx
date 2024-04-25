@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AuthContext } from "../../contexts/AuthContext";
 import './styles.css';
 import { ModalConfirmation } from '@/components/modals';
+import { ModalCongratulation } from '../modals/congratulation';
 
 type ItemProp = {
   id: string;
@@ -24,6 +25,7 @@ const MyOrders = (props: Props) => {
   const { items, onChange, totalAmount } = props;
   const { user } = useContext(AuthContext);
   const [openConfirmation, setOpenConfirmation] = useState(false);
+  const [openCongratulation, setOpenCongratulation] = useState(false);
 
   const handleRemainingPoints = () => {
     let total = 0;
@@ -127,7 +129,14 @@ const MyOrders = (props: Props) => {
       <ModalConfirmation
         open={openConfirmation}
         onClose={() => setOpenConfirmation(false)}
-        onOk={() => setOpenConfirmation(false)}
+        onOk={() => {
+          setOpenConfirmation(false);
+          setOpenCongratulation(true);
+        }}
+      />
+      <ModalCongratulation
+        open={openCongratulation}
+        onOk={() => setOpenCongratulation(false)}
       />
     </>
   );
