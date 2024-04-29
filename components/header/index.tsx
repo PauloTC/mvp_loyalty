@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function HeaderComponent({ hideOnMobile }: any) {
-  const { logout } = useContext(AuthContext);
+  const { logout, user } = useContext(AuthContext);
 
   return (
     <div
@@ -31,7 +31,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
               dl-text-brand-primary-medium 
               dl-text-base"
       >
-        Cerrar sesión
+        {user?.username ? "Cerrar sesión" : "Iniciar sesión"}
       </button>
     </div>
   );

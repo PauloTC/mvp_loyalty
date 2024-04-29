@@ -17,11 +17,6 @@ export function AuthProvider(props) {
     if (user) {
       setUser(JSON.parse(user));
     }
-    // if (router.pathname !== "/login" && router.pathname !== "/") {
-    //   router.push("/login");
-    // }
-
-    console.log("user", user);
   }, []);
 
   const logout = () => {
