@@ -147,9 +147,11 @@ export default function LoginForm() {
             >
               Cancelar
             </DlButton>
-            <DlButton block size="md">
-              Ir a whatsapp
-            </DlButton>
+            <a href="https://wa.link/295pks">
+              <DlButton block size="md">
+                Ir a whatsapp
+              </DlButton>
+            </a>
           </div>
         </div>
       </DlModal>

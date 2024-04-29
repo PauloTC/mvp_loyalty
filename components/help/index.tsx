@@ -37,7 +37,7 @@ export default function NeedHelp() {
               dl-font-semibold
               dl-text-base
               dl-text-brand-primary-medium"
-          href="https://wa.link/kq1qx2"
+          href="https://wa.link/vd5a1e"
         >
           <Image
             src={"/home/whatsapp.svg"}
