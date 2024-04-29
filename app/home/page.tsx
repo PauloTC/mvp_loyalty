@@ -7,7 +7,7 @@ export default function HomePage() {
   const actions = [
     {
       title: "Canjea tus puntos",
-      description: "Productos Alicorp",
+      description: "Premios disponibles",
       image: "/home/canjea.png",
       to: "/canjea-tus-puntos",
     },
@@ -26,7 +26,7 @@ export default function HomePage() {
         showPoints={true}
         subtitle="Canjea productos con los puntos acumulados por tus compras. Recompensamos tu esfuerzo diario."
       />
-      <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-items-center dl-flex dl-flex-wrap dl-justify-between dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
+      <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-items-center dl-flex dl-flex-wrap dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
         {actions.map((action, index) => (
           <li key={index} className="dl-w-80">
             <h3 className="dl-text-base dl-font-semibold dl-mb-2">

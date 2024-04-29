@@ -1,11 +1,26 @@
 "use client";
 import Image from "next/image";
+import { useContext } from "react";
+import { AuthContext } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface StepsComponentProps {
   title: string;
 }
 
 export default function StepsComponent({ title }: StepsComponentProps) {
+  const { user } = useContext(AuthContext);
+  const router = useRouter();
+
+  const handleRedirection = () => {
+    console.log("user", user);
+    if (user?.username) {
+      router.push("/canjea-tus-puntos");
+    } else {
+      router.push("/login");
+    }
+  };
+
   return (
     <section className="dl-container dl-mx-auto">
       <h4 className="dl-text-2xl dl-font-bold dl-mb-6">{title}</h4>
@@ -69,23 +84,6 @@ export default function StepsComponent({ title }: StepsComponentProps) {
                 </div>
               </div>
             </div>
-            {/* <div className="dl-flex">
-              <div
-                className="dl-rounded-lg dl-w-12 dl-h-10 dl-flex dl-justify-center dl-items-center"
-                style={{ backgroundColor: "#FFF9F2" }}
-              >
-                <Image
-                  alt="warning"
-                  width={24}
-                  height={24}
-                  src="/orders/warning.svg"
-                />
-              </div>
-              <p className="dl-w-48 sm:dl-w-72 dl-text-sm dl-w-66 dl-ml-2">
-                Las compras hechas los días que te visita tu vendedor {""}
-                <b>no acumularán puntos</b>
-              </p>
-            </div> */}
           </div>
         </li>
         <li className="dl-grow dl-flex dl-flex-col dl-justify-between">
@@ -99,8 +97,9 @@ export default function StepsComponent({ title }: StepsComponentProps) {
             src="/orders/empty_order.svg"
           />
         </li>
-        <a
-          href="/canjea-tus-puntos"
+        <button
+          style={{ outline: "none" }}
+          onClick={handleRedirection}
           className="
             sm:dl-hidden
             dl-text-white dl-rounded-lg
@@ -108,7 +107,7 @@ export default function StepsComponent({ title }: StepsComponentProps) {
             dl-bg-brand-primary-medium "
         >
           Canjear
-        </a>
+        </button>
       </ul>
     </section>
   );
