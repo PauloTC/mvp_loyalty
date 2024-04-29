@@ -2,54 +2,116 @@
 import Image from "next/image";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import classNames from "classnames";
 
-export default function PrincipalBanner() {
+interface PrincipalBannerProps {
+  title: string;
+  subtitle: string;
+  showPoints: boolean;
+}
+
+export default function PrincipalBanner({
+  title,
+  subtitle,
+  showPoints,
+}: PrincipalBannerProps) {
   const { user } = useContext(AuthContext);
 
   return (
     <section
-      className="dl-flex dl-justify-center md:dl-justify-between xl:dl-justify-center dl-mb-6 md:dl-mb-12"
+      className="dl-flex md:dl-h-80 dl-justify-center md:dl-justify-between xl:dl-justify-center dl-mb-6 md:dl-mb-12"
       style={{ backgroundColor: "#F2F7FF" }}
     >
-      <div className="dl-w-full dl-items-center dl-flex dl-justify-center dl-gap-14 sm:dl-container sm:dl-h-76.5">
-        <div className="dl-w-full sm:dl-w-120">
-          <h3 className="dl-hidden sm:dl-block dl-font-bold dl-text-xl lg:dl-text-3.5xl dl-mb-2">
-            Canjea rápido y fácil{" "}
-          </h3>
-          <p className="dl-hidden sm:dl-block dl-text-base dl-mb-6">
-            Canjea productos con los puntos acumulados por tus compras.
-            Recompensamos tu esfuerzo diario.
-          </p>
-          <div
-            className="
-                dl-flex
-                dl-bg-gradient-to-r dl-from-cyan-500 
-                dl-to-blue-500 
-                dl-rounded-t-none
-                dl-rounded-b-2xl
-                sm:dl-rounded-2xl
-                dl-items-center
-                dl-justify-between dl-px-8 dl-w-full md:dl-w-80 lg:dl-w-96
-                dl-h-30
-                sm:dl-h-26"
+      <div
+        className={classNames(
+          showPoints ? "" : "dl-flex-col",
+          showPoints ? "dl-p-0" : "dl-py-12",
+          "dl-w-full",
+          "dl-items-center",
+          "dl-justify-center",
+          "dl-gap-14",
+          "dl-container",
+          "dl-h-auto",
+          "sm:dl-py-0",
+          "dl-flex",
+          "sm:dl-flex-row"
+        )}
+      >
+        <div
+          className={classNames(
+            "dl-text-center",
+            "sm:dl-text-left",
+            "dl-w-full",
+            "sm:dl-w-135"
+          )}
+        >
+          <h3
+            className={classNames(
+              showPoints ? "dl-hidden" : "dl-block",
+              "sm:dl-block",
+              "dl-font-bold",
+              "dl-text-xl",
+              "lg:dl-text-3.5xl",
+              "dl-mb-2"
+            )}
           >
-            <div className="dl-flex dl-flex-col">
-              <span className="dl-text-my-white">Puntos disponibles</span>
-              <p className="dl-text-1.5xl lg:dl-text-4.5xl dl-font-bold dl-text-my-white">
-                {user?.score.toLocaleString()} pts
-              </p>
+            {title}
+          </h3>
+          <p
+            className={classNames(
+              showPoints ? "dl-hidden" : "dl-block",
+              "sm:dl-block",
+              "dl-text-base",
+              "dl-mb-6"
+            )}
+          >
+            {subtitle}
+          </p>
+
+          {showPoints ? (
+            <div
+              className="
+                    dl-flex
+                    dl-bg-gradient-to-r dl-from-cyan-500 
+                    dl-to-blue-500 
+                    dl-rounded-t-none
+                    dl-rounded-b-2xl
+                    sm:dl-rounded-2xl
+                    dl-items-center
+                    dl-justify-between dl-px-8 dl-w-full md:dl-w-80 lg:dl-w-96
+                    dl-h-30
+                    sm:dl-h-26"
+            >
+              <div className="dl-flex dl-flex-col">
+                <span className="dl-text-my-white">Puntos disponibles</span>
+                <p className="dl-text-1.5xl lg:dl-text-4.5xl dl-font-bold dl-text-my-white">
+                  {user?.score.toLocaleString()} pts
+                </p>
+              </div>
+              <Image
+                alt="stars"
+                width={84}
+                height={52}
+                src="/home/estrellas.svg"
+              />
             </div>
-            <Image
-              alt="stars"
-              width={84}
-              height={52}
-              src="/home/estrellas.svg"
-            />
-          </div>
+          ) : (
+            <a
+              href="/login"
+              className={classNames(
+                "dl-mx-auto md:dl-ml-0 dl-text-white dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
+              )}
+            >
+              Ir a canjear
+            </a>
+          )}
         </div>
 
         <Image
-          className="dl-hidden md:dl-flex"
+          className={classNames(
+            showPoints ? "dl-hidden" : "dl-flex",
+            "md:dl-flex"
+          )}
           width={703}
           height={240}
           src="/home/banner.svg"

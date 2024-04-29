@@ -15,9 +15,10 @@ export function AuthProvider(props) {
     const user = localStorage.getItem("user");
     if (user) {
       setUser(JSON.parse(user));
-    } else if (router.pathname !== "/" && router.pathname !== "/login") {
-      router.push("/login");
     }
+    // if (router.pathname !== "/login" && router.pathname !== "/") {
+    //   router.push("/login");
+    // }
 
     console.log("user", user);
   }, []);

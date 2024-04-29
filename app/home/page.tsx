@@ -27,7 +27,11 @@ export default function HomePage() {
 
   return (
     <NestedLayout hideOnMobile={false}>
-      <PrincipalBanner />
+      <PrincipalBanner
+        title="Insuma puntos"
+        showPoints={true}
+        subtitle="Canjea productos con los puntos acumulados por tus compras. Recompensamos tu esfuerzo diario."
+      />
       <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-items-center dl-flex dl-flex-wrap dl-justify-between dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
         {actions.map((action, index) => (
           <li key={index} className="dl-w-80">

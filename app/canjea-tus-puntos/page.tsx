@@ -6,7 +6,11 @@ import Image from "next/image";
 export default function OrdersPage() {
   return (
     <NestedLayout hideOnMobile={true}>
-      <PrincipalBanner />
+      <PrincipalBanner
+        title="Insuma puntos"
+        showPoints={true}
+        subtitle="Canjea productos con los puntos acumulados por tus compras. Recompensamos tu esfuerzo diario."
+      />
 
       <section className="dl-container dl-mb-16">
         <h3 className="dl-mb-4">Productos disponibles</h3>
