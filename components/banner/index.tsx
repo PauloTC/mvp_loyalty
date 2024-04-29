@@ -100,7 +100,7 @@ export default function PrincipalBanner({
             <a
               href="/login"
               className={classNames(
-                "dl-mx-auto md:dl-ml-0 dl-text-white dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
+                "dl-hidden dl-mx-auto md:dl-ml-0 dl-text-white sm:dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
               )}
             >
               Ir a canjear
@@ -118,6 +118,21 @@ export default function PrincipalBanner({
           src="/home/banner.svg"
           alt="banner"
         />
+
+        {!showPoints && (
+          <a
+            href="/login"
+            className="
+                dl-mt-8 dl-mx-auto 
+                md:dl-ml-0 dl-text-white 
+                dl-flex sm:dl-hidden 
+                dl-items-center dl-justify-center 
+                dl-rounded-lg dl-w-full dl-max-w-72 
+                dl-bg-link-blue dl-h-12"
+          >
+            Ir a canjear
+          </a>
+        )}
       </div>
     </section>
   );

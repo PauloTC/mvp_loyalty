@@ -19,7 +19,9 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
-  const [status, setStatus] = useState<undefined | 'success' | 'error'>(undefined);
+  const [status, setStatus] = useState<undefined | "success" | "error">(
+    undefined
+  );
 
   const { user, setUser } = useContext(AuthContext);
 
@@ -52,7 +54,7 @@ export default function LoginForm() {
       localStorage.setItem("user", JSON.stringify(user));
       router.push("/home");
     } else {
-      setStatus('error');
+      setStatus("error");
     }
   };
 
@@ -70,8 +72,12 @@ export default function LoginForm() {
             placeholder="Ingresa el usuario"
             value={username}
             status={status}
-            suffix={status === 'error' ? <DlIcon name='warning-circle' /> : undefined}
-            helperText={status === 'error' ? 'Este campo es requerido.' : undefined}
+            suffix={
+              status === "error" ? <DlIcon name="warning-circle" /> : undefined
+            }
+            helperText={
+              status === "error" ? "Este campo es requerido." : undefined
+            }
             onChange={(e) => {
               setUsername(e.target.value);
               setStatus(undefined);
@@ -84,23 +90,18 @@ export default function LoginForm() {
             placeholder="Ingresa la contraseña"
             value={password}
             status={status}
-            suffix={status === 'error' ? <DlIcon name='warning-circle' /> : undefined}
-            helperText={status === 'error' ? 'Este campo es requerido.' : undefined}
+            suffix={
+              status === "error" ? <DlIcon name="warning-circle" /> : undefined
+            }
+            helperText={
+              status === "error" ? "Este campo es requerido." : undefined
+            }
             onChange={(e) => {
               setPassword(e.target.value);
               setStatus(undefined);
             }}
           />
         </div>
-        {/* <div className="dl-my-6 dl-flex dl-items-start sm:dl-items-center dl-gap-2">
-          <DlCheckbox size="lg"></DlCheckbox>
-          <span>
-            He leído y aceptado los{" "}
-            <a className="dl-text-link-blue dl-underline" href="#">
-              Términos & Condiciones
-            </a>
-          </span>
-        </div> */}
 
         <DlButton onClick={() => handleLogin(event)} block>
           Ingresar

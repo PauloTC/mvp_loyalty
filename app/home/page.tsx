@@ -12,12 +12,6 @@ export default function HomePage() {
       to: "/canjea-tus-puntos",
     },
     {
-      title: "Historial de Canjes",
-      description: "Dale seguimiento",
-      image: "/home/historial.png",
-      to: "/home",
-    },
-    {
       title: "¿Cómo funciona?",
       description: "Canjea rápido y fácil",
       image: "/home/funciona.png",
