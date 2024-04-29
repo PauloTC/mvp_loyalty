@@ -20,6 +20,10 @@ const MyOrders = (props: Props) => {
   const [openCongratulation, setOpenCongratulation] = useState(false);
   const [openLoader, setOpenLoader] = useState(false);
 
+  const numberWithCommas = (points: number) => {
+    return points.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   const handleRemainingPoints = () => {
     let total = 0;
     items.forEach(item => {
@@ -88,7 +92,7 @@ const MyOrders = (props: Props) => {
                       onChange({ ...item, value: 0 });
                     }}
                   >
-                    <p className='dl-subtitle-xxs'>{item.points}pts</p>
+                    <p className='dl-subtitle-xxs'>{numberWithCommas(item.points)}pts</p>
                   </DlCheckOut>
                 )
               })}
@@ -97,7 +101,7 @@ const MyOrders = (props: Props) => {
             <div className="dl-flex dl-justify-between dl-justify-items-center dl-p-6 dl-border-t dl-border-[#DEDEDE]">
               <div>
                 <p className="dl-body-quarck">{items.length} producto</p>
-                <div className="dl-subtitle-xs">{totalAmount}pts</div>
+                <div className="dl-subtitle-xs">{numberWithCommas(totalAmount)}pts</div>
               </div>
               <DlButton onClick={() => setOpenConfirmation(true)}>Canjear</DlButton>
             </div>

@@ -20,7 +20,7 @@ export default function PrincipalBanner({
 
   return (
     <section
-      className="dl-flex md:dl-h-80 dl-justify-center md:dl-justify-between xl:dl-justify-center dl-mb-6 md:dl-mb-12"
+      className="dl-flex md:dl-h-80 dl-justify-center xl:dl-justify-center dl-mb-6 md:dl-mb-12"
       style={{ backgroundColor: "#F2F7FF" }}
     >
       <div
@@ -30,10 +30,10 @@ export default function PrincipalBanner({
           "dl-w-full",
           "dl-items-center",
           "dl-justify-center",
-          "dl-gap-14",
+          // "dl-gap-14",
           "dl-container",
           "dl-h-auto",
-          "sm:dl-py-0",
+          // "sm:dl-py-0",
           "dl-flex",
           "sm:dl-flex-row"
         )}
@@ -73,8 +73,8 @@ export default function PrincipalBanner({
             <div
               className="
                     dl-flex
-                    dl-bg-gradient-to-r dl-from-cyan-500 
-                    dl-to-blue-500 
+                    dl-bg-gradient-to-r dl-from-cyan-500
+                    dl-to-blue-500
                     dl-rounded-t-none
                     dl-rounded-b-2xl
                     sm:dl-rounded-2xl
@@ -111,9 +111,9 @@ export default function PrincipalBanner({
         <Image
           className={classNames(
             showPoints ? "dl-hidden" : "dl-flex",
-            "md:dl-flex"
+            "xl:dl-flex"
           )}
-          width={703}
+          width={640}
           height={240}
           src="/home/banner.svg"
           alt="banner"

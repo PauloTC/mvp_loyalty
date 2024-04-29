@@ -1,5 +1,5 @@
 "use client";
-import { DlInput } from "@alicorpdigital/dali-react";
+import { DlIcon, DlInput } from "@alicorpdigital/dali-react";
 import { DlCheckbox } from "@alicorpdigital/dali-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -19,6 +19,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
+  const [status, setStatus] = useState<undefined | 'success' | 'error'>(undefined);
 
   const { user, setUser } = useContext(AuthContext);
 
@@ -51,7 +52,7 @@ export default function LoginForm() {
       localStorage.setItem("user", JSON.stringify(user));
       router.push("/home");
     } else {
-      alert("Nombre de usuario o contraseña incorrectos");
+      setStatus('error');
     }
   };
 
@@ -68,7 +69,13 @@ export default function LoginForm() {
             label="Nombre de usuario"
             placeholder="Ingresa el usuario"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            status={status}
+            suffix={status === 'error' ? <DlIcon name='warning-circle' /> : undefined}
+            helperText={status === 'error' ? 'Este campo es requerido.' : undefined}
+            onChange={(e) => {
+              setUsername(e.target.value);
+              setStatus(undefined);
+            }}
           />
           <DlInput
             size="lg"
@@ -76,7 +83,13 @@ export default function LoginForm() {
             label="Contraseña"
             placeholder="Ingresa la contraseña"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            status={status}
+            suffix={status === 'error' ? <DlIcon name='warning-circle' /> : undefined}
+            helperText={status === 'error' ? 'Este campo es requerido.' : undefined}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setStatus(undefined);
+            }}
           />
         </div>
         {/* <div className="dl-my-6 dl-flex dl-items-start sm:dl-items-center dl-gap-2">
