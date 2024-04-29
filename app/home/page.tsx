@@ -8,19 +8,19 @@ export default function HomePage() {
     {
       title: "Canjea tus puntos",
       description: "Productos Alicorp",
-      image: "/home/canjea.svg",
+      image: "/home/canjea.png",
       to: "/canjea-tus-puntos",
     },
     {
       title: "Historial de Canjes",
       description: "Dale seguimiento",
-      image: "/home/historial.svg",
-      to: "/historial",
+      image: "/home/historial.png",
+      to: "/home",
     },
     {
       title: "¿Cómo funciona?",
       description: "Canjea rápido y fácil",
-      image: "/home/funciona.svg",
+      image: "/home/funciona.png",
       to: "/como-funciona",
     },
   ];

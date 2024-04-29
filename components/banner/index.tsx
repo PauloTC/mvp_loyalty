@@ -1,6 +1,7 @@
 "use client";
+
 import Image from "next/image";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import classNames from "classnames";
 
