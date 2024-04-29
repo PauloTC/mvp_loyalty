@@ -13,6 +13,7 @@ export function AuthProvider(props) {
 
   useEffect(() => {
     const user = localStorage.getItem("user");
+
     if (user) {
       setUser(JSON.parse(user));
     } else if (router.pathname !== "/" && router.pathname !== "/login") {

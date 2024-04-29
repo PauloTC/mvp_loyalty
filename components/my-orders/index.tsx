@@ -4,20 +4,12 @@ import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { AuthContext } from "../../contexts/AuthContext";
 import './styles.css';
-import { ModalConfirmation } from '@/components/modals';
-import { ModalCongratulation } from '../modals/congratulation';
-
-type ItemProp = {
-  id: string;
-  title: string;
-  src: string;
-  value: number;
-  points: number;
-}
+import { ModalConfirmation, ModalCongratulation, ModalLoader } from '@/components/modals';
+import { ProductProps } from '@/services/products';
 
 type Props = {
-  items: ItemProp[];
-  onChange: (item: ItemProp) => void;
+  items: ProductProps[];
+  onChange: (item: ProductProps) => void;
   totalAmount: number;
 }
 
@@ -26,13 +18,24 @@ const MyOrders = (props: Props) => {
   const { user } = useContext(AuthContext);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openCongratulation, setOpenCongratulation] = useState(false);
+  const [openLoader, setOpenLoader] = useState(false);
 
   const handleRemainingPoints = () => {
     let total = 0;
     items.forEach(item => {
-      total += (item.value * item.points);
+      total += ((item.value || 0) * item.points);
     })
     return user?.score - total;
+  }
+
+  const handleLoader = () => {
+    setOpenConfirmation(false);
+    setOpenLoader(true);
+
+    setTimeout(() => {
+      setOpenLoader(false);
+      setOpenCongratulation(true);
+    }, 2000);
   }
 
   return (
@@ -75,7 +78,8 @@ const MyOrders = (props: Props) => {
                 return (
                   <DlCheckOut
                     key={index}
-                    {...item}
+                    title={item.name}
+                    src={item.image}
                     inputAmountProps={{
                       onChange: (value) => onChange({ ...item, value }),
                       value: item.value,
@@ -129,15 +133,13 @@ const MyOrders = (props: Props) => {
       <ModalConfirmation
         open={openConfirmation}
         onClose={() => setOpenConfirmation(false)}
-        onOk={() => {
-          setOpenConfirmation(false);
-          setOpenCongratulation(true);
-        }}
+        onOk={handleLoader}
       />
       <ModalCongratulation
         open={openCongratulation}
         onOk={() => setOpenCongratulation(false)}
       />
+      {openLoader && <ModalLoader />}
     </>
   );
 }

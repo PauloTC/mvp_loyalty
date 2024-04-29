@@ -1,6 +1,7 @@
 "use client";
 import { DlModal } from "@alicorpdigital/dali-react";
 import Image from "next/image";
+import './styles.css';
 
 type Props = {
   onClose?: () => void;
