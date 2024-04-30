@@ -13,7 +13,7 @@ export default function LoginPage() {
       </div>
       <div className="dl-px-5 md:dl-min-w-fit md:dl-w-2/5 md:dl-py-14 md:dl-px-[5.5rem] md:dl-flex md:dl-justify-center md:dl-items-center">
         <div className="md:dl-w-80">
-          <div className="dl-pt-8 dl-px-4 ">
+          <div className="dl-pt-8 dl-px-3">
             <a href="/" className="dl-mb-8 dl-flex dl-items-center dl-gap-2">
               <i className=" dl-text-brand-primary-medium dl-icon dli-caret-left-bold dl-icon-sm"></i>
               <span className="dl-text-brand-primary-medium dl-font-semibold dl-font-alicorpSans dl-text-base">

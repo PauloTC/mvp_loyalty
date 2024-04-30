@@ -1,12 +1,16 @@
 "use client";
 import classNames from "classnames";
 import Image from "next/image";
-import { useEffect } from "react";
-import { useContext } from "react";
+import { use, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { useEffect } from "react";
 
 export default function HeaderComponent({ hideOnMobile }: any) {
-  const { logout } = useContext(AuthContext);
+  const { logout, user } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <div
@@ -31,7 +35,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
               dl-text-brand-primary-medium 
               dl-text-base"
       >
-        Cerrar sesión
+        {user?.name ? "Cerrar sesión" : "Iniciar sesión"}
       </button>
     </div>
   );

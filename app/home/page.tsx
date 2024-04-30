@@ -7,28 +7,26 @@ export default function HomePage() {
   const actions = [
     {
       title: "Canjea tus puntos",
-      description: "Productos Alicorp",
-      image: "/home/canjea.svg",
+      description: "Premios disponibles",
+      image: "/home/canjea.png",
       to: "/canjea-tus-puntos",
-    },
-    {
-      title: "Historial de Canjes",
-      description: "Dale seguimiento",
-      image: "/home/historial.svg",
-      to: "/historial",
     },
     {
       title: "¿Cómo funciona?",
       description: "Canjea rápido y fácil",
-      image: "/home/funciona.svg",
+      image: "/home/funciona.png",
       to: "/como-funciona",
     },
   ];
 
   return (
     <NestedLayout hideOnMobile={false}>
-      <PrincipalBanner />
-      <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-items-center dl-flex dl-flex-wrap dl-justify-between dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
+      <PrincipalBanner
+        title="Insuma puntos"
+        showPoints={true}
+        subtitle="Canjea productos con los puntos acumulados por tus compras. Recompensamos tu esfuerzo diario."
+      />
+      <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-items-center dl-flex dl-flex-wrap dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
         {actions.map((action, index) => (
           <li key={index} className="dl-w-80">
             <h3 className="dl-text-base dl-font-semibold dl-mb-2">

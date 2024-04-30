@@ -1,5 +1,5 @@
 "use client";
-import { DlInput } from "@alicorpdigital/dali-react";
+import { DlIcon, DlInput } from "@alicorpdigital/dali-react";
 import { DlCheckbox } from "@alicorpdigital/dali-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -20,6 +20,9 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
+  const [status, setStatus] = useState<undefined | "success" | "error">(
+    undefined
+  );
 
   const { user, setUser } = useContext(AuthContext);
 
@@ -53,7 +56,7 @@ export default function LoginForm() {
       sendGTMEvent({event:'loginUser',usuario:user.username,fecha:new Date().toLocaleString()});
       router.push("/home");
     } else {
-      alert("Nombre de usuario o contraseña incorrectos");
+      setStatus("error");
     }
   };
 
@@ -70,7 +73,17 @@ export default function LoginForm() {
             label="Nombre de usuario"
             placeholder="Ingresa el usuario"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            status={status}
+            suffix={
+              status === "error" ? <DlIcon name="warning-circle" /> : undefined
+            }
+            helperText={
+              status === "error" ? "Este campo es requerido." : undefined
+            }
+            onChange={(e) => {
+              setUsername(e.target.value);
+              setStatus(undefined);
+            }}
           />
           <DlInput
             size="lg"
@@ -78,22 +91,27 @@ export default function LoginForm() {
             label="Contraseña"
             placeholder="Ingresa la contraseña"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            status={status}
+            suffix={
+              status === "error" ? <DlIcon name="warning-circle" /> : undefined
+            }
+            helperText={
+              status === "error" ? "Este campo es requerido." : undefined
+            }
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setStatus(undefined);
+            }}
           />
         </div>
-        {/* <div className="dl-my-6 dl-flex dl-items-start sm:dl-items-center dl-gap-2">
-          <DlCheckbox size="lg"></DlCheckbox>
-          <span>
-            He leído y aceptado los{" "}
-            <a className="dl-text-link-blue dl-underline" href="#">
-              Términos & Condiciones
-            </a>
-          </span>
-        </div> */}
 
-        <DlButton onClick={() => handleLogin(event)} block>
+        <button
+          style={{ outline: "none" }}
+          className="dl-h-14 dl-bg-brand-primary-medium dl-rounded-lg dl-text-base dl-font-semibold dl-text-my-white"
+          onClick={() => handleLogin(event)}
+        >
           Ingresar
-        </DlButton>
+        </button>
         <DlCheckbox className="dl-mt-6" size="lg">
           Recuérdame
         </DlCheckbox>
@@ -108,18 +126,10 @@ export default function LoginForm() {
 
       <DlModal
         open={modalOpen}
-        closeable
-        okText="Ir a whatsapp"
+        closeable={false}
         style={{ paddingTop: "24px", minWidth: "20rem" }}
       >
-        <div
-          className="  dl-gap-4  "
-          style={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <div className="dl-gap-4  dl-flex dl-flex-col dl-items-center">
           <div className=" dl-flex dl-flex-col dl-items-center  dl-gap-4">
             <img
               className="dl-block max-md:dl-w-full max-md:dl-h-[8rem]"
@@ -131,7 +141,7 @@ export default function LoginForm() {
             </h2>
           </div>
           <div className="dl-flex dl-flex-col dl-items-center dl-mt-3 max-md:dl-mt-0">
-            <p className=" dl-font-alicorpSans dl-font-normal dl-text-center  max-sm:dl-text-[0.9rem] dl-leading-4 ">
+            <p className="dl-text-neutrals-dark dl-font-alicorpSans dl-font-normal dl-text-center  max-sm:dl-text-[0.9rem] dl-leading-4 ">
               Para ayudarte a recuperar tu contraseña, se te redirigirá a
               WhatsApp.
             </p>
@@ -149,9 +159,17 @@ export default function LoginForm() {
             >
               Cancelar
             </DlButton>
-            <DlButton block size="md">
+            <a
+              className="
+                dl-flex dl-justify-center dl-items-center
+                dl-h-12 dl-bg-brand-primary-medium 
+                dl-w-full
+                dl-rounded-lg dl-text-base 
+                dl-font-semibold dl-text-my-white"
+              href="https://wa.link/295pks"
+            >
               Ir a whatsapp
-            </DlButton>
+            </a>
           </div>
         </div>
       </DlModal>
