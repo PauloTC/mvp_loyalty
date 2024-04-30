@@ -17,7 +17,7 @@ const MyProducts = (props: Props) => {
   };
 
   return (
-    <div className='dl-gap-2 dl-grid dl-grid-cols-2 sm:dl-grid-cols-3 xl:dl-grid-cols-4 lg:dl-col-span-2 xl:dl-col-span-3 dl-pb-12 lg:dl-pb-0'>
+    <>
       {products.map((item, index) => {
         return (
           <DlCardProduct
@@ -40,7 +40,7 @@ const MyProducts = (props: Props) => {
           </DlCardProduct>
         )
       })}
-    </div>
+    </>
   );
 }
 

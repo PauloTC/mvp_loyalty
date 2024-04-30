@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import './styles.css';
 import { ModalConfirmation, ModalCongratulation, ModalLoader } from '@/components/modals';
 import { ProductProps } from '@/services/products';
+import { sendProducts } from '@/services/form';
 
 type Props = {
   items: ProductProps[];
@@ -35,11 +36,23 @@ const MyOrders = (props: Props) => {
   const handleLoader = () => {
     setOpenConfirmation(false);
     setOpenLoader(true);
+    handleSubmitProducts();
 
     setTimeout(() => {
       setOpenLoader(false);
       setOpenCongratulation(true);
     }, 2000);
+  }
+
+  const handleSubmitProducts = () => {
+    const data = {
+      business: 'Negocio',
+      code: 'Cliente',
+      name: 'Cliente',
+      products: 'Productos',
+      quantity: '123'
+    };
+    sendProducts(data);
   }
 
   return (
