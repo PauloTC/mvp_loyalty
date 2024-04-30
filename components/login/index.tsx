@@ -103,9 +103,13 @@ export default function LoginForm() {
           />
         </div>
 
-        <DlButton onClick={() => handleLogin(event)} block>
+        <button
+          style={{ outline: "none" }}
+          className="dl-h-14 dl-bg-brand-primary-medium dl-rounded-lg dl-text-base dl-font-semibold dl-text-my-white"
+          onClick={() => handleLogin(event)}
+        >
           Ingresar
-        </DlButton>
+        </button>
         <DlCheckbox className="dl-mt-6" size="lg">
           Recuérdame
         </DlCheckbox>
@@ -120,18 +124,10 @@ export default function LoginForm() {
 
       <DlModal
         open={modalOpen}
-        closeable
-        okText="Ir a whatsapp"
+        closeable={false}
         style={{ paddingTop: "24px", minWidth: "20rem" }}
       >
-        <div
-          className="  dl-gap-4  "
-          style={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <div className="dl-gap-4  dl-flex dl-flex-col dl-items-center">
           <div className=" dl-flex dl-flex-col dl-items-center  dl-gap-4">
             <img
               className="dl-block max-md:dl-w-full max-md:dl-h-[8rem]"
@@ -143,7 +139,7 @@ export default function LoginForm() {
             </h2>
           </div>
           <div className="dl-flex dl-flex-col dl-items-center dl-mt-3 max-md:dl-mt-0">
-            <p className=" dl-font-alicorpSans dl-font-normal dl-text-center  max-sm:dl-text-[0.9rem] dl-leading-4 ">
+            <p className="dl-text-neutrals-dark dl-font-alicorpSans dl-font-normal dl-text-center  max-sm:dl-text-[0.9rem] dl-leading-4 ">
               Para ayudarte a recuperar tu contraseña, se te redirigirá a
               WhatsApp.
             </p>
@@ -161,10 +157,16 @@ export default function LoginForm() {
             >
               Cancelar
             </DlButton>
-            <a href="https://wa.link/295pks">
-              <DlButton block size="md">
-                Ir a whatsapp
-              </DlButton>
+            <a
+              className="
+                dl-flex dl-justify-center dl-items-center
+                dl-h-12 dl-bg-brand-primary-medium 
+                dl-w-full
+                dl-rounded-lg dl-text-base 
+                dl-font-semibold dl-text-my-white"
+              href="https://wa.link/295pks"
+            >
+              Ir a whatsapp
             </a>
           </div>
         </div>
