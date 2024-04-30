@@ -17,7 +17,9 @@ export const sendProducts = async (data: ProductProps) => {
     url: '',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     data: bodyFormData
-  });
+  })
+  .then((response) => console.log('response'))
+  .catch(() => console.log('error'))
 }
 
 type ProductProps = {
