@@ -1,6 +1,5 @@
 "use client";
 import { DlModal } from "@alicorpdigital/dali-react";
-import { sendGTMEvent } from "@next/third-parties/google";
 import Image from "next/image";
 import './styles.css';
 
@@ -13,14 +12,6 @@ type Props = {
 export const ModalConfirmation = (props: Props) => {
   const { onClose, onOk, open = false } = props;
   
-  const redemptionConfirmationHandler = () => {
-    const storageData=localStorage.getItem('user');
-    if(storageData){
-      const user = JSON.parse(storageData);
-      sendGTMEvent({event:'pedidoUser',usuario:user.username,fecha:new Date().toLocaleString()});
-    } 
-    onOk;   
-  };
   return (
     <DlModal open={open}>
       <div className="dl-flex dl-flex-col dl-items-center">
@@ -48,8 +39,7 @@ export const ModalConfirmation = (props: Props) => {
           </button>
           <button
             style={{ outline: "none" }}           
-          
-            onClick={redemptionConfirmationHandler}
+            onClick={onOk}
             className="
             dl-w-44 dl-h-12
             dl-flex dl-justify-center

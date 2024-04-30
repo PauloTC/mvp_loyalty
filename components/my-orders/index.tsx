@@ -7,7 +7,7 @@ import './styles.css';
 import { ModalConfirmation, ModalCongratulation, ModalLoader } from '@/components/modals';
 import { ProductProps } from '@/services/products';
 import { sendProducts } from '@/services/form';
-
+import { sendGTMEvent } from "@next/third-parties/google";
 type Props = {
   items: ProductProps[];
   onChange: (item: ProductProps) => void;
@@ -37,12 +37,20 @@ const MyOrders = (props: Props) => {
     setOpenConfirmation(false);
     setOpenLoader(true);
     handleSubmitProducts();
-
+    handlerRedemptionConfirmation();
     setTimeout(() => {
       setOpenLoader(false);
       setOpenCongratulation(true);
     }, 2000);
   }
+
+  const handlerRedemptionConfirmation = () => {
+    const storageData=localStorage.getItem('user');
+    if(storageData){
+      const user = JSON.parse(storageData);
+      sendGTMEvent({event:'pedidoUser',usuario:user.username,nombreUsuario:user.name,fecha:new Date().toLocaleString()});
+    }   
+  };
 
   const handleSubmitProducts = () => {
     const data = {
