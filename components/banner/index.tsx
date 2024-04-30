@@ -20,22 +20,24 @@ export default function PrincipalBanner({
 
   return (
     <section
-      className="dl-flex md:dl-h-80 dl-justify-center xl:dl-justify-center dl-mb-6 md:dl-mb-12"
+      // className="dl-flex md:dl-h-80 dl-justify-center xl:dl-justify-center dl-mb-6 md:dl-mb-12"
+      className="dl-flex md:dl-h-80 dl-mb-6 md:dl-mb-12"
       style={{ backgroundColor: "#F2F7FF" }}
     >
       <div
         className={classNames(
-          showPoints ? "" : "dl-flex-col",
-          showPoints ? "dl-p-0" : "dl-py-12",
-          "dl-w-full",
-          "dl-items-center",
-          "dl-justify-center",
+          // showPoints ? "" : "dl-flex-col",
+          // showPoints ? "dl-p-0" : "dl-py-12",
+          // "dl-w-full",
+          // "dl-justify-center",
           // "dl-gap-14",
           "dl-container",
-          "dl-h-auto",
-          // "sm:dl-py-0",
+          "dl-mx-auto",
           "dl-flex",
-          "sm:dl-flex-row"
+          "dl-items-center",
+          // "dl-h-auto",
+          // "sm:dl-py-0",
+          // "sm:dl-flex-row"
         )}
       >
         <div
@@ -123,11 +125,11 @@ export default function PrincipalBanner({
           <a
             href="/login"
             className="
-                dl-mt-8 dl-mx-auto 
-                md:dl-ml-0 dl-text-white 
-                dl-flex sm:dl-hidden 
-                dl-items-center dl-justify-center 
-                dl-rounded-lg dl-w-full dl-max-w-72 
+                dl-mt-8 dl-mx-auto
+                md:dl-ml-0 dl-text-white
+                dl-flex sm:dl-hidden
+                dl-items-center dl-justify-center
+                dl-rounded-lg dl-w-full dl-max-w-72
                 dl-bg-link-blue dl-h-12"
           >
             Ir a canjear
