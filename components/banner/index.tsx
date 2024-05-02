@@ -21,7 +21,7 @@ export default function PrincipalBanner({
   return (
     <section
       // className="dl-flex md:dl-h-80 dl-justify-center xl:dl-justify-center dl-mb-6 md:dl-mb-12"
-      className="dl-flex md:dl-h-80 dl-mb-6 md:dl-mb-12"
+      className="dl-flex xl:dl-h-80 dl-mb-6 md:dl-mb-12"
       style={{ backgroundColor: "#F2F7FF" }}
     >
       <div
@@ -46,7 +46,7 @@ export default function PrincipalBanner({
         <div
           className={classNames(
             "dl-text-center",
-            "sm:dl-text-left",
+            "xl:dl-text-left",
             "dl-w-full",
             "sm:dl-w-135"
           )}
@@ -105,7 +105,7 @@ export default function PrincipalBanner({
             <a
               href="/login"
               className={classNames(
-                "dl-hidden dl-mx-auto md:dl-ml-0 dl-text-white sm:dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
+                "dl-hidden dl-mx-auto md:dl-ml-0 dl-text-white xl:dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
               )}
             >
               Ir a canjear
@@ -129,8 +129,8 @@ export default function PrincipalBanner({
             href="/login"
             className="
                 dl-mt-8 dl-mx-auto
-                md:dl-ml-0 dl-text-white
-                dl-flex sm:dl-hidden
+                xl:dl-ml-0 dl-text-white
+                dl-flex xl:dl-hidden
                 dl-items-center dl-justify-center
                 dl-rounded-lg dl-w-full dl-max-w-72
                 dl-bg-link-blue dl-h-12"
