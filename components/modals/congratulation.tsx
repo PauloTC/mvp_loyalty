@@ -12,7 +12,7 @@ export const ModalCongratulation = (props: Props) => {
   const { onOk, open = false } = props;
 
   return (
-    <DlModal open={true}>
+    <DlModal open={open}>
       <div className="dl-flex dl-flex-col dl-items-center">
         <div className="dl-mb-4">
           <Image
