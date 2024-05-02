@@ -19,7 +19,7 @@ export default function NeedHelp() {
         sm:dl-container
         dl-rounded-xl"
     >
-      <div className="dl-hidden sm:dl-block dl-mr-5 dl-self-end dl-pb-3 dl-absolute">
+      <div className="dl-hidden sm:dl-block dl-self-end dl-pb-9 dl-absolute dl-left-1/4 ">
         <Image
           alt="second_star"
           width={23}
@@ -58,7 +58,7 @@ export default function NeedHelp() {
           Consultar
         </a>
       </div>
-      <div className="dl-hidden sm:dl-block dl-ml-4 dl-absolute">
+      <div className="dl-hidden sm:dl-block dl-ml-4 dl-absolute dl-right-1/3 dl-top-16">
         <Image
           alt="first_star"
           height={15}
