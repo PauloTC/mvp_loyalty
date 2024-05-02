@@ -155,7 +155,8 @@ const MyOrders = (props: Props) => {
         onOk={handleLoader}
       />
       <ModalCongratulation
-        open={openCongratulation}
+        // open={openCongratulation}
+        open
         onOk={() => {
           setOpenCongratulation(false);
           router.push('/');
