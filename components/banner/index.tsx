@@ -30,14 +30,14 @@ export default function PrincipalBanner({
           // "dl-w-full",
           // "dl-justify-center",
           // "dl-gap-14",
-          showPoints ? "dl-p-0" : "dl-py-12",
+          showPoints ? "dl-py-0" : "dl-py-12",
           "dl-container",
           "dl-mx-auto",
           "dl-flex",
           "dl-items-center",
           "dl-flex-col",
           "xl:dl-flex-row",
-          "xl:dl-justify-center"
+          "xl:dl-justify-between"
           // "dl-h-auto",
           // "sm:dl-py-0",
           // "sm:dl-flex-row"
