@@ -17,7 +17,6 @@ export default function StepsComponent({
   const router = useRouter();
 
   const handleRedirection = () => {
-    console.log("user", user);
     if (user?.username) {
       router.push("/canjea-tus-puntos");
     } else {

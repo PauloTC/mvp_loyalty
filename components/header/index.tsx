@@ -3,14 +3,9 @@ import classNames from "classnames";
 import Image from "next/image";
 import { use, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useEffect } from "react";
 
 export default function HeaderComponent({ hideOnMobile }: any) {
   const { logout, user } = useContext(AuthContext);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <div
