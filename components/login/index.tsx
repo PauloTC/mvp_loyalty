@@ -110,9 +110,6 @@ export default function LoginForm() {
         >
           Ingresar
         </button>
-        <DlCheckbox className="dl-mt-6" size="lg">
-          Recuérdame
-        </DlCheckbox>
         <a
           className="dl-text-link-blue dl-mt-6"
           href="#"
