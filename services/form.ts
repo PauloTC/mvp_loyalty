@@ -1,16 +1,16 @@
 import axios from 'axios';
 
 const base = axios.create({
-  baseURL: 'https://docs.google.com/forms/d/e/1FAIpQLSeZJ9p1G_f-Zq6zuKLRBlgRAEtwZYjdt6fyOdGI9Rx96Xi9qw/formResponse'
+  baseURL: 'https://docs.google.com/forms/d/e/1FAIpQLSdf7rEo4Ofzr_71jiks7xNbcBqtV9ynCaQ_i7hZpFXPRA0l_A/formResponse'
 });
 
 export const sendProducts = async (data: ProductProps) => {
   const bodyFormData = new FormData();
-  bodyFormData.append('entry.1763876441', 'Negocio');
-  bodyFormData.append('entry.805487062', 'Codigo de Cliente');
-  bodyFormData.append('entry.1527765944', 'Nombre de Cliente');
-  bodyFormData.append('entry.818659534', 'Productos');
-  bodyFormData.append('entry.1737733736', '119');
+  bodyFormData.append('entry.1485978671', data.business);
+  bodyFormData.append('entry.795126901', data.code);
+  bodyFormData.append('entry.192754056', data.name);
+  bodyFormData.append('entry.1587142754', data.products);
+  bodyFormData.append('entry.1149661235', data.quantity);
 
   await base({
     method: 'POST',

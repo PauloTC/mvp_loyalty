@@ -66,12 +66,13 @@ const MyOrders = (props: Props) => {
   };
 
   const handleSubmitProducts = () => {
+    const products = items.map((item) => `(${item.value} unid) ${item.name}`);
     const data = {
-      business: "Negocio",
-      code: "Cliente",
-      name: "Cliente",
-      products: "Productos",
-      quantity: "123",
+      business: user.business,
+      code: user.username,
+      name: user.name,
+      products: products.join(' + '),
+      quantity: totalAmount.toString()
     };
     sendProducts(data);
   };
@@ -156,10 +157,8 @@ const MyOrders = (props: Props) => {
 
             <div className="dl-flex dl-justify-between dl-justify-items-center dl-p-6 dl-border-t dl-border-[#DEDEDE]">
               <div>
-                <p className="dl-body-quarck">{items.length} producto</p>
-                <div className="dl-subtitle-xs">
-                  {numberWithCommas(totalAmount)}pts
-                </div>
+                <p className="dl-body-quarck">{items.length} {items.length > 1 ? 'productos' : 'producto'}</p>
+                <div className="dl-subtitle-xs">{numberWithCommas(totalAmount)}pts</div>
               </div>
               <DlButton onClick={() => setOpenConfirmation(true)}>
                 Canjear
