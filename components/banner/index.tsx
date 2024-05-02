@@ -27,14 +27,17 @@ export default function PrincipalBanner({
       <div
         className={classNames(
           // showPoints ? "" : "dl-flex-col",
-          // showPoints ? "dl-p-0" : "dl-py-12",
           // "dl-w-full",
           // "dl-justify-center",
           // "dl-gap-14",
+          showPoints ? "dl-p-0" : "dl-py-12",
           "dl-container",
           "dl-mx-auto",
           "dl-flex",
           "dl-items-center",
+          "dl-flex-col",
+          "xl:dl-flex-row",
+          "xl:dl-justify-center"
           // "dl-h-auto",
           // "sm:dl-py-0",
           // "sm:dl-flex-row"
