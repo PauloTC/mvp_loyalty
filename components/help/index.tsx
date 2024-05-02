@@ -19,7 +19,7 @@ export default function NeedHelp() {
         sm:dl-container
         dl-rounded-xl"
     >
-      <div className="dl-hidden sm:dl-block dl-self-end dl-pb-9 dl-absolute dl-left-1/4 ">
+      <div className="dl-hidden sm:dl-block dl-self-end dl-pb-9 dl-absolute dl-left-1/3 ">
         <Image
           alt="second_star"
           width={23}
