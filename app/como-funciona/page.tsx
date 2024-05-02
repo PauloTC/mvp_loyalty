@@ -7,7 +7,7 @@ import StepsComponent from "@/components/steps";
 export default function HowItWorksPage() {
   return (
     <NestedLayout hideOnMobile={true}>
-      <div className="dl-border-b-2 sm:dl-border-b-0 dl-mb-8 sm:dl-mb-0 dl-flex dl-py-5 dl-container dl-mx-auto dl-gap-2">
+      <div className="dl-border-b-2 sm:dl-border-b-0 dl-mb-8 sm:dl-mb-0 dl-flex dl-items-center dl-py-5 dl-container dl-mx-auto dl-gap-2">
         <a href="/home" className="dl-flex sm:dl-hidden">
           <Image
             alt="arrow_left"
