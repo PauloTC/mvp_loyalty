@@ -7,6 +7,7 @@ import './styles.css';
 import { ModalConfirmation, ModalCongratulation, ModalLoader } from '@/components/modals';
 import { ProductProps } from '@/services/products';
 import { sendProducts } from '@/services/form';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   items: ProductProps[];
@@ -17,6 +18,7 @@ type Props = {
 const MyOrders = (props: Props) => {
   const { items, onChange, totalAmount } = props;
   const { user } = useContext(AuthContext);
+  const router = useRouter();
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openCongratulation, setOpenCongratulation] = useState(false);
   const [openLoader, setOpenLoader] = useState(false);
@@ -154,7 +156,10 @@ const MyOrders = (props: Props) => {
       />
       <ModalCongratulation
         open={openCongratulation}
-        onOk={() => setOpenCongratulation(false)}
+        onOk={() => {
+          setOpenCongratulation(false);
+          router.push('/');
+        }}
       />
       {openLoader && <ModalLoader />}
     </>
