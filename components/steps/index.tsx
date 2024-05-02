@@ -30,8 +30,7 @@ export default function StepsComponent({
       <ul className="dl-flex dl-flex-col md:dl-flex-row dl-justify-between dl-mb-18 dl-gap-8">
         <li className="dl-grow">
           <p className="dl-text-sm dl-mb-3">
-            1. Acumula puntos comprando desde Insuma fuera del horario de visita
-            del vendedor.
+            1. Acumula puntos comprando desde Insuma.
           </p>
           <div
             className="
