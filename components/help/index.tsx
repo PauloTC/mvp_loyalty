@@ -6,16 +6,12 @@ export default function NeedHelp() {
       className="
         dl-mb-0
         dl-pb-0
-        sm:dl-mb-10
         dl-flex
         dl-justify-center
         dl-relative
-        dl-py-8 
-        sm:dl-py-10
-        sm:dl-mb-25
-        sm:dl-py-6 
         dl-mx-auto
         dl-px-0
+        lg:dl-mb-20
         sm:dl-container
         dl-rounded-xl"
     >
@@ -29,9 +25,9 @@ export default function NeedHelp() {
       </div>
       <div
         className="dl-flex dl-flex-col
-        dl-container 
-        sm:dl-items-center 
-        dl-bg-my-gray dl-w-full 
+        dl-container
+        sm:dl-items-center
+        dl-bg-my-gray dl-w-full
         dl-justify-center dl-h-39"
       >
         <h4 className="dl-text-2xl dl-font-bold dl-mb-1">¿Necesitas ayuda?</h4>
