@@ -12,7 +12,7 @@ export const ModalCongratulation = (props: Props) => {
   const { onOk, open = false } = props;
 
   return (
-    <DlModal open={open}>
+    <DlModal open={true}>
       <div className="dl-flex dl-flex-col dl-items-center">
         <div className="dl-mb-4">
           <Image
@@ -25,7 +25,7 @@ export const ModalCongratulation = (props: Props) => {
         <h2 className="dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
           ¡Felicidades!
         </h2>
-        <p className="dl-text-center dl-text-sm dl-w-93 dl-text-neutrals-dark">
+        <p className="dl-text-center dl-text-sm max-dl-w-93 dl-text-neutrals-dark">
           ¡Tu canje está siendo procesado! <br />
           Pronto nos comunicaremos contigo por whatsapp y actualizaremos tus
           puntos disponibles.
