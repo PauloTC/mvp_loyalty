@@ -6,9 +6,13 @@ import { useRouter } from "next/navigation";
 
 interface StepsComponentProps {
   title: string;
+  buttonText: string;
 }
 
-export default function StepsComponent({ title }: StepsComponentProps) {
+export default function StepsComponent({
+  title,
+  buttonText,
+}: StepsComponentProps) {
   const { user } = useContext(AuthContext);
   const router = useRouter();
 
@@ -38,7 +42,12 @@ export default function StepsComponent({ title }: StepsComponentProps) {
               dl-items-center"
           >
             <div className="dl-mb-4">
-              <Image width={82} height={24} alt="insuma" src="/logo.png" />
+              <Image
+                width={170}
+                height={24}
+                alt="insuma"
+                src="/logo_step.png"
+              />
             </div>
             <div className="dl-flex dl-divide-x-2 dl-mb-4">
               <div className="dl-flex dl-flex-col dl-pr-2 dl-pb-2 dl-justify-center dl-w-36">
@@ -106,7 +115,7 @@ export default function StepsComponent({ title }: StepsComponentProps) {
             dl-h-12 dl-flex dl-justify-center dl-items-center
             dl-bg-brand-primary-medium "
         >
-          Canjear
+          {buttonText}
         </button>
       </ul>
     </section>

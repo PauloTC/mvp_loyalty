@@ -4,15 +4,19 @@ export default function NeedHelp() {
   return (
     <section
       className="
-        dl-mb-10
+        dl-mb-0
+        dl-pb-0
+        sm:dl-mb-10
         dl-flex
         dl-justify-center
         dl-relative
         dl-py-8 
+        sm:dl-py-10
         sm:dl-mb-25
         sm:dl-py-6 
         dl-mx-auto
-        dl-container
+        dl-px-0
+        sm:dl-container
         dl-rounded-xl"
     >
       <div className="dl-hidden sm:dl-block dl-mr-5 dl-self-end dl-pb-3 dl-absolute">
@@ -24,8 +28,8 @@ export default function NeedHelp() {
         />
       </div>
       <div
-        className="
-        dl-flex dl-flex-col 
+        className="dl-flex dl-flex-col
+        dl-container 
         sm:dl-items-center 
         dl-bg-my-gray dl-w-full 
         dl-justify-center dl-h-39"
