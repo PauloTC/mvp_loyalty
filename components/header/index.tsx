@@ -3,14 +3,9 @@ import classNames from "classnames";
 import Image from "next/image";
 import { use, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useEffect } from "react";
 
 export default function HeaderComponent({ hideOnMobile }: any) {
   const { logout, user } = useContext(AuthContext);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <div
@@ -20,12 +15,12 @@ export default function HeaderComponent({ hideOnMobile }: any) {
         "dl-container",
         "dl-mx-auto",
         "dl-py-5",
-        "sm:dl-py-6",
+        "sm:dl-py-4.5",
         "dl-justify-between"
       )}
     >
       <a href="/home">
-        <Image alt="logo" width={82} height={24} src="/logo.png" />
+        <Image alt="logo" width={104} height={36} src="/logo.svg" />
       </a>
       <button
         onClick={logout}

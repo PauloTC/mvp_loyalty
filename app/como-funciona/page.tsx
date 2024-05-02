@@ -41,7 +41,7 @@ export default function HowItWorksPage() {
         />
       </div>
 
-      <StepsComponent title="Canjea rápido y fácil" />
+      <StepsComponent buttonText="canjear" title="Canjea rápido y fácil" />
 
       <NeedHelp />
     </NestedLayout>

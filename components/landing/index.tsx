@@ -12,7 +12,7 @@ export default function LandingComponent() {
         subtitle="Queremos recompensar ese gran esfuerzo diario. Ahora podrás canjear productos sin costo."
         showPoints={false}
       />
-      <StepsComponent title="¿Cómo  funciona?" />
+      <StepsComponent buttonText="Ir a canjear" title="¿Cómo  funciona?" />
       <NeedHelp />
 
       <a

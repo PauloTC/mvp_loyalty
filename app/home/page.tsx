@@ -26,19 +26,23 @@ export default function HomePage() {
         showPoints={true}
         subtitle="Canjea productos con los puntos acumulados por tus compras. Recompensamos tu esfuerzo diario."
       />
-      <ul className="dl-mb-10  md:dl-mb-16 dl-container dl-items-center dl-flex dl-flex-wrap dl-gap-8 xl:dl-gap-14 dl-flex-col sm:dl-flex-row dl-mx-auto">
+
+      <ul className="dl-container dl-mx-auto dl-flex dl-flex-col sm:dl-flex-row  dl-gap-8 sm:dl-gap-20 dl-mb-0 lg:dl-mb-12">
         {actions.map((action, index) => (
-          <li key={index} className="dl-w-80">
+          <li key={index} className="dl-grow">
             <h3 className="dl-text-base dl-font-semibold dl-mb-2">
               {action.title}
             </h3>
-            <div className="dl-border dl-max-h-36 dl-rounded-lg">
-              <Image
-                width={320}
-                height={88}
-                src={action.image}
-                alt={action.title}
-              />
+
+            <div className="dl-border dl-rounded-lg">
+              <div className="dl-relative dl-h-26 sm:dl-h-36">
+                <Image
+                  layout="fill"
+                  objectFit="cover"
+                  src={action.image}
+                  alt={action.title}
+                />
+              </div>
               <div className="dl-border-t d-flex dl-items-center dl-px-4 dl-justify-between dl-h-14">
                 <p className="dl-font-medium dl-text-sm">
                   {action.description}

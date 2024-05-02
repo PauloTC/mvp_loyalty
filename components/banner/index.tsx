@@ -20,28 +20,33 @@ export default function PrincipalBanner({
 
   return (
     <section
-      className="dl-flex md:dl-h-80 dl-justify-center xl:dl-justify-center dl-mb-6 md:dl-mb-12"
+      // className="dl-flex md:dl-h-80 dl-justify-center xl:dl-justify-center dl-mb-6 md:dl-mb-12"
+      className="dl-flex xl:dl-h-80 dl-mb-6 md:dl-mb-12"
       style={{ backgroundColor: "#F2F7FF" }}
     >
       <div
         className={classNames(
-          showPoints ? "" : "dl-flex-col",
-          showPoints ? "dl-p-0" : "dl-py-12",
-          "dl-w-full",
-          "dl-items-center",
-          "dl-justify-center",
+          // showPoints ? "" : "dl-flex-col",
+          // "dl-w-full",
+          // "dl-justify-center",
           // "dl-gap-14",
+          showPoints ? "dl-py-0 sm:dl-py-8" : "dl-py-12",
           "dl-container",
-          "dl-h-auto",
-          // "sm:dl-py-0",
+          "dl-mx-auto",
           "dl-flex",
-          "sm:dl-flex-row"
+          "dl-items-center",
+          "dl-flex-col",
+          "xl:dl-flex-row",
+          "xl:dl-justify-between"
+          // "dl-h-auto",
+          // "sm:dl-py-0",
+          // "sm:dl-flex-row"
         )}
       >
         <div
           className={classNames(
             "dl-text-center",
-            "sm:dl-text-left",
+            "xl:dl-text-left",
             "dl-w-full",
             "sm:dl-w-135"
           )}
@@ -79,7 +84,7 @@ export default function PrincipalBanner({
                     dl-rounded-b-2xl
                     sm:dl-rounded-2xl
                     dl-items-center
-                    dl-justify-between dl-px-8 dl-w-full md:dl-w-80 lg:dl-w-96
+                    dl-justify-between dl-px-8 dl-w-full xl:dl-w-100
                     dl-h-30
                     sm:dl-h-26"
             >
@@ -100,7 +105,7 @@ export default function PrincipalBanner({
             <a
               href="/login"
               className={classNames(
-                "dl-hidden dl-mx-auto md:dl-ml-0 dl-text-white sm:dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
+                "dl-hidden dl-mx-auto md:dl-ml-0 dl-text-white xl:dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
               )}
             >
               Ir a canjear
@@ -115,7 +120,7 @@ export default function PrincipalBanner({
           )}
           width={640}
           height={240}
-          src="/home/banner.svg"
+          src="/home/banner.png"
           alt="banner"
         />
 
@@ -123,11 +128,11 @@ export default function PrincipalBanner({
           <a
             href="/login"
             className="
-                dl-mt-8 dl-mx-auto 
-                md:dl-ml-0 dl-text-white 
-                dl-flex sm:dl-hidden 
-                dl-items-center dl-justify-center 
-                dl-rounded-lg dl-w-full dl-max-w-72 
+                dl-mt-8 dl-mx-auto
+                xl:dl-ml-0 dl-text-white
+                dl-flex xl:dl-hidden
+                dl-items-center dl-justify-center
+                dl-rounded-lg dl-w-full dl-max-w-72
                 dl-bg-link-blue dl-h-12"
           >
             Ir a canjear
