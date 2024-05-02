@@ -30,7 +30,7 @@ export default function PrincipalBanner({
           // "dl-w-full",
           // "dl-justify-center",
           // "dl-gap-14",
-          showPoints ? "dl-py-0" : "dl-py-12",
+          showPoints ? "dl-py-0 sm:dl-py-8" : "dl-py-12",
           "dl-container",
           "dl-mx-auto",
           "dl-flex",
@@ -84,7 +84,7 @@ export default function PrincipalBanner({
                     dl-rounded-b-2xl
                     sm:dl-rounded-2xl
                     dl-items-center
-                    dl-justify-between dl-px-8 dl-w-full md:dl-w-80 lg:dl-w-96
+                    dl-justify-between dl-px-8 dl-w-full xl:dl-w-100
                     dl-h-30
                     sm:dl-h-26"
             >
