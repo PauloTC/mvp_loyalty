@@ -120,7 +120,7 @@ export default function PrincipalBanner({
           )}
           width={640}
           height={240}
-          src="/home/banner.svg"
+          src="/home/banner.png"
           alt="banner"
         />
 
