@@ -1,21 +1,21 @@
 import Image from "next/image";
 
-export default async function NeedHelp() {
+export default function NeedHelp() {
   return (
     <section
       className="
-        dl-mb-10
+        dl-mb-0
+        dl-pb-0
         dl-flex
         dl-justify-center
-        dl-bg-my-gray 
-        dl-py-8 
-        sm:dl-mb-25
-        sm:dl-py-6 
+        dl-relative
         dl-mx-auto
-        dl-full-width
-        sm:dl-w-9/12 dl-rounded-xl"
+        dl-px-0
+        lg:dl-mb-20
+        sm:dl-container
+        dl-rounded-xl"
     >
-      <div className="dl-hidden sm:dl-block dl-mr-5 dl-self-end dl-pb-3">
+      <div className="dl-hidden sm:dl-block dl-self-end dl-pb-9 dl-absolute dl-left-1/3 ">
         <Image
           alt="second_star"
           width={23}
@@ -23,7 +23,13 @@ export default async function NeedHelp() {
           src="/home/second_star.svg"
         />
       </div>
-      <div className="dl-flex dl-flex-col sm:dl-items-center">
+      <div
+        className="dl-flex dl-flex-col
+        dl-container
+        sm:dl-items-center
+        dl-bg-my-gray dl-w-full
+        dl-justify-center dl-h-39"
+      >
         <h4 className="dl-text-2xl dl-font-bold dl-mb-1">¿Necesitas ayuda?</h4>
         <p className="dl-text-sm dl-mb-6">
           Despeja todas tus dudas y prepárate para ganar.
@@ -37,7 +43,7 @@ export default async function NeedHelp() {
               dl-font-semibold
               dl-text-base
               dl-text-brand-primary-medium"
-          href="https://wa.link/kq1qx2"
+          href="https://wa.link/vd5a1e"
         >
           <Image
             src={"/home/whatsapp.svg"}
@@ -48,7 +54,7 @@ export default async function NeedHelp() {
           Consultar
         </a>
       </div>
-      <div className="dl-hidden sm:dl-block dl-ml-4">
+      <div className="dl-hidden sm:dl-block dl-ml-4 dl-absolute dl-right-1/3 dl-top-16">
         <Image
           alt="first_star"
           height={15}

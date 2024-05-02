@@ -1,31 +1,60 @@
 "use client";
-import { DlInput } from "@alicorpdigital/dali-react";
+import { DlIcon, DlInput } from "@alicorpdigital/dali-react";
 import { DlCheckbox } from "@alicorpdigital/dali-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DlButton } from "@alicorpdigital/dali-react";
 import { DlModal } from "@alicorpdigital/dali-react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
+
+type User = {
+  username: string;
+  password: string;
+  score: number;
+};
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [users, setUsers] = useState<User[]>([]);
+  const [status, setStatus] = useState<undefined | "success" | "error">(
+    undefined
+  );
+
+  const { user, setUser } = useContext(AuthContext);
 
   const router = useRouter();
 
-  // prettier-ignore
-  const validLogins: { [key: string]: string } = {
-    "user1": "password1",
-    "user2": "password2",
-  };
+  useEffect(() => {
+    if (user?.username) {
+      router.push("/home");
+    }
+  }, [user]);
+
+  useEffect(() => {
+    fetch("https://my-json-server.typicode.com/paulotc/mvp_loyalty_db/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []);
 
   const handleLogin = (event: any) => {
     event.preventDefault();
 
-    if (validLogins[username] === password) {
+    const user = users.find(
+      (user) => user.username === username && user.password === password
+    );
+
+    if (user) {
+      setUser({
+        name: username,
+        score: user.score,
+      });
+      localStorage.setItem("user", JSON.stringify(user));
       router.push("/home");
     } else {
-      alert("Nombre de usuario o contraseña incorrectos");
+      setStatus("error");
     }
   };
 
@@ -36,13 +65,23 @@ export default function LoginForm() {
   return (
     <>
       <form className="dl-pb-10 dl-flex dl-flex-col">
-        <div className="dl-grid dl-gap-4">
+        <div className="dl-grid dl-gap-4 dl-mb-6">
           <DlInput
             size="lg"
             label="Nombre de usuario"
             placeholder="Ingresa el usuario"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            status={status}
+            suffix={
+              status === "error" ? <DlIcon name="warning-circle" /> : undefined
+            }
+            helperText={
+              status === "error" ? "Este campo es requerido." : undefined
+            }
+            onChange={(e) => {
+              setUsername(e.target.value);
+              setStatus(undefined);
+            }}
           />
           <DlInput
             size="lg"
@@ -50,25 +89,27 @@ export default function LoginForm() {
             label="Contraseña"
             placeholder="Ingresa la contraseña"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            status={status}
+            suffix={
+              status === "error" ? <DlIcon name="warning-circle" /> : undefined
+            }
+            helperText={
+              status === "error" ? "Este campo es requerido." : undefined
+            }
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setStatus(undefined);
+            }}
           />
         </div>
-        <div className="dl-my-6 dl-flex dl-items-start sm:dl-items-center dl-gap-2">
-          <DlCheckbox size="lg"></DlCheckbox>
-          <span>
-            He leído y aceptado los{" "}
-            <a className="dl-text-link-blue dl-underline" href="#">
-              Términos & Condiciones
-            </a>
-          </span>
-        </div>
 
-        <DlButton onClick={() => handleLogin(event)} block>
+        <button
+          style={{ outline: "none" }}
+          className="dl-h-14 dl-bg-brand-primary-medium dl-rounded-lg dl-text-base dl-font-semibold dl-text-my-white"
+          onClick={() => handleLogin(event)}
+        >
           Ingresar
-        </DlButton>
-        <DlCheckbox className="dl-mt-6" size="lg">
-          Recuérdame
-        </DlCheckbox>
+        </button>
         <a
           className="dl-text-link-blue dl-mt-6"
           href="#"
@@ -80,18 +121,10 @@ export default function LoginForm() {
 
       <DlModal
         open={modalOpen}
-        closeable
-        okText="Ir a whatsapp"
+        closeable={false}
         style={{ paddingTop: "24px", minWidth: "20rem" }}
       >
-        <div
-          className="  dl-gap-4  "
-          style={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <div className="dl-gap-4  dl-flex dl-flex-col dl-items-center">
           <div className=" dl-flex dl-flex-col dl-items-center  dl-gap-4">
             <img
               className="dl-block max-md:dl-w-full max-md:dl-h-[8rem]"
@@ -103,7 +136,7 @@ export default function LoginForm() {
             </h2>
           </div>
           <div className="dl-flex dl-flex-col dl-items-center dl-mt-3 max-md:dl-mt-0">
-            <p className=" dl-font-alicorpSans dl-font-normal dl-text-center  max-sm:dl-text-[0.9rem] dl-leading-4 ">
+            <p className="dl-text-neutrals-dark dl-font-alicorpSans dl-font-normal dl-text-center  max-sm:dl-text-[0.9rem] dl-leading-4 ">
               Para ayudarte a recuperar tu contraseña, se te redirigirá a
               WhatsApp.
             </p>
@@ -121,9 +154,17 @@ export default function LoginForm() {
             >
               Cancelar
             </DlButton>
-            <DlButton block size="md">
+            <a
+              className="
+                dl-flex dl-justify-center dl-items-center
+                dl-h-12 dl-bg-brand-primary-medium 
+                dl-w-full
+                dl-rounded-lg dl-text-base 
+                dl-font-semibold dl-text-my-white"
+              href="https://wa.link/295pks"
+            >
               Ir a whatsapp
-            </DlButton>
+            </a>
           </div>
         </div>
       </DlModal>

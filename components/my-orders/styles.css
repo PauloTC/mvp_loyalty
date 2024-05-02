@@ -1,0 +1,39 @@
+.my-orders {
+  /* border: 1px solid red;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFF; */
+  background-color: #FFF;
+}
+
+.my-orders .dl-card-product__head {
+  min-width: 102px;
+  min-height: 96px;
+}
+
+.my-orders .dl-card-product__body > h6.dl-comp-text-nano {
+  max-width: 146px;
+}
+
+.my-orders .dl-image.dl-image--image.dl-image-md {
+  max-width: 70px;
+  max-height: 70px;
+  min-width: 70px;
+  min-height: 70px;
+  width: 70px;
+  height: 70px;
+}
+
+.my-orders .dl-action-button > i {
+  display: none;
+}
+
+.my-orders-background {
+  background: linear-gradient(102.96deg, #177FF2 35.36%, #0853CC 85.41%);
+  padding: 8px 24px;
+  color: #FCFCFC;
+  justify-content: space-between;
+  align-items: center;
+}

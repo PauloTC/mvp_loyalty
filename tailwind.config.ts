@@ -21,8 +21,10 @@ const config: Config = {
       colors: {
         "my-white": "#FCFCFC",
         "my-gray": "#F7F7F7",
+        "neutrals-dark": "#6c6c6c",
         "brand-primary-medium": "#EC3A0E",
-        "link-blue":'#0064D1'
+        "brand-highlight-medium": "#0064D1",
+        "link-blue": "#0064D1",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -46,17 +48,20 @@ const config: Config = {
       height: {
         26: "6.5rem",
         30: "7.5rem",
+        39: "9.75rem",
         76.5: "19.125rem",
       },
       width: {
         66: "16.5rem",
+        93: "23.25rem",
         100: "25rem",
         120: "30rem",
+        135: "33.75rem",
       },
     },
-    fontFamily:{
-      'alicorpSans':["AlicorpSans"]
-    }
+    fontFamily: {
+      alicorpSans: ["AlicorpSans"],
+    },
   },
   plugins: [],
 };

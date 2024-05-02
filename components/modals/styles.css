@@ -1,0 +1,28 @@
+@media screen and (max-width: 768px) {
+  .dl-modal-content {
+    max-width: 320px;
+  }
+}
+
+/* LOADER */
+
+.modal-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #EC3A0E;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.modal-loader p {
+  font-weight: 400;
+  font-size: 18.8382px;
+  line-height: 22px;
+color: #FCFCFC;
+}
