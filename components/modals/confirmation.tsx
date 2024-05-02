@@ -11,7 +11,7 @@ type Props = {
 
 export const ModalConfirmation = (props: Props) => {
   const { onClose, onOk, open = false } = props;
-
+  
   return (
     <DlModal open={open}>
       <div className="dl-flex dl-flex-col dl-items-center">
@@ -38,7 +38,7 @@ export const ModalConfirmation = (props: Props) => {
             Cancelar
           </button>
           <button
-            style={{ outline: "none" }}
+            style={{ outline: "none" }}           
             onClick={onOk}
             className="
             dl-w-44 dl-h-12

@@ -3,14 +3,16 @@ import { DlButton, DlCheckOut } from "@alicorpdigital/dali-react";
 import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { AuthContext } from "../../contexts/AuthContext";
+
+import { ProductProps } from "@/services/products";
+import { sendProducts } from "@/services/form";
+import { sendGTMEvent } from "@next/third-parties/google";
 import "./styles.css";
 import {
   ModalConfirmation,
   ModalCongratulation,
   ModalLoader,
 } from "@/components/modals";
-import { ProductProps } from "@/services/products";
-import { sendProducts } from "@/services/form";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -43,11 +45,24 @@ const MyOrders = (props: Props) => {
     setOpenConfirmation(false);
     setOpenLoader(true);
     handleSubmitProducts();
-
+    handlerRedemptionConfirmation();
     setTimeout(() => {
       setOpenLoader(false);
       setOpenCongratulation(true);
     }, 2000);
+  };
+
+  const handlerRedemptionConfirmation = () => {
+    const storageData = localStorage.getItem("user");
+    if (storageData) {
+      const user = JSON.parse(storageData);
+      sendGTMEvent({
+        event: "pedidoUser",
+        usuario: user.username,
+        nombreUsuario: user.name,
+        fecha: new Date().toLocaleString(),
+      });
+    }
   };
 
   const handleSubmitProducts = () => {

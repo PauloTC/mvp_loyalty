@@ -7,11 +7,14 @@ import { DlButton } from "@alicorpdigital/dali-react";
 import { DlModal } from "@alicorpdigital/dali-react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 type User = {
   username: string;
   password: string;
   score: number;
+  name?:string;
+
 };
 
 export default function LoginForm() {
@@ -52,6 +55,7 @@ export default function LoginForm() {
         score: user.score,
       });
       localStorage.setItem("user", JSON.stringify(user));
+      sendGTMEvent({event:'loginUser',usuario:user.username,nombreUsuario:user.name,fecha:new Date().toLocaleString()});
       router.push("/home");
     } else {
       setStatus("error");
