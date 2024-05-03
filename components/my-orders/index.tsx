@@ -71,31 +71,15 @@ const MyOrders = (props: Props) => {
       business: user.business,
       code: user.username,
       name: user.name,
-      products: products.join(' + '),
-      quantity: totalAmount.toString()
+      products: products.join(" + "),
+      quantity: totalAmount.toString(),
     };
     sendProducts(data);
   };
 
   return (
     <>
-      <div
-        className="
-          my-orders
-          dl-flex
-          dl-flex-col
-          dl-h-fit
-          dl-overflow-hidden
-          dl-fixed
-          lg:dl-static
-          dl-bottom-0
-          dl-left-0
-          dl-w-full
-          dl-rounded-t-2xl
-          lg:dl-rounded-2xl
-          lg:dl-border
-        "
-      >
+      <div className="my-orders dl-flex dl-flex-col dl-h-fit dl-overflow-hidden dl-fixed dl-bottom-0 dl-left-0 dl-w-full dl-rounded-t-2xl lg:dl-static lg:dl-rounded-2xl lg:dl-border">
         <h4 className="dl-hidden lg:dl-flex dl-text-2xl dl-font-semibold dl-mb-5 dl-px-6 dl-pt-4">
           Mis pedidos
         </h4>
@@ -157,8 +141,12 @@ const MyOrders = (props: Props) => {
 
             <div className="dl-flex dl-justify-between dl-justify-items-center dl-p-6 dl-border-t dl-border-[#DEDEDE]">
               <div>
-                <p className="dl-body-quarck">{items.length} {items.length > 1 ? 'productos' : 'producto'}</p>
-                <div className="dl-subtitle-xs">{numberWithCommas(totalAmount)}pts</div>
+                <p className="dl-body-quarck">
+                  {items.length} {items.length > 1 ? "productos" : "producto"}
+                </p>
+                <div className="dl-subtitle-xs">
+                  {numberWithCommas(totalAmount)}pts
+                </div>
               </div>
               <DlButton onClick={() => setOpenConfirmation(true)}>
                 Canjear
