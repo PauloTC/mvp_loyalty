@@ -20,6 +20,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isProduction = process.env.NODE_ENV === "production";
+
   return (
     <html lang="en">
       <head>
@@ -39,7 +41,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
       </head>
       <body>
-        <GoogleTagManager gtmId="GTM-NPCLFNHG" />
+        {isProduction && <GoogleTagManager gtmId="GTM-NPCLFNHG" />}
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

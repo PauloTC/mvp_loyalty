@@ -20,16 +20,11 @@ export default function PrincipalBanner({
 
   return (
     <section
-      // className="dl-flex md:dl-h-80 dl-justify-center xl:dl-justify-center dl-mb-6 md:dl-mb-12"
       className="dl-flex xl:dl-h-80 dl-mb-6 md:dl-mb-12"
       style={{ backgroundColor: "#F2F7FF" }}
     >
       <div
         className={classNames(
-          // showPoints ? "" : "dl-flex-col",
-          // "dl-w-full",
-          // "dl-justify-center",
-          // "dl-gap-14",
           showPoints ? "dl-py-0 sm:dl-py-8" : "dl-py-12",
           "dl-container",
           "dl-mx-auto",
@@ -38,9 +33,6 @@ export default function PrincipalBanner({
           "dl-flex-col",
           "xl:dl-flex-row",
           "xl:dl-justify-between"
-          // "dl-h-auto",
-          // "sm:dl-py-0",
-          // "sm:dl-flex-row"
         )}
       >
         <div
@@ -103,7 +95,7 @@ export default function PrincipalBanner({
             </div>
           ) : (
             <a
-              href="/login"
+              href={user && user.username ? "/canjea-tus-puntos" : "/login"}
               className={classNames(
                 "dl-hidden dl-mx-auto md:dl-ml-0 dl-text-white xl:dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
               )}
@@ -126,7 +118,7 @@ export default function PrincipalBanner({
 
         {!showPoints && (
           <a
-            href="/login"
+            href={user && user.username ? "/canjea-tus-puntos" : "/login"}
             className="
                 dl-mt-8 dl-mx-auto
                 xl:dl-ml-0 dl-text-white
