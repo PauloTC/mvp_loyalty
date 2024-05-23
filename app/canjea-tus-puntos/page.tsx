@@ -1,5 +1,5 @@
 "use client";
-import PrincipalBanner from "@/components/banner";
+import BannerPoints from "@/components/banner-points";
 import NestedLayout from "@/components/layout";
 import MyOrders from "@/components/my-orders";
 import MyProducts from "@/components/my-products";
@@ -79,7 +79,7 @@ const OrdersPage = () => {
   return (
     <NestedLayout hideOnMobile={true}>
       <div className="dl-hidden lg:dl-block">
-        <PrincipalBanner
+        <BannerPoints
           showPoints={true}
           title="Insuma puntos"
           subtitle="Canjea productos con los puntos acumulados por tus compras. Recompensamos tu esfuerzo diario."
