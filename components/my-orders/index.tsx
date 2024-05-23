@@ -25,8 +25,8 @@ const MyOrders = (props: Props) => {
   const { items, onChange, totalAmount } = props;
   const { user } = useContext(AuthContext);
   const router = useRouter();
-  const [openConfirmation, setOpenConfirmation] = useState(false);
-  const [openCongratulation, setOpenCongratulation] = useState(false);
+  const [openConfirmation, setOpenConfirmation] = useState<boolean>(false);
+  const [openCongratulation, setOpenCongratulation] = useState<boolean>(false);
   const [openLoader, setOpenLoader] = useState(false);
 
   const numberWithCommas = (points: number) => {

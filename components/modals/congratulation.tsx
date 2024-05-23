@@ -1,15 +1,26 @@
 "use client";
-import { DlModal } from "@alicorpdigital/dali-react";
+import { DlModal, DlButton } from "@alicorpdigital/dali-react";
 import Image from "next/image";
 import "./styles.css";
+import { useState } from 'react';
+import cn from 'classnames';
 
 type Props = {
   onOk?: () => void;
   open?: boolean;
 };
 
+const nps = [
+  { name: 'Muy fácil', slug: 'muy-facil' },
+  { name: 'Fácil', slug: 'facil' },
+  { name: 'Neutro', slug: 'neutro' },
+  { name: 'Dificil', slug: 'dificil' },
+  { name: 'Muy dificil', slug: 'muy-dificil' },
+]
+
 export const ModalCongratulation = (props: Props) => {
   const { onOk, open = false } = props;
+  const [npsSelected, setNpsSelected] = useState<string>('');
 
   return (
     <DlModal open={open}>
@@ -22,27 +33,41 @@ export const ModalCongratulation = (props: Props) => {
             src="/modals/umbrella.png"
           />
         </div>
-        <h2 className="dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
-          ¡Felicidades!
+        <h2 className="dl-text-2xl dl-text-center dl-font-bold dl-mb-4 dl-tracking-wide">
+          ¡Tu canje está siendo procesado!
         </h2>
         <p className="dl-text-center dl-text-sm max-dl-w-93 dl-text-neutrals-dark">
-          ¡Tu canje está siendo procesado! <br />
-          Pronto nos comunicaremos contigo por whatsapp y actualizaremos tus
-          puntos disponibles.
+          Pronto nos comunicaremos contigo por whatsapp y actualizaremos tus puntos disponibles.
         </p>
+        <div className='dl-nps'>
+          <p>¿Qué tan fácil o difícil es  canjear tus puntos?</p>
+
+          <div className='dl-nps-container'>
+            {nps.map((nps) => (
+              <div
+                role='presentation'
+                key={nps.slug}
+                onClick={() => setNpsSelected(nps.slug)}
+                className={cn('dl-nps-btn', {
+                  'dl-nps-btn-selected': npsSelected === nps.slug,
+                })}
+              >
+                {nps.name}
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="dl-flex dl-justify-center dl-mt-8 dl-gap-4">
-          <button
-            style={{ outline: "none" }}
+          <DlButton
             onClick={onOk}
-            className="
-            dl-w-44 dl-h-12
-            dl-flex dl-justify-center
-            dl-items-center
-            dl-bg-brand-primary-medium dl-text-my-white
-            dl-rounded-lg"
+            disabled={!npsSelected}
+            className='
+              dl-w-44 dl-h-12
+              dl-justify-center
+            '
           >
             Confirmar
-          </button>
+          </DlButton>
         </div>
       </div>
     </DlModal>

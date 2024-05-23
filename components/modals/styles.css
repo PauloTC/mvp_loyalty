@@ -1,6 +1,7 @@
 @media screen and (max-width: 768px) {
   .dl-modal-content {
     max-width: 320px;
+    padding-top: 16px;
   }
 }
 
@@ -25,4 +26,43 @@
   font-size: 18.8382px;
   line-height: 22px;
 color: #FCFCFC;
+}
+
+.dl-nps {
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #202020;
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid #DEDEDE;
+}
+
+.dl-nps-container {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.dl-nps-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #6C6C6C;
+  background-color: #F7F7F7;
+  height: 60px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #202020;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.dl-nps-btn.dl-nps-btn-selected {
+  background-color: #202020;
+  color: #FFF;
 }
