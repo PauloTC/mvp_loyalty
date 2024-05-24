@@ -3,8 +3,7 @@ import "./globals.css";
 import "../public/font.css";
 import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+
 import { AuthProvider } from "../contexts/AuthContext";
 
 export const metadata: Metadata = {
