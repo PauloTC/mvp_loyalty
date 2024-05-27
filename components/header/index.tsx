@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ModalRating } from "@/components/modals";
 import { DlIcon, DlSidebar } from "@alicorpdigital/dali-react";
-import './styles.css';
+import "./styles.css";
 
 export default function HeaderComponent({ hideOnMobile }: any) {
   const { logout, user } = useContext(AuthContext);
@@ -87,6 +87,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           onClick={() => setOpen(!open)}
         >
           <DlIcon
+            className="dl-text-red-600"
             size="lg"
             name={open ? "x" : "hamburger"}
           />
@@ -99,33 +100,33 @@ export default function HeaderComponent({ hideOnMobile }: any) {
         }}
       />
       <DlSidebar
-        className='header-sidebar'
+        className="header-sidebar"
         open={open}
         items={[
           {
-            key: 'history-canjea',
-            label: 'Historial de canjes'
+            key: "history-canjea",
+            label: "Historial de canjes",
           },
           {
-            key: 'how-work',
-            label: '¿Cómo funciona?'
+            key: "how-work",
+            label: "¿Cómo funciona?",
           },
           {
-            key: 'calificanos',
-            label: 'Califícanos',
+            key: "calificanos",
+            label: "Califícanos",
           },
         ]}
         onClick={(item) => {
-          if (item.key === 'calificanos') {
+          if (item.key === "calificanos") {
             setOpenModal(true);
             setOpen(false);
           }
         }}
         itemsFooter={[
           {
-            key: 'sign-out',
-            label: 'Cerrar sesión'
-          }
+            key: "sign-out",
+            label: "Cerrar sesión",
+          },
         ]}
       />
     </>
