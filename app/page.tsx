@@ -1,3 +1,4 @@
+'use client';
 import NestedLayout from "@/components/layout";
 import LandingComponent from "@/components/landing";
 import { ModalRating } from "@/components/modals";
