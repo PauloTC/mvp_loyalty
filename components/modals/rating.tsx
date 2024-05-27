@@ -2,7 +2,13 @@
 import { DlModal } from "@alicorpdigital/dali-react";
 import Image from "next/image";
 
+type Props = {
+  open?: boolean;
+  onClose?: () => void;
+}
+
 export const ModalRating = (props: any) => {
+  const { open, onClose } = props;
   const RatingOptions = [
     {
       title: "Muy satisfecho/a",
@@ -27,7 +33,7 @@ export const ModalRating = (props: any) => {
   ];
 
   return (
-    <DlModal open={true}>
+    <DlModal open={open} onClose={onClose}>
       <div className="dl-flex dl-flex-col dl-items-center">
         <div className="dl-mb-4">
           <Image
