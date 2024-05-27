@@ -86,7 +86,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
         )}
 
         <div className="dl-flex dl-items-center md:dl-hidden">
-          <DlIcon size="lg" name="hamburger" />
+          <DlIcon className="dl-text-red-600" size="lg" name="hamburger" />
         </div>
       </div>
       <ModalRating open={openModal} onSubmit={() => setOpenModal(false)} />
