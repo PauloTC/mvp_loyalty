@@ -3,8 +3,7 @@ import "./globals.css";
 import "../public/font.css";
 import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+
 import { AuthProvider } from "../contexts/AuthContext";
 
 export const metadata: Metadata = {
@@ -37,6 +36,17 @@ export default function RootLayout({
               gtag('config', 'G-DTPWL0BQD2');
               `}
         </Script>
+
+        <Script id="clarity" strategy="lazyOnload">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "mgl1fsng7e");
+          `}
+        </Script>
+
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
       </head>
