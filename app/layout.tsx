@@ -33,7 +33,7 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "mgl1fsng7e");
           `}
         </Script>
-        <Script
+        {/* <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-DTPWL0BQD2"
         ></Script>
@@ -44,9 +44,9 @@ export default function RootLayout({
             
               gtag('config', 'G-DTPWL0BQD2');
               `}
-        </Script>
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000000" />
+        </Script> */}
+        {/* <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" /> */}
       </head>
       <body>
         {isProduction && <GoogleTagManager gtmId="GTM-NPCLFNHG" />}
