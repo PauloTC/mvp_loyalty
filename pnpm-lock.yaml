@@ -12,8 +12,8 @@ importers:
         specifier: ^1.32.1-canary.26
         version: 1.32.1-canary.26
       '@alicorpdigital/dali-react':
-        specifier: ^0.0.3-canary.5
-        version: 0.0.3-canary.5
+        specifier: 0.0.3-canary.10
+        version: 0.0.3-canary.10
       '@next/third-parties':
         specifier: ^14.2.2
         version: 14.2.3(next@14.2.2(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -66,8 +66,8 @@ packages:
   '@alicorpdigital/dali-css-library@1.32.1-canary.26':
     resolution: {integrity: sha512-AKTzMCZp3Cm/144MJD0wqMcAKdvQ/oKjx+qT4whzxrPbTu9zXiBZbEj7gEZkNTptmz0Vxc+EvBKfNiU1UPajKA==}
 
-  '@alicorpdigital/dali-react@0.0.3-canary.5':
-    resolution: {integrity: sha512-5VcTp6/nSRDQqhL0IPtEHmwqAcfFvAR14G9QJebdM8evaMoh6MaJtrMn5YdIKkzIcPkzbcPXHivYIYo6YAUU3g==}
+  '@alicorpdigital/dali-react@0.0.3-canary.10':
+    resolution: {integrity: sha512-sdrSU2XjiYPuu8hsG2eI8wvk3Jqx9IAn8PQlyr9lmHa/yuegBHj/AEdE/FrrOBlXJMD3oMkEY4ib+qJEMzfiiQ==}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -2890,7 +2890,7 @@ snapshots:
 
   '@alicorpdigital/dali-css-library@1.32.1-canary.26': {}
 
-  '@alicorpdigital/dali-react@0.0.3-canary.5':
+  '@alicorpdigital/dali-react@0.0.3-canary.10':
     dependencies:
       '@uidotdev/usehooks': 2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames: 2.5.1
