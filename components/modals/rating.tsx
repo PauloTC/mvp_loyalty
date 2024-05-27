@@ -13,7 +13,7 @@ type Props = {
 export const ModalRating = (props: any) => {
   const { open, onClose, onSubmit } = props;
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
   const RatingOptions = [
     {
