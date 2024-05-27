@@ -5,9 +5,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ModalRating } from "@/components/modals";
 import { DlIcon, DlSidebar } from "@alicorpdigital/dali-react";
+import { useRouter } from "next/navigation";
 import "./styles.css";
 
 export default function HeaderComponent({ hideOnMobile }: any) {
+  const router = useRouter();
   const { logout, user } = useContext(AuthContext);
   const [open, setOpen] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -33,7 +35,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           {user?.username && (
             <>
               <li className="dl-px-4 dl-hidden md:dl-flex">
-                <a className="dl-font-semibold" href="#">
+                <a className="dl-font-semibold" href="/historial">
                   Historial de canjes
                 </a>
               </li>
@@ -95,9 +97,8 @@ export default function HeaderComponent({ hideOnMobile }: any) {
       </div>
       <ModalRating
         open={openModal}
-        onClose={() => {
-          setOpenModal(false);
-        }}
+        onClose={() => setOpenModal(false)}
+        onSubmit={() => setOpenModal(false)}
       />
       <DlSidebar
         className="header-sidebar"
@@ -106,26 +107,27 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           {
             key: "history-canjea",
             label: "Historial de canjes",
+            onClick: () => router.push("/historial"),
           },
           {
             key: "how-work",
             label: "¿Cómo funciona?",
+            onClick: () => router.push("/como-funciona"),
           },
           {
             key: "calificanos",
             label: "Califícanos",
+            onClick: () => {
+              setOpenModal(true);
+              setOpen(false);
+            }
           },
         ]}
-        onClick={(item) => {
-          if (item.key === "calificanos") {
-            setOpenModal(true);
-            setOpen(false);
-          }
-        }}
         itemsFooter={[
           {
             key: "sign-out",
             label: "Cerrar sesión",
+            onClick: logout,
           },
         ]}
       />
