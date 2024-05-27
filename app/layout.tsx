@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "../public/font.css";
-import Script from "next/script";
+import Script from "next/dist/client/script";
 import { GoogleTagManager } from "@next/third-parties/google";
 
 import { AuthProvider } from "../contexts/AuthContext";
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script id="clarity" strategy="lazyOnload">
+        <Script strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -33,7 +33,7 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "mgl1fsng7e");
           `}
         </Script>
-        {/* <Script
+        <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-DTPWL0BQD2"
         ></Script>
@@ -44,9 +44,9 @@ export default function RootLayout({
             
               gtag('config', 'G-DTPWL0BQD2');
               `}
-        </Script> */}
-        {/* <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000000" /> */}
+        </Script>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
       </head>
       <body>
         {isProduction && <GoogleTagManager gtmId="GTM-NPCLFNHG" />}
