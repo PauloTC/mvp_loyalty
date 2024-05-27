@@ -49,8 +49,6 @@ export default function LoginForm() {
       (user) => user.username === username && user.password === password
     );
 
-    console.log("user encontrado", user);
-
     if (user) {
       setUser({
         username: user.username,

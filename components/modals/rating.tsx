@@ -1,14 +1,20 @@
 "use client";
 import { DlModal } from "@alicorpdigital/dali-react";
 import Image from "next/image";
+import { useState } from "react";
+import { DlButton } from "@alicorpdigital/dali-react";
 
 type Props = {
   open?: boolean;
   onClose?: () => void;
-}
+  onSubmit?: () => void;
+};
 
 export const ModalRating = (props: any) => {
-  const { open, onClose } = props;
+  const { open, onClose, onSubmit } = props;
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
   const RatingOptions = [
     {
       title: "Muy satisfecho/a",
@@ -49,10 +55,18 @@ export const ModalRating = (props: any) => {
         <ul className="dl-flex dl-mb-10">
           {RatingOptions.map((option, index) => (
             <li
-              className="dl-flex-1 dl-flex dl-items-center dl-justify-between dl-flex-col"
+              className={`dl-transition-all dl-border dl-flex-1 dl-flex dl-items-center dl-justify-between dl-flex-col dl-pt-2 ${
+                selectedOption === index
+                  ? "dl-bg-my-gray dl-border-gray-300 dl-rounded-lg"
+                  : "dl-border-transparent"
+              }`}
               key={index}
             >
-              <button className="dl-flex dl-items-center dl-flex-col dl-text-xs dl-pb-3.5">
+              <button
+                style={{ outline: "none" }}
+                className="dl-flex dl-items-center dl-flex-col dl-text-xs dl-pb-3.5"
+                onClick={() => setSelectedOption(index)}
+              >
                 <Image
                   className="dl-mb-3"
                   alt="face"
@@ -67,17 +81,13 @@ export const ModalRating = (props: any) => {
             </li>
           ))}
         </ul>
-        <button
+        <DlButton
           style={{ outline: "none" }}
-          className="
-            dl-w-44 dl-h-12
-            dl-flex dl-justify-center
-            dl-items-center
-            dl-bg-brand-primary-medium dl-text-my-white
-            dl-rounded-lg"
+          disabled={selectedOption === null}
+          onClick={onSubmit}
         >
           Enviar
-        </button>
+        </DlButton>
       </div>
     </DlModal>
   );
