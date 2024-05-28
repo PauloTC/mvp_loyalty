@@ -4,7 +4,6 @@ import PrincipalBanner from "@/components/banner";
 import NeedHelp from "@/components/help";
 import Image from "next/image";
 import StepsComponent from "@/components/steps";
-import withAuth from "@/utils/withAuth";
 
 const HowItWorksPage = () => {
   return (
@@ -50,4 +49,4 @@ const HowItWorksPage = () => {
   );
 };
 
-export default withAuth(HowItWorksPage);
+export default HowItWorksPage;
