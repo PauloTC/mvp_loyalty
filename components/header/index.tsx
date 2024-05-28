@@ -106,13 +106,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           </div>
         )}
       </div>
-      {user?.username && (
-        <div className="dl-flex md:dl-hidden dl-pt-4 dl-pb-6 dl-justify-center">
-          <a href="/home">
-            <Image alt="logo" width={60} height={20} src="/logo.svg" />
-          </a>
-        </div>
-      )}
+
       <ModalRating
         open={openModal}
         onClose={() => setOpenModal(false)}

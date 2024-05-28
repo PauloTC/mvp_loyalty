@@ -86,6 +86,14 @@ const HomePage = () => {
         <BannerPoints />
       </div>
 
+      {user?.username && (
+        <div className="dl-flex md:dl-hidden dl-pt-4 dl-pb-6 dl-justify-center">
+          <a href="/home">
+            <Image alt="logo" width={60} height={20} src="/logo.svg" />
+          </a>
+        </div>
+      )}
+
       <section className="dl-flex dl-mb-16">
         <div className="dl-container dl-grid dl-grid-cols-1 lg:dl-grid-cols-5 xl:dl-grid-cols-8 lg:dl-gap-6 dl-mx-auto">
           <div className="dl-gap-1 dl-grid xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5 dl-pb-12 lg:dl-pb-0">
