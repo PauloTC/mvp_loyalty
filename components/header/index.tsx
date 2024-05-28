@@ -83,7 +83,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
               />
             </figure>
             <div>
-              <p className="dl-capitalize dl-text-gray-800 dl-font-semibold dl-text-sm dl-overflow-hidden dl-overflow-ellipsis dl-whitespace-nowrap dl-w-40">
+              <p className="dl-capitalize dl-text-gray-800 dl-font-semibold dl-text-sm dl-overflow-hidden dl-overflow-ellipsis dl-whitespace-nowrap dl-w-20">
                 {user?.name}
               </p>
               <p className="dl-text-sm dl-text-gray-600 dl-leading-6">
@@ -106,7 +106,13 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           </div>
         )}
       </div>
-
+      {!open && user?.username && (
+        <div className="dl-flex md:dl-hidden dl-pt-4 dl-pb-6 dl-justify-center">
+          <a href="/home">
+            <Image alt="logo" width={60} height={20} src="/logo.svg" />
+          </a>
+        </div>
+      )}
       <ModalRating
         open={openModal}
         onClose={() => setOpenModal(false)}
