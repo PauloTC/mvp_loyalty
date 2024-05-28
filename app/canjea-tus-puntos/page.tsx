@@ -8,7 +8,6 @@ import { DlIcon, DlSnackbar } from "@alicorpdigital/dali-react";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useRouter } from "next/navigation";
-import withAuth from "@/utils/withAuth";
 
 const OrdersPage = () => {
   const router = useRouter();
@@ -75,6 +74,7 @@ const OrdersPage = () => {
 
   useEffect(() => {
     handleGetProducts();
+    console.log("user", user);
   }, [user]);
 
   return (
@@ -119,4 +119,4 @@ const OrdersPage = () => {
   );
 };
 
-export default withAuth(OrdersPage);
+export default OrdersPage;
