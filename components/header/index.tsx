@@ -18,7 +18,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
     <>
       <div
         className={classNames(
-          hideOnMobile ? "dl-hidden sm:dl-flex" : "",
+          hideOnMobile && user.username ? "dl-hidden sm:dl-flex" : "",
           "dl-flex",
           "dl-container",
           "dl-mx-auto",
@@ -27,7 +27,10 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           "dl-justify-between"
         )}
       >
-        <a href="/home" className="dl-hidden md:dl-flex">
+        <a
+          href="/home"
+          className={` ${user?.username ? "dl-hidden" : ""}  md:dl-flex`}
+        >
           <Image alt="logo" width={104} height={36} src="/logo.svg" />
         </a>
 
@@ -49,7 +52,11 @@ export default function HeaderComponent({ hideOnMobile }: any) {
               </li>
             </>
           )}
-          <li className="dl-px-4 dl-hidden md:dl-flex">
+          <li
+            className={`dl-px-4 ${
+              user?.username ? "dl-hidden" : ""
+            } md:dl-flex`}
+          >
             <button
               onClick={logout}
               style={{ outline: "none" }}
@@ -84,16 +91,18 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           </div>
         )}
 
-        <div
-          className="dl-flex dl-items-center md:dl-hidden"
-          onClick={() => setOpen(!open)}
-        >
-          <DlIcon
-            className="dl-text-red-600"
-            size="lg"
-            name={open ? "x" : "hamburger"}
-          />
-        </div>
+        {user?.username && (
+          <div
+            className={`dl-flex dl-items-center md:dl-hidden`}
+            onClick={() => setOpen(!open)}
+          >
+            <DlIcon
+              className="dl-text-red-600"
+              size="lg"
+              name={open ? "x" : "hamburger"}
+            />
+          </div>
+        )}
       </div>
       <ModalRating
         open={openModal}
@@ -107,7 +116,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           {
             key: "history-canjea",
             label: "Historial de canjes",
-            onClick: () => router.push("/historial"),
+            onClick: () => router.push("/home"),
           },
           {
             key: "how-work",
@@ -120,7 +129,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
             onClick: () => {
               setOpenModal(true);
               setOpen(false);
-            }
+            },
           },
         ]}
         itemsFooter={[

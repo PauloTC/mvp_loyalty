@@ -8,6 +8,7 @@ import { DlIcon, DlSnackbar } from "@alicorpdigital/dali-react";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useRouter } from "next/navigation";
+import withAuth from "@/utils/withAuth";
 
 const OrdersPage = () => {
   const router = useRouter();
@@ -94,7 +95,7 @@ const OrdersPage = () => {
       </section>
       <section className="dl-flex dl-mb-16">
         <div className="dl-container dl-grid dl-grid-cols-1 lg:dl-grid-cols-5 xl:dl-grid-cols-8 lg:dl-gap-6 dl-mx-auto">
-          <div className='dl-gap-1 dl-grid dl-grid-cols-2 sm:dl-grid-cols-3 xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5 dl-pb-12 lg:dl-pb-0'>
+          <div className="dl-gap-1 dl-grid dl-grid-cols-2 sm:dl-grid-cols-3 xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5 dl-pb-12 lg:dl-pb-0">
             <MyProducts products={itemList} onChange={handleSelectItem} />
           </div>
           <div className="lg:dl-grid lg:dl-col-span-2 xl:dl-col-span-3">
@@ -118,4 +119,4 @@ const OrdersPage = () => {
   );
 };
 
-export default OrdersPage;
+export default withAuth(OrdersPage);
