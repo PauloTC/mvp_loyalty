@@ -4,15 +4,13 @@ import NestedLayout from "@/components/layout";
 import MyOrders from "@/components/my-orders";
 import MyProducts from "@/components/my-products";
 import { getProducts, ProductProps } from "@/services/products";
-import { DlIcon, DlSnackbar } from "@alicorpdigital/dali-react";
+import { DlSnackbar } from "@alicorpdigital/dali-react";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useRouter } from "next/navigation";
 import StepsComponent from '@/components/steps';
 import NeedHelp from '@/components/help';
 
 const OrdersPage = () => {
-  const router = useRouter();
   const { user } = useContext(AuthContext);
   const [itemList, setItemList] = useState<ProductProps[]>([]);
   const [selectedItems, setSelectedItems] = useState<ProductProps[]>([]);
@@ -116,6 +114,7 @@ const OrdersPage = () => {
         onClose={() => setOpenSnackbar(false)}
         variant="warning"
         open={openSnackbar}
+        className={selectedItems.length ? 'dl-mb-40 lg:dl-mb-0' : ''}
       >
         {/* Haz superado tu límite de puntos disponibles. */}
         No tienes puntos suficientes para agregar este producto.
