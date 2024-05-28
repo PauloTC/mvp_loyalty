@@ -41,6 +41,14 @@ const MyOrders = (props: Props) => {
     return user?.score - total;
   };
 
+  const handleRemainingProducts = () => {
+    let total = 0;
+    items.forEach((item) => {
+      total += item.value || 0;
+    });
+    return total;
+  };
+
   const handleLoader = () => {
     setOpenConfirmation(false);
     setOpenLoader(true);
@@ -142,7 +150,7 @@ const MyOrders = (props: Props) => {
             <div className="dl-flex dl-justify-between dl-justify-items-center dl-p-6 dl-border-t dl-border-[#DEDEDE]">
               <div>
                 <p className="dl-body-quarck">
-                  {items.length} {items.length > 1 ? "productos" : "producto"}
+                  {handleRemainingProducts()} {handleRemainingProducts() > 1 ? "productos" : "producto"}
                 </p>
                 <div className="dl-subtitle-xs">
                   {numberWithCommas(totalAmount)}pts
