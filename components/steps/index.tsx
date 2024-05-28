@@ -9,10 +9,7 @@ interface StepsComponentProps {
   buttonText: string;
 }
 
-export default function StepsComponent({
-  title,
-  buttonText,
-}: StepsComponentProps) {
+export default function StepsComponent({ title }: StepsComponentProps) {
   const { user } = useContext(AuthContext);
   const router = useRouter();
 
@@ -104,17 +101,6 @@ export default function StepsComponent({
             src="/orders/empty_order.svg"
           />
         </li>
-        <button
-          style={{ outline: "none" }}
-          onClick={handleRedirection}
-          className="
-            sm:dl-hidden
-            dl-text-white dl-rounded-lg
-            dl-h-12 dl-flex dl-justify-center dl-items-center
-            dl-bg-brand-primary-medium "
-        >
-          {buttonText}
-        </button>
       </ul>
     </section>
   );

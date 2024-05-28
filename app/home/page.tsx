@@ -105,7 +105,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <StepsComponent buttonText="Ir a canjear" title="¿Cómo  funciona?" />
+      <StepsComponent buttonText="Ir a canjear  888" title="¿Cómo  funciona?" />
       <NeedHelp />
       <DlSnackbar
         onClose={() => setOpenSnackbar(false)}
