@@ -17,6 +17,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
   return (
     <>
       <div
+        style={{ borderBottom: "1px solid #E5E5E5" }}
         className={classNames(
           hideOnMobile && user.username ? "dl-hidden sm:dl-flex" : "",
           "dl-flex",
@@ -24,7 +25,8 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           "dl-mx-auto",
           "dl-py-5",
           "sm:dl-py-4.5",
-          "dl-justify-between"
+          "dl-justify-between",
+          "md:border-transparent"
         )}
       >
         <a
@@ -104,6 +106,13 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           </div>
         )}
       </div>
+      {user?.username && (
+        <div className="dl-flex md:dl-hidden dl-pt-4 dl-pb-6 dl-justify-center">
+          <a href="/home">
+            <Image alt="logo" width={60} height={20} src="/logo.svg" />
+          </a>
+        </div>
+      )}
       <ModalRating
         open={openModal}
         onClose={() => setOpenModal(false)}
