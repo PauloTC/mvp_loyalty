@@ -50,7 +50,7 @@ export const ModalRating = (props: Props) => {
           />
         </div>
         <h2 className="dl-text-center dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
-          ¿Qué tan satisfecho/a estás con insuma puntos?
+          ¿Qué tan satisfecho/a estás con Insuma puntos?
         </h2>
         <ul className="dl-flex dl-mb-10">
           {RatingOptions.map((option, index) => (

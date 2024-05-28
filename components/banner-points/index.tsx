@@ -6,25 +6,13 @@ import { AuthContext } from "../../contexts/AuthContext";
 import classNames from "classnames";
 import './styles.css';
 
-interface BannerPointsProps {
-  title: string;
-  subtitle: string;
-  showPoints: boolean;
-}
+interface BannerPointsProps {}
 
 export default function BannerPoints(props: BannerPointsProps) {
-  const {
-    title,
-    subtitle,
-    showPoints,
-  } = props;
   const { user } = useContext(AuthContext);
 
   return (
-    <section
-      className='banner-points dl-mb-8 dl-relative'
-      // className="dl-flex xl:dl-h-80 dl-mb-6 md:dl-mb-12"
-    >
+    <section className='banner-points dl-mb-8 dl-relative'>
       <div
         className='
           dl-container
@@ -37,7 +25,7 @@ export default function BannerPoints(props: BannerPointsProps) {
         <div className='dl-flex dl-items-center dl-gap-20'>
           <div>
             <span className='dl-subtitle-xxs'>Puntos disponibles</span>
-            <p className='dl-title-md'>1,785 pts</p>
+            <p className='dl-title-md'>{user?.score.toLocaleString()} pts</p>
           </div>
           <Image
             alt="stars"

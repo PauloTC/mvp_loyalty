@@ -14,8 +14,8 @@ const nps = [
   { name: 'Muy fácil', slug: 'muy-facil' },
   { name: 'Fácil', slug: 'facil' },
   { name: 'Neutro', slug: 'neutro' },
-  { name: 'Dificil', slug: 'dificil' },
-  { name: 'Muy dificil', slug: 'muy-dificil' },
+  { name: 'Difícil', slug: 'dificil' },
+  { name: 'Muy difícil', slug: 'muy-dificil' },
 ]
 
 export const ModalCongratulation = (props: Props) => {
@@ -66,7 +66,7 @@ export const ModalCongratulation = (props: Props) => {
               dl-justify-center
             '
           >
-            Confirmar
+            Enviar
           </DlButton>
         </div>
       </div>

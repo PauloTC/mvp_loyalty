@@ -25,17 +25,17 @@ export default function StepsComponent({
   };
 
   return (
-    <section className="dl-container dl-mx-auto">
+    <section className="dl-container dl-mx-auto dl-mb-8">
       <h4 className="dl-text-2xl dl-font-bold dl-mb-6">{title}</h4>
-      <ul className="dl-flex dl-flex-col md:dl-flex-row dl-justify-between dl-mb-18 dl-gap-8">
+      <ul className="dl-grid dl-grid-cols-1 lg:dl-grid-cols-2 dl-gap-8">
         <li className="dl-grow">
           <p className="dl-text-sm dl-mb-3">
-            1. Acumula puntos comprando desde Insuma.
+            <b>1. Acumula puntos</b> comprando desde Insuma.
           </p>
           <div
             className="
               dl-flex dl-flex-col
-              dl-border dl-rounded-lg 
+              dl-border dl-rounded-lg
               dl-h-56 dl-justify-center
               dl-items-center"
           >
@@ -95,7 +95,7 @@ export default function StepsComponent({
         </li>
         <li className="dl-grow dl-flex dl-flex-col dl-justify-between">
           <p className="dl-text-sm dl-mb-3">
-            2. ¡Listo! Tus puntos estarán disponibles en 3 días hábiles.
+            2. ¡Listo! <b>Tus puntos estarán disponibles en 3 días hábiles.</b>
           </p>
           <Image
             alt="box_starts"

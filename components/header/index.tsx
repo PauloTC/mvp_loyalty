@@ -81,7 +81,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
               />
             </figure>
             <div>
-              <p className="dl-capitalize dl-text-gray-800 dl-font-semibold dl-text-sm dl-overflow-hidden dl-overflow-ellipsis dl-whitespace-nowrap dl-w-20">
+              <p className="dl-capitalize dl-text-gray-800 dl-font-semibold dl-text-sm dl-overflow-hidden dl-overflow-ellipsis dl-whitespace-nowrap dl-w-40">
                 {user?.name}
               </p>
               <p className="dl-text-sm dl-text-gray-600 dl-leading-6">
