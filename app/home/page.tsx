@@ -77,7 +77,6 @@ const HomePage = () => {
 
   useEffect(() => {
     handleGetProducts();
-    console.log("user", user);
   }, [user]);
 
   return (
@@ -101,6 +100,10 @@ const HomePage = () => {
               items={selectedItems}
               onChange={handleSelectItem}
               totalAmount={handleTotalAmount()}
+              onItemsDone={() => {
+                setSelectedItems([]);
+                handleGetProducts();
+              }}
             />
           </div>
         </div>

@@ -2,7 +2,7 @@
 import { DlModal, DlButton } from "@alicorpdigital/dali-react";
 import Image from "next/image";
 import "./styles.css";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 type Props = {
@@ -21,6 +21,10 @@ const nps = [
 export const ModalCongratulation = (props: Props) => {
   const { onOk, open = false } = props;
   const [npsSelected, setNpsSelected] = useState<string>('');
+
+  useEffect(() => {
+    if (open) setNpsSelected('');
+  }, [open])
 
   return (
     <DlModal open={open}>

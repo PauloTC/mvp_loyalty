@@ -18,11 +18,12 @@ import { useRouter } from "next/navigation";
 type Props = {
   items: ProductProps[];
   onChange: (item: ProductProps) => void;
+  onItemsDone: () => void;
   totalAmount: number;
 };
 
 const MyOrders = (props: Props) => {
-  const { items, onChange, totalAmount } = props;
+  const { items, onChange, totalAmount, onItemsDone } = props;
   const { user } = useContext(AuthContext);
   const router = useRouter();
   const [openConfirmation, setOpenConfirmation] = useState<boolean>(false);
@@ -217,7 +218,8 @@ const MyOrders = (props: Props) => {
         open={openCongratulation}
         onOk={() => {
           setOpenCongratulation(false);
-          router.push("/");
+          onItemsDone();
+          router.push("/home");
         }}
       />
       {openLoader && <ModalLoader />}
