@@ -1,7 +1,7 @@
 "use client";
 import classNames from "classnames";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ModalRating } from "@/components/modals";
 import { DlIcon, DlSidebar } from "@alicorpdigital/dali-react";
@@ -13,6 +13,18 @@ export default function HeaderComponent({ hideOnMobile }: any) {
   const { logout, user } = useContext(AuthContext);
   const [open, setOpen] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open])
 
   return (
     <>
