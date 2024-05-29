@@ -95,7 +95,7 @@ export default function PrincipalBanner({
             </div>
           ) : (
             <a
-              href={user && user.username ? "/canjea-tus-puntos" : "/login"}
+              href={user && user.username ? "/home" : "/login"}
               className={classNames(
                 "dl-hidden dl-mx-auto md:dl-ml-0 dl-text-white xl:dl-flex dl-items-center dl-justify-center dl-rounded-lg dl-w-full dl-max-w-72 dl-bg-link-blue dl-h-12"
               )}
@@ -118,7 +118,7 @@ export default function PrincipalBanner({
 
         {!showPoints && (
           <a
-            href={user && user.username ? "/canjea-tus-puntos" : "/login"}
+            href={user && user.username ? "/home" : "/login"}
             className="
                 dl-mt-8 dl-mx-auto
                 xl:dl-ml-0 dl-text-white
