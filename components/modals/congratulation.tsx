@@ -2,8 +2,8 @@
 import { DlModal, DlButton } from "@alicorpdigital/dali-react";
 import Image from "next/image";
 import "./styles.css";
-import { useState } from 'react';
-import cn from 'classnames';
+import { useState } from "react";
+import cn from "classnames";
 
 type Props = {
   onOk?: () => void;
@@ -11,16 +11,16 @@ type Props = {
 };
 
 const nps = [
-  { name: 'Muy fácil', slug: 'muy-facil' },
-  { name: 'Fácil', slug: 'facil' },
-  { name: 'Neutro', slug: 'neutro' },
-  { name: 'Difícil', slug: 'dificil' },
-  { name: 'Muy difícil', slug: 'muy-dificil' },
-]
+  { name: "Muy fácil", slug: "muy-facil" },
+  { name: "Fácil", slug: "facil" },
+  { name: "Neutro", slug: "neutro" },
+  { name: "Difícil", slug: "dificil" },
+  { name: "Muy difícil", slug: "muy-dificil" },
+];
 
 export const ModalCongratulation = (props: Props) => {
   const { onOk, open = false } = props;
-  const [npsSelected, setNpsSelected] = useState<string>('');
+  const [npsSelected, setNpsSelected] = useState<string>("");
 
   return (
     <DlModal open={open}>
@@ -37,19 +37,20 @@ export const ModalCongratulation = (props: Props) => {
           ¡Tu canje está siendo procesado!
         </h2>
         <p className="dl-text-center dl-text-sm max-dl-w-93 dl-text-neutrals-dark">
-          Pronto nos comunicaremos contigo por whatsapp y actualizaremos tus puntos disponibles.
+          Pronto nos comunicaremos contigo por whatsapp y actualizaremos tus
+          puntos disponibles.
         </p>
-        <div className='dl-nps'>
-          <p>¿Qué tan fácil o difícil es  canjear tus puntos?</p>
+        <div className="dl-nps">
+          <p>¿Qué tan fácil o difícil es canjear tus puntos?</p>
 
-          <div className='dl-nps-container'>
+          <div className="dl-nps-container">
             {nps.map((nps) => (
               <div
-                role='presentation'
+                role="presentation"
                 key={nps.slug}
                 onClick={() => setNpsSelected(nps.slug)}
-                className={cn('dl-nps-btn', {
-                  'dl-nps-btn-selected': npsSelected === nps.slug,
+                className={cn("dl-nps-btn", {
+                  "dl-nps-btn-selected": npsSelected === nps.slug,
                 })}
               >
                 {nps.name}
@@ -61,10 +62,10 @@ export const ModalCongratulation = (props: Props) => {
           <DlButton
             onClick={onOk}
             disabled={!npsSelected}
-            className='
+            className="
               dl-w-44 dl-h-12
               dl-justify-center
-            '
+            "
           >
             Enviar
           </DlButton>
