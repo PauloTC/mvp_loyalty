@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
 import NestedLayout from "@/components/layout";
-import PrincipalBanner from "@/components/banner";
 import NeedHelp from "@/components/help";
 import withAuth from "@/utils/withAuth";
 import { useEffect, useState, useContext } from "react";

@@ -24,7 +24,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [open])
+  }, [open]);
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           {user?.username && (
             <>
               <li className="dl-px-4 dl-hidden md:dl-flex">
-                <a className="dl-font-semibold" href="/historial">
+                <a className="dl-font-semibold" href="#">
                   Historial de canjes
                 </a>
               </li>
