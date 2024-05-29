@@ -87,7 +87,7 @@ const MyOrders = (props: Props) => {
 
   return (
     <>
-      <div className="my-orders dl-flex dl-flex-col dl-h-fit dl-overflow-hidden dl-fixed dl-bottom-0 dl-left-0 dl-w-full dl-rounded-t-2xl lg:dl-static lg:dl-rounded-2xl lg:dl-border">
+      <div className="my-orders dl-flex dl-flex-col dl-h-fit dl-overflow-hidden dl-fixed dl-bottom-0 dl-left-0 dl-w-full dl-rounded-t-2xl lg:dl-static lg:dl-rounded-2xl lg:dl-border dl-z-[999]">
         <h4 className="dl-hidden lg:dl-flex dl-text-2xl dl-font-semibold dl-mb-5 dl-px-6 dl-pt-4">
           Mis pedidos
         </h4>
