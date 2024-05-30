@@ -3,7 +3,7 @@ import { DlModal } from "@alicorpdigital/dali-react";
 import Image from "next/image";
 import { useState } from "react";
 import { DlButton } from "@alicorpdigital/dali-react";
-
+import { sendGTMEvent } from "@next/third-parties/google";
 type Props = {
   open?: boolean;
   onClose?: () => void;
@@ -15,6 +15,18 @@ export const ModalRating = (props: Props) => {
 
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
+  const handleButtonClick = () => {
+    const storageData = localStorage.getItem("user");
+      onSubmit?.(); onSubmit?.();
+      if(storageData){
+        const user = JSON.parse(storageData);
+        sendGTMEvent({
+          event: "UserSatisfactionRated",
+          nombreUsuario: user.name,
+          calification: selectedOption,
+        });
+      }
+  };
   const RatingOptions = [
     {
       title: "Muy satisfecho/a",
@@ -84,7 +96,7 @@ export const ModalRating = (props: Props) => {
         <DlButton
           style={{ outline: "none" }}
           disabled={selectedOption === null}
-          onClick={onSubmit}
+          onClick={handleButtonClick}
         >
           Enviar
         </DlButton>
