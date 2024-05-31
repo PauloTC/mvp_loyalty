@@ -1,3 +1,7 @@
 .header-sidebar {
   height: calc(100vh - 84px);
 }
+
+.dl-sidebar__item-content {
+  font-weight: 500;
+}
