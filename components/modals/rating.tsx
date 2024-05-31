@@ -18,7 +18,6 @@ export const ModalRating = (props: Props) => {
   const handleButtonClick = () => {
     const storageData = localStorage.getItem("user");
     onSubmit?.();
-    onSubmit?.();
     if (storageData) {
       const user = JSON.parse(storageData);
       sendGTMEvent({

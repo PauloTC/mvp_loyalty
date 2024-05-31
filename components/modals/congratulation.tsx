@@ -22,6 +22,7 @@ const nps = [
 export const ModalCongratulation = (props: Props) => {
   const { onOk, open = false } = props;
   const [npsSelected, setNpsSelected] = useState<string>("");
+
   const handlerSendRateSatisfaction = () => {
     const storageData = localStorage.getItem("user");
     onOk?.();

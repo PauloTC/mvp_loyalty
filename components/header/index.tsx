@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ModalRating } from "@/components/modals";
-import { DlIcon, DlSidebar } from "@alicorpdigital/dali-react";
+import { DlIcon, DlSidebar, DlSnackbar } from "@alicorpdigital/dali-react";
 import { useRouter } from "next/navigation";
 import "./styles.css";
 
@@ -13,6 +13,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
   const { logout, user } = useContext(AuthContext);
   const [open, setOpen] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
 
   useEffect(() => {
     if (open) {
@@ -128,8 +129,18 @@ export default function HeaderComponent({ hideOnMobile }: any) {
       <ModalRating
         open={openModal}
         onClose={() => setOpenModal(false)}
-        onSubmit={() => setOpenModal(false)}
+        onSubmit={() => {
+          setOpenModal(false);
+          setOpenSnackbar(true);
+        }}
       />
+      <DlSnackbar
+        onClose={() => setOpenSnackbar(false)}
+        variant="positive"
+        open={openSnackbar}
+      >
+        Calificación enviada.
+      </DlSnackbar>
       <DlSidebar
         className="header-sidebar"
         open={open}
