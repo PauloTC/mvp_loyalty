@@ -5,3 +5,7 @@
 .dl-sidebar__item-content {
   font-weight: 500;
 }
+
+.dl-sidebar__items.dl-sidebar__footer .dl-sidebar__item {
+  border-top: 1px solid #DEDEDE;
+}
