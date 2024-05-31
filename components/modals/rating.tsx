@@ -87,7 +87,11 @@ export const ModalRating = (props: Props) => {
                   width={47}
                   src={option.image}
                 />
-                <span className="dl-block dl-flex-1 dl-max-w-20">
+                <span
+                  className={`dl-block dl-flex-1 dl-max-w-20 ${
+                    selectedOption === index ? "dl-font-medium" : ""
+                  }`}
+                >
                   {option.title}
                 </span>
               </button>
