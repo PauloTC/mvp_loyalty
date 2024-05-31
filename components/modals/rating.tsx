@@ -59,7 +59,7 @@ export const ModalRating = (props: Props) => {
             alt="hands"
             height={133}
             width={190}
-            src="/modals/umbrella.svg"
+            src="/modals/umbrella.png"
           />
         </div>
         <h2 className="dl-text-center dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
