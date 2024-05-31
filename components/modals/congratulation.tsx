@@ -1,10 +1,11 @@
 "use client";
 import { DlModal, DlButton } from "@alicorpdigital/dali-react";
+import { useEffect, useState } from "react";
+import cn from "classnames";
 import Image from "next/image";
 import "./styles.css";
-import { useState } from "react";
-import cn from "classnames";
 import { sendGTMEvent } from "@next/third-parties/google";
+
 type Props = {
   onOk?: () => void;
   open?: boolean;
@@ -21,10 +22,10 @@ const nps = [
 export const ModalCongratulation = (props: Props) => {
   const { onOk, open = false } = props;
   const [npsSelected, setNpsSelected] = useState<string>("");
-  const handlerSendRateSatisfaction = ()=>{
-    const storageData= localStorage.getItem("user");
+  const handlerSendRateSatisfaction = () => {
+    const storageData = localStorage.getItem("user");
     onOk?.();
-    if(storageData){
+    if (storageData) {
       const user = JSON.parse(storageData);
       sendGTMEvent({
         event: "PointsCanjeSatisfactionRated",
@@ -32,7 +33,12 @@ export const ModalCongratulation = (props: Props) => {
         calificationCanje: npsSelected,
       });
     }
-  }
+  };
+
+  useEffect(() => {
+    if (open) setNpsSelected("");
+  }, [open]);
+
   return (
     <DlModal open={open}>
       <div className="dl-flex dl-flex-col dl-items-center">

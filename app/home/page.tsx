@@ -98,6 +98,10 @@ const HomePage = () => {
               items={selectedItems}
               onChange={handleSelectItem}
               totalAmount={handleTotalAmount()}
+              onItemsDone={() => {
+                setSelectedItems([]);
+                handleGetProducts();
+              }}
             />
           </div>
         </div>
