@@ -17,15 +17,16 @@ export const ModalRating = (props: Props) => {
 
   const handleButtonClick = () => {
     const storageData = localStorage.getItem("user");
-      onSubmit?.(); onSubmit?.();
-      if(storageData){
-        const user = JSON.parse(storageData);
-        sendGTMEvent({
-          event: "UserSatisfactionRated",
-          nombreUsuario: user.name,
-          calification: selectedOption,
-        });
-      }
+    onSubmit?.();
+    onSubmit?.();
+    if (storageData) {
+      const user = JSON.parse(storageData);
+      sendGTMEvent({
+        event: "UserSatisfactionRated",
+        nombreUsuario: user.name,
+        calification: selectedOption,
+      });
+    }
   };
   const RatingOptions = [
     {
@@ -58,7 +59,7 @@ export const ModalRating = (props: Props) => {
             alt="hands"
             height={133}
             width={190}
-            src="/modals/umbrella.png"
+            src="/modals/umbrella.svg"
           />
         </div>
         <h2 className="dl-text-center dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
