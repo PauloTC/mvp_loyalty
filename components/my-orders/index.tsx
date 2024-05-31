@@ -1,5 +1,5 @@
 "use client";
-import { DlButton, DlCheckOut } from "@alicorpdigital/dali-react";
+import { DlButton, DlCheckOut, DlSnackbar } from "@alicorpdigital/dali-react";
 import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -7,13 +7,12 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { ProductProps } from "@/services/products";
 import { sendProducts } from "@/services/form";
 import { sendGTMEvent } from "@next/third-parties/google";
-import "./styles.css";
 import {
   ModalConfirmation,
   ModalCongratulation,
   ModalLoader,
 } from "@/components/modals";
-import { useRouter } from "next/navigation";
+import "./styles.css";
 
 type Props = {
   items: ProductProps[];
@@ -25,7 +24,7 @@ type Props = {
 const MyOrders = (props: Props) => {
   const { items, onChange, totalAmount, onItemsDone } = props;
   const { user } = useContext(AuthContext);
-  const router = useRouter();
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
   const [openConfirmation, setOpenConfirmation] = useState<boolean>(false);
   const [openCongratulation, setOpenCongratulation] = useState<boolean>(false);
   const [openLoader, setOpenLoader] = useState(false);
@@ -221,10 +220,17 @@ const MyOrders = (props: Props) => {
         onOk={() => {
           setOpenCongratulation(false);
           onItemsDone();
-          router.push("/home");
+          setOpenSnackbar(true);
         }}
       />
       {openLoader && <ModalLoader />}
+      <DlSnackbar
+        onClose={() => setOpenSnackbar(false)}
+        variant="positive"
+        open={openSnackbar}
+      >
+        Calificación enviada.
+      </DlSnackbar>
     </>
   );
 };
