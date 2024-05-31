@@ -12,7 +12,7 @@ export default function LandingComponent() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    if (user.username) {
+    if (user?.username) {
       router.push("/home");
     }
   }, [user]);
