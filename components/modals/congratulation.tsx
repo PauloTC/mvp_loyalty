@@ -47,7 +47,7 @@ export const ModalCongratulation = (props: Props) => {
             alt="hands"
             height={133}
             width={190}
-            src="/modals/umbrella.png"
+            src="/modals/umbrella.svg"
           />
         </div>
         <h2 className="dl-text-2xl dl-text-center dl-font-bold dl-mb-4 dl-tracking-wide">

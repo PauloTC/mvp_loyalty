@@ -151,7 +151,8 @@ const MyOrders = (props: Props) => {
             <div className="dl-flex dl-justify-between dl-justify-items-center dl-p-6 dl-border-t dl-border-[#DEDEDE]">
               <div>
                 <p className="dl-body-quarck">
-                  {handleRemainingProducts()} {handleRemainingProducts() > 1 ? "productos" : "producto"}
+                  {handleRemainingProducts()}{" "}
+                  {handleRemainingProducts() > 1 ? "productos" : "producto"}
                 </p>
                 <div className="dl-subtitle-xs">
                   {numberWithCommas(totalAmount)}pts

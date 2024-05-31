@@ -27,7 +27,8 @@ export default function StepsComponent({ title }: StepsComponentProps) {
       <ul className="dl-grid dl-grid-cols-1 lg:dl-grid-cols-2 dl-gap-8">
         <li className="dl-grow">
           <p className="dl-text-sm dl-mb-3">
-            <b>1. Acumula puntos</b> comprando desde Insuma.
+            <b>1. Acumula más puntos</b> fuera del horario de visita del
+            vendedor.
           </p>
           <div
             className="
@@ -92,13 +93,13 @@ export default function StepsComponent({ title }: StepsComponentProps) {
         </li>
         <li className="dl-grow dl-flex dl-flex-col dl-justify-between">
           <p className="dl-text-sm dl-mb-3">
-            2. ¡Listo! <b>Tus puntos estarán disponibles en 3 días hábiles.</b>
+            2. ¡Listo! <b>Tus puntos estarán disponibles en 48 horas.</b>
           </p>
           <Image
             alt="box_starts"
             width={590}
             height={225}
-            src="/orders/empty_order.svg"
+            src="/orders/insuma_box.svg"
           />
         </li>
       </ul>
