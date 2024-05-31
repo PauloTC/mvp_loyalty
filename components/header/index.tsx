@@ -156,8 +156,12 @@ export default function HeaderComponent({ hideOnMobile }: any) {
         itemsFooter={[
           {
             key: "sign-out",
-            label: "Cerrar sesión",
             onClick: logout,
+            label: (
+              <div className='sidebar-divider'>
+                Cerrar sesión
+              </div>
+            ),
           },
         ]}
       />
