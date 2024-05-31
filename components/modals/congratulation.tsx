@@ -4,7 +4,7 @@ import Image from "next/image";
 import "./styles.css";
 import { useState } from "react";
 import cn from "classnames";
-
+import { sendGTMEvent } from "@next/third-parties/google";
 type Props = {
   onOk?: () => void;
   open?: boolean;
@@ -21,7 +21,18 @@ const nps = [
 export const ModalCongratulation = (props: Props) => {
   const { onOk, open = false } = props;
   const [npsSelected, setNpsSelected] = useState<string>("");
-
+  const handlerSendRateSatisfaction = ()=>{
+    const storageData= localStorage.getItem("user");
+    onOk?.();
+    if(storageData){
+      const user = JSON.parse(storageData);
+      sendGTMEvent({
+        event: "PointsCanjeSatisfactionRated",
+        nombreUsuario: user.name,
+        calificationCanje: npsSelected,
+      });
+    }
+  }
   return (
     <DlModal open={open}>
       <div className="dl-flex dl-flex-col dl-items-center">
@@ -60,7 +71,7 @@ export const ModalCongratulation = (props: Props) => {
         </div>
         <div className="dl-flex dl-justify-center dl-mt-8 dl-gap-4">
           <DlButton
-            onClick={onOk}
+            onClick={handlerSendRateSatisfaction}
             disabled={!npsSelected}
             className="
               dl-w-44 dl-h-12
