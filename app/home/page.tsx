@@ -8,7 +8,7 @@ import { getProducts, ProductProps } from "@/services/products";
 import MyOrders from "@/components/my-orders";
 import MyProducts from "@/components/my-products";
 import BannerPoints from "@/components/banner-points";
-import { DlSnackbar } from "@alicorpdigital/dali-react";
+import { DlDivider, DlSnackbar } from "@alicorpdigital/dali-react";
 import StepsComponent from "@/components/steps";
 
 const HomePage = () => {
@@ -83,13 +83,13 @@ const HomePage = () => {
         <BannerPoints />
       </div>
 
-      <section className="dl-flex dl-mb-16">
+      <section className="dl-flex">
         <div className="dl-container dl-grid dl-grid-cols-1 lg:dl-grid-cols-5 xl:dl-grid-cols-8 lg:dl-gap-6 dl-mx-auto">
-          <div className="dl-gap-1 dl-grid xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5 dl-pb-12 lg:dl-pb-0">
+          <div className="dl-gap-1 dl-grid xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5 lg:dl-pb-0">
             <div className="dl-font-semibold dl-mb-4">
               Productos Disponibles
             </div>
-            <div className="dl-grid dl-grid-cols-2 sm:dl-grid-cols-3 xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5 dl-pb-12 lg:dl-pb-0">
+            <div className="dl-grid dl-grid-cols-2 sm:dl-grid-cols-3 xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5">
               <MyProducts products={itemList} onChange={handleSelectItem} />
             </div>
           </div>
@@ -106,7 +106,13 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <StepsComponent buttonText="Ir a canjear" title="¿Cómo  funciona?" />
+
+      <div className="sm:dl-container dl-my-10 mx-auto">
+        <DlDivider className="" />
+      </div>
+
+      <StepsComponent buttonText="Ir a canjear" title="¿Cómo funciona?" />
+
       <NeedHelp />
       <DlSnackbar
         onClose={() => setOpenSnackbar(false)}

@@ -1,8 +1,5 @@
 "use client";
 import Image from "next/image";
-import { useContext } from "react";
-import { AuthContext } from "@/contexts/AuthContext";
-import { useRouter } from "next/navigation";
 
 interface StepsComponentProps {
   title: string;
@@ -10,17 +7,6 @@ interface StepsComponentProps {
 }
 
 export default function StepsComponent({ title }: StepsComponentProps) {
-  const { user } = useContext(AuthContext);
-  const router = useRouter();
-
-  const handleRedirection = () => {
-    if (user?.username) {
-      router.push("/canjea-tus-puntos");
-    } else {
-      router.push("/login");
-    }
-  };
-
   return (
     <section className="dl-container dl-mx-auto dl-mb-8">
       <h4 className="dl-text-2xl dl-font-bold dl-mb-6">{title}</h4>
