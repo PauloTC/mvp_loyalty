@@ -1,9 +1,11 @@
 "use client";
 import { DlModal } from "@alicorpdigital/dali-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { DlButton } from "@alicorpdigital/dali-react";
 import { sendGTMEvent } from "@next/third-parties/google";
+import { sendProducts } from '@/services/form';
+import { AuthContext } from "../../contexts/AuthContext";
 import './styles.css';
 
 type Props = {
@@ -13,12 +15,23 @@ type Props = {
 };
 
 export const ModalRating = (props: Props) => {
+  const { user } = useContext(AuthContext);
   const { open, onClose, onSubmit } = props;
-
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleButtonClick = () => {
     const storageData = localStorage.getItem("user");
+    const data = {
+      business: user.business,
+      code: user.username,
+      name: user.name,
+      products: "",
+      quantity: "",
+      npsSelected: "",
+      satisfied: selectedOption
+    };
+
+    sendProducts(data);
     onSubmit?.();
     if (storageData) {
       const user = JSON.parse(storageData);
@@ -70,7 +83,7 @@ export const ModalRating = (props: Props) => {
           {RatingOptions.map((option, index) => (
             <li
               className={`dl-transition-all dl-border dl-flex-1 dl-flex dl-items-center dl-justify-between dl-flex-col dl-pt-2 ${
-                selectedOption === index
+                selectedOption === option.title
                   ? "dl-bg-my-gray dl-border-gray-300 dl-rounded-lg"
                   : "dl-border-transparent"
               }`}
@@ -79,7 +92,7 @@ export const ModalRating = (props: Props) => {
               <button
                 style={{ outline: "none" }}
                 className="dl-flex dl-items-center dl-flex-col dl-text-xs dl-pb-3.5"
-                onClick={() => setSelectedOption(index)}
+                onClick={() => setSelectedOption(option.title)}
               >
                 <Image
                   className="dl-mb-3"
@@ -90,7 +103,7 @@ export const ModalRating = (props: Props) => {
                 />
                 <span
                   className={`dl-block dl-flex-1 dl-max-w-20 ${
-                    selectedOption === index ? "dl-font-medium" : ""
+                    selectedOption === option.title ? "dl-font-medium" : ""
                   }`}
                 >
                   {option.title}

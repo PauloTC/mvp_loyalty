@@ -1,10 +1,12 @@
 "use client";
 import { DlModal, DlButton } from "@alicorpdigital/dali-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import cn from "classnames";
 import Image from "next/image";
-import "./styles.css";
 import { sendGTMEvent } from "@next/third-parties/google";
+import { sendProducts } from '@/services/form';
+import { AuthContext } from '@/contexts/AuthContext';
+import "./styles.css";
 
 type Props = {
   onOk?: () => void;
@@ -20,11 +22,23 @@ const nps = [
 ];
 
 export const ModalCongratulation = (props: Props) => {
+  const { user } = useContext(AuthContext);
   const { onOk, open = false } = props;
   const [npsSelected, setNpsSelected] = useState<string>("");
 
   const handlerSendRateSatisfaction = () => {
     const storageData = localStorage.getItem("user");
+    const data = {
+      business: user.business,
+      code: user.username,
+      name: user.name,
+      products: "",
+      quantity: "",
+      satisfied: "",
+      npsSelected: npsSelected
+    };
+
+    sendProducts(data);
     onOk?.();
     if (storageData) {
       const user = JSON.parse(storageData);
