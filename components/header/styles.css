@@ -1,5 +1,6 @@
 .header-sidebar {
   height: calc(100vh - 84px);
+  max-width: 100%;
 }
 
 .dl-sidebar__item-content {

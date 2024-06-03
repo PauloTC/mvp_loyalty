@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { DlButton } from "@alicorpdigital/dali-react";
 import { sendGTMEvent } from "@next/third-parties/google";
+import './styles.css';
+
 type Props = {
   open?: boolean;
   onClose?: () => void;
@@ -61,7 +63,7 @@ export const ModalRating = (props: Props) => {
             src="/modals/umbrella.png"
           />
         </div>
-        <h2 className="dl-text-center dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
+        <h2 className="dl-text-center dl-text-2xl lg:dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
           ¿Qué tan satisfecho/a estás con Insuma puntos?
         </h2>
         <ul className="dl-flex dl-mb-10">
