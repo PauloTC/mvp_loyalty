@@ -1,10 +1,11 @@
+"use client";
 import NestedLayout from "@/components/layout";
 import PrincipalBanner from "@/components/banner";
 import NeedHelp from "@/components/help";
 import Image from "next/image";
 import StepsComponent from "@/components/steps";
 
-export default function HowItWorksPage() {
+const HowItWorksPage = () => {
   return (
     <NestedLayout hideOnMobile={true}>
       <div className="dl-border-b-2 sm:dl-border-b-0 dl-mb-8 sm:dl-mb-0 dl-flex dl-items-center dl-py-5 dl-container dl-mx-auto dl-gap-2">
@@ -46,4 +47,6 @@ export default function HowItWorksPage() {
       <NeedHelp />
     </NestedLayout>
   );
-}
+};
+
+export default HowItWorksPage;

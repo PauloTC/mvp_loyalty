@@ -13,8 +13,8 @@ type User = {
   username: string;
   password: string;
   score: number;
-  name?:string;
-
+  name?: string;
+  business?: string;
 };
 
 export default function LoginForm() {
@@ -51,11 +51,18 @@ export default function LoginForm() {
 
     if (user) {
       setUser({
-        name: username,
+        username: user.username,
         score: user.score,
+        name: user.name,
+        business: user.business,
       });
       localStorage.setItem("user", JSON.stringify(user));
-      sendGTMEvent({event:'loginUser',usuario:user.username,nombreUsuario:user.name,fecha:new Date().toLocaleString()});
+      sendGTMEvent({
+        event: "loginUser",
+        usuario: user.username,
+        nombreUsuario: user.name,
+        fecha: new Date().toLocaleString(),
+      });
       router.push("/home");
     } else {
       setStatus("error");

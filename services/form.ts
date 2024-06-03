@@ -11,6 +11,8 @@ export const sendProducts = async (data: ProductProps) => {
   bodyFormData.append('entry.192754056', data.name);
   bodyFormData.append('entry.1587142754', data.products);
   bodyFormData.append('entry.1149661235', data.quantity);
+  bodyFormData.append('entry.1041228902', data.satisfied || '');
+  bodyFormData.append('entry.485025787', data.npsSelected || '');
 
   await base({
     method: 'POST',
@@ -28,4 +30,6 @@ type ProductProps = {
   name: string;
   products: string;
   quantity: string;
+  satisfied?: string;
+  npsSelected?: string;
 }

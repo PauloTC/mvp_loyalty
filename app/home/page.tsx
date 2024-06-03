@@ -1,64 +1,130 @@
-import Image from "next/image";
+"use client";
 import NestedLayout from "@/components/layout";
-import PrincipalBanner from "@/components/banner";
 import NeedHelp from "@/components/help";
+import withAuth from "@/utils/withAuth";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { getProducts, ProductProps } from "@/services/products";
+import MyOrders from "@/components/my-orders";
+import MyProducts from "@/components/my-products";
+import BannerPoints from "@/components/banner-points";
+import { DlDivider, DlSnackbar } from "@alicorpdigital/dali-react";
+import StepsComponent from "@/components/steps";
 
-export default function HomePage() {
-  const actions = [
-    {
-      title: "Canjea tus puntos",
-      description: "Premios disponibles",
-      image: "/home/canjea.png",
-      to: "/canjea-tus-puntos",
-    },
-    {
-      title: "¿Cómo funciona?",
-      description: "Canjea rápido y fácil",
-      image: "/home/funciona.png",
-      to: "/como-funciona",
-    },
-  ];
+const HomePage = () => {
+  const { user } = useContext(AuthContext);
+  const [itemList, setItemList] = useState<ProductProps[]>([]);
+  const [selectedItems, setSelectedItems] = useState<ProductProps[]>([]);
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
+
+  const handleTotalAmount = () => {
+    let total = 0;
+    itemList.forEach((item) => {
+      total += (item.value || 0) * item.points;
+    });
+    return total;
+  };
+
+  const handleSelectItem = (item: ProductProps) => {
+    let items = [...itemList];
+    let total = 0;
+
+    items = items.map((i) => {
+      if (i.id === item.id) {
+        return {
+          ...i,
+          value: item.value,
+        };
+      }
+      return i;
+    });
+
+    items.forEach((item) => {
+      total += (item.value || 0) * item.points;
+    });
+
+    if (total > user.score) {
+      setOpenSnackbar(true);
+      items = items.map((i) => {
+        if (i.id === item.id) {
+          return {
+            ...i,
+            value: (item.value || 0) - 1,
+          };
+        }
+        return i;
+      });
+    }
+
+    setItemList(items);
+  };
+
+  const handleGetProducts = async () => {
+    const products = await getProducts();
+    const filtered = products.filter(
+      (product) => product.business === user.business
+    );
+    const items = filtered.map((product) => ({ ...product, value: 0 }));
+    setItemList(items);
+  };
+
+  useEffect(() => {
+    const items = itemList.filter((item) => (item.value || 0) > 0);
+    setSelectedItems(items);
+  }, [itemList]);
+
+  useEffect(() => {
+    handleGetProducts();
+  }, [user]);
 
   return (
     <NestedLayout hideOnMobile={false}>
-      <PrincipalBanner
-        title="Insuma puntos"
-        showPoints={true}
-        subtitle="Canjea productos con los puntos acumulados por tus compras. Recompensamos tu esfuerzo diario."
-      />
+      <div className="dl-hidden lg:dl-block">
+        <BannerPoints />
+      </div>
 
-      <ul className="dl-container dl-mx-auto dl-flex dl-flex-col sm:dl-flex-row  dl-gap-8 sm:dl-gap-20 dl-mb-0 lg:dl-mb-12">
-        {actions.map((action, index) => (
-          <li key={index} className="dl-grow">
-            <a href={action.to}>
-              <h3 className="dl-text-base dl-font-semibold dl-mb-2">
-                {action.title}
-              </h3>
+      <section className="dl-flex">
+        <div className="dl-container dl-grid dl-grid-cols-1 lg:dl-grid-cols-5 xl:dl-grid-cols-8 lg:dl-gap-6 dl-mx-auto">
+          <div className="dl-gap-1 dl-grid xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5 lg:dl-pb-0">
+            <div className="dl-font-semibold dl-mb-4">
+              Productos Disponibles
+            </div>
+            <div className="dl-grid dl-grid-cols-2 sm:dl-grid-cols-3 xl:dl-grid-cols-4 lg:dl-col-span-3 xl:dl-col-span-5">
+              <MyProducts products={itemList} onChange={handleSelectItem} />
+            </div>
+          </div>
+          <div className="lg:dl-grid lg:dl-col-span-2 xl:dl-col-span-3">
+            <MyOrders
+              items={selectedItems}
+              onChange={handleSelectItem}
+              totalAmount={handleTotalAmount()}
+              onItemsDone={() => {
+                setSelectedItems([]);
+                handleGetProducts();
+              }}
+            />
+          </div>
+        </div>
+      </section>
 
-              <div className="dl-border dl-rounded-lg">
-                <div className="dl-relative dl-h-26 sm:dl-h-36">
-                  <Image
-                    layout="fill"
-                    objectFit="cover"
-                    src={action.image}
-                    alt={action.title}
-                  />
-                </div>
-                <div className="dl-border-t d-flex dl-items-center dl-px-4 dl-justify-between dl-h-14">
-                  <p className="dl-font-medium dl-text-sm">
-                    {action.description}
-                  </p>
-                  <span className="dl-text-brand-primary-medium dl-font-semibold">
-                    Ver más
-                  </span>
-                </div>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="sm:dl-container dl-my-10 mx-auto">
+        <DlDivider className="" />
+      </div>
+
+      <StepsComponent buttonText="Ir a canjear" title="¿Cómo funciona?" />
 
       <NeedHelp />
+      <DlSnackbar
+        onClose={() => setOpenSnackbar(false)}
+        variant="warning"
+        open={openSnackbar}
+        className={selectedItems.length ? "dl-mb-40 lg:dl-mb-0" : ""}
+      >
+        {/* Haz superado tu límite de puntos disponibles. */}
+        No tienes puntos suficientes para agregar este producto.
+      </DlSnackbar>
     </NestedLayout>
   );
-}
+};
+
+export default withAuth(HomePage);

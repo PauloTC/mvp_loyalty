@@ -11,7 +11,7 @@ export default function NeedHelp() {
         dl-relative
         dl-mx-auto
         dl-px-0
-        lg:dl-mb-20
+        lg:dl-mb-14
         sm:dl-container
         dl-rounded-xl"
     >

@@ -1,5 +1,5 @@
 "use client";
-import { DlButton, DlCheckOut } from "@alicorpdigital/dali-react";
+import { DlButton, DlCheckOut, DlSnackbar } from "@alicorpdigital/dali-react";
 import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -7,26 +7,26 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { ProductProps } from "@/services/products";
 import { sendProducts } from "@/services/form";
 import { sendGTMEvent } from "@next/third-parties/google";
-import "./styles.css";
 import {
   ModalConfirmation,
   ModalCongratulation,
   ModalLoader,
 } from "@/components/modals";
-import { useRouter } from "next/navigation";
+import "./styles.css";
 
 type Props = {
   items: ProductProps[];
   onChange: (item: ProductProps) => void;
+  onItemsDone: () => void;
   totalAmount: number;
 };
 
 const MyOrders = (props: Props) => {
-  const { items, onChange, totalAmount } = props;
+  const { items, onChange, totalAmount, onItemsDone } = props;
   const { user } = useContext(AuthContext);
-  const router = useRouter();
-  const [openConfirmation, setOpenConfirmation] = useState(false);
-  const [openCongratulation, setOpenCongratulation] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
+  const [openConfirmation, setOpenConfirmation] = useState<boolean>(false);
+  const [openCongratulation, setOpenCongratulation] = useState<boolean>(false);
   const [openLoader, setOpenLoader] = useState(false);
 
   const numberWithCommas = (points: number) => {
@@ -39,6 +39,14 @@ const MyOrders = (props: Props) => {
       total += (item.value || 0) * item.points;
     });
     return user?.score - total;
+  };
+
+  const handleRemainingProducts = () => {
+    let total = 0;
+    items.forEach((item) => {
+      total += item.value || 0;
+    });
+    return total;
   };
 
   const handleLoader = () => {
@@ -79,7 +87,7 @@ const MyOrders = (props: Props) => {
 
   return (
     <>
-      <div className="my-orders dl-flex dl-flex-col dl-h-fit dl-overflow-hidden dl-fixed dl-bottom-0 dl-left-0 dl-w-full dl-rounded-t-2xl lg:dl-static lg:dl-rounded-2xl lg:dl-border">
+      <div className="my-orders dl-flex dl-flex-col dl-h-fit dl-overflow-hidden dl-fixed dl-bottom-0 dl-left-0 dl-w-full dl-rounded-t-2xl lg:dl-static lg:dl-rounded-2xl lg:dl-border dl-z-[999]">
         <h4 className="dl-hidden lg:dl-flex dl-text-2xl dl-font-semibold dl-mb-5 dl-px-6 dl-pt-4">
           Mis pedidos
         </h4>
@@ -114,6 +122,7 @@ const MyOrders = (props: Props) => {
             </svg>
           </div>
         </div>
+
         {items.length ? (
           <>
             <div className="dl-hidden lg:dl-flex dl-flex-col dl-gap-6 dl-px-6 dl-pb-6">
@@ -142,7 +151,8 @@ const MyOrders = (props: Props) => {
             <div className="dl-flex dl-justify-between dl-justify-items-center dl-p-6 dl-border-t dl-border-[#DEDEDE]">
               <div>
                 <p className="dl-body-quarck">
-                  {items.length} {items.length > 1 ? "productos" : "producto"}
+                  {handleRemainingProducts()}{" "}
+                  {handleRemainingProducts() > 1 ? "productos" : "producto"}
                 </p>
                 <div className="dl-subtitle-xs">
                   {numberWithCommas(totalAmount)}pts
@@ -209,10 +219,18 @@ const MyOrders = (props: Props) => {
         open={openCongratulation}
         onOk={() => {
           setOpenCongratulation(false);
-          router.push("/");
+          onItemsDone();
+          setOpenSnackbar(true);
         }}
       />
       {openLoader && <ModalLoader />}
+      <DlSnackbar
+        onClose={() => setOpenSnackbar(false)}
+        variant="positive"
+        open={openSnackbar}
+      >
+        Calificación enviada.
+      </DlSnackbar>
     </>
   );
 };

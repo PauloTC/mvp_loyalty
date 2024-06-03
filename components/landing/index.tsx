@@ -3,8 +3,20 @@ import PrincipalBanner from "@/components/banner";
 import StepsComponent from "../steps";
 import NeedHelp from "../help";
 import Image from "next/image";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function LandingComponent() {
+  const router = useRouter();
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user?.username) {
+      router.push("/home");
+    }
+  }, [user]);
+
   return (
     <>
       <PrincipalBanner

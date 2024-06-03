@@ -1,6 +1,11 @@
 "use client";
-import { DlModal } from "@alicorpdigital/dali-react";
+import { DlModal, DlButton } from "@alicorpdigital/dali-react";
+import { useContext, useEffect, useState } from "react";
+import cn from "classnames";
 import Image from "next/image";
+import { sendGTMEvent } from "@next/third-parties/google";
+import { sendProducts } from '@/services/form';
+import { AuthContext } from '@/contexts/AuthContext';
 import "./styles.css";
 
 type Props = {
@@ -8,8 +13,46 @@ type Props = {
   open?: boolean;
 };
 
+const nps = [
+  { name: "Muy fácil", slug: "muy-facil" },
+  { name: "Fácil", slug: "facil" },
+  { name: "Neutro", slug: "neutro" },
+  { name: "Difícil", slug: "dificil" },
+  { name: "Muy difícil", slug: "muy-dificil" },
+];
+
 export const ModalCongratulation = (props: Props) => {
+  const { user } = useContext(AuthContext);
   const { onOk, open = false } = props;
+  const [npsSelected, setNpsSelected] = useState<string>("");
+
+  const handlerSendRateSatisfaction = () => {
+    const storageData = localStorage.getItem("user");
+    const data = {
+      business: user.business,
+      code: user.username,
+      name: user.name,
+      products: "",
+      quantity: "",
+      satisfied: "",
+      npsSelected: npsSelected
+    };
+
+    sendProducts(data);
+    onOk?.();
+    if (storageData) {
+      const user = JSON.parse(storageData);
+      sendGTMEvent({
+        event: "PointsCanjeSatisfactionRated",
+        nombreUsuario: user.name,
+        calificationCanje: npsSelected,
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (open) setNpsSelected("");
+  }, [open]);
 
   return (
     <DlModal open={open}>
@@ -22,27 +65,42 @@ export const ModalCongratulation = (props: Props) => {
             src="/modals/umbrella.png"
           />
         </div>
-        <h2 className="dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
-          ¡Felicidades!
+        <h2 className="dl-text-2xl dl-text-center dl-font-bold dl-mb-4 dl-tracking-wide">
+          ¡Tu canje está siendo procesado!
         </h2>
         <p className="dl-text-center dl-text-sm max-dl-w-93 dl-text-neutrals-dark">
-          ¡Tu canje está siendo procesado! <br />
           Pronto nos comunicaremos contigo por whatsapp y actualizaremos tus
           puntos disponibles.
         </p>
+        <div className="dl-nps">
+          <p>¿Qué tan fácil o difícil es canjear tus puntos?</p>
+
+          <div className="dl-nps-container">
+            {nps.map((nps) => (
+              <div
+                role="presentation"
+                key={nps.slug}
+                onClick={() => setNpsSelected(nps.slug)}
+                className={cn("dl-nps-btn", {
+                  "dl-nps-btn-selected": npsSelected === nps.slug,
+                })}
+              >
+                {nps.name}
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="dl-flex dl-justify-center dl-mt-8 dl-gap-4">
-          <button
-            style={{ outline: "none" }}
-            onClick={onOk}
+          <DlButton
+            onClick={handlerSendRateSatisfaction}
+            disabled={!npsSelected}
             className="
-            dl-w-44 dl-h-12
-            dl-flex dl-justify-center
-            dl-items-center
-            dl-bg-brand-primary-medium dl-text-my-white
-            dl-rounded-lg"
+              dl-w-44 dl-h-12
+              dl-justify-center
+            "
           >
-            Confirmar
-          </button>
+            Enviar
+          </DlButton>
         </div>
       </div>
     </DlModal>

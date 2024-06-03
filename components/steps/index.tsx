@@ -1,41 +1,25 @@
 "use client";
 import Image from "next/image";
-import { useContext } from "react";
-import { AuthContext } from "@/contexts/AuthContext";
-import { useRouter } from "next/navigation";
 
 interface StepsComponentProps {
   title: string;
   buttonText: string;
 }
 
-export default function StepsComponent({
-  title,
-  buttonText,
-}: StepsComponentProps) {
-  const { user } = useContext(AuthContext);
-  const router = useRouter();
-
-  const handleRedirection = () => {
-    if (user?.username) {
-      router.push("/canjea-tus-puntos");
-    } else {
-      router.push("/login");
-    }
-  };
-
+export default function StepsComponent({ title }: StepsComponentProps) {
   return (
-    <section className="dl-container dl-mx-auto">
+    <section className="dl-container dl-mx-auto dl-mb-8">
       <h4 className="dl-text-2xl dl-font-bold dl-mb-6">{title}</h4>
-      <ul className="dl-flex dl-flex-col md:dl-flex-row dl-justify-between dl-mb-18 dl-gap-8">
+      <ul className="dl-grid dl-grid-cols-1 lg:dl-grid-cols-2 dl-gap-8">
         <li className="dl-grow">
           <p className="dl-text-sm dl-mb-3">
-            1. Acumula puntos comprando desde Insuma.
+            <b>1. Acumula más puntos</b> fuera del horario de visita del
+            vendedor.
           </p>
           <div
             className="
               dl-flex dl-flex-col
-              dl-border dl-rounded-lg 
+              dl-border dl-rounded-lg
               dl-h-56 dl-justify-center
               dl-items-center"
           >
@@ -95,26 +79,15 @@ export default function StepsComponent({
         </li>
         <li className="dl-grow dl-flex dl-flex-col dl-justify-between">
           <p className="dl-text-sm dl-mb-3">
-            2. ¡Listo! Tus puntos estarán disponibles en 3 días hábiles.
+            2. ¡Listo! <b>Tus puntos estarán disponibles en 48 horas.</b>
           </p>
           <Image
             alt="box_starts"
             width={590}
             height={225}
-            src="/orders/empty_order.svg"
+            src="/orders/insuma_box.svg"
           />
         </li>
-        <button
-          style={{ outline: "none" }}
-          onClick={handleRedirection}
-          className="
-            sm:dl-hidden
-            dl-text-white dl-rounded-lg
-            dl-h-12 dl-flex dl-justify-center dl-items-center
-            dl-bg-brand-primary-medium "
-        >
-          {buttonText}
-        </button>
       </ul>
     </section>
   );

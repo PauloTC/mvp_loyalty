@@ -1,22 +1,22 @@
 "use client";
 import { DlModal } from "@alicorpdigital/dali-react";
 import Image from "next/image";
-import './styles.css';
+import "./styles.css";
 
 type Props = {
   onClose?: () => void;
   onOk?: () => void;
   open?: boolean;
-}
+};
 
 export const ModalConfirmation = (props: Props) => {
   const { onClose, onOk, open = false } = props;
-  
+
   return (
     <DlModal open={open}>
       <div className="dl-flex dl-flex-col dl-items-center">
         <div className="dl-mb-4">
-          <Image alt="hands" height={133} width={190} src="/modals/hands.png" />
+          <Image alt="hands" height={133} width={190} src="/modals/hands.svg" />
         </div>
         <h2 className="dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
           ¿Confirmamos?
@@ -38,7 +38,7 @@ export const ModalConfirmation = (props: Props) => {
             Cancelar
           </button>
           <button
-            style={{ outline: "none" }}           
+            style={{ outline: "none" }}
             onClick={onOk}
             className="
             dl-w-44 dl-h-12
@@ -53,4 +53,4 @@ export const ModalConfirmation = (props: Props) => {
       </div>
     </DlModal>
   );
-}
+};
