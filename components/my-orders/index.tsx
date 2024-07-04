@@ -14,6 +14,7 @@ import {
   ModalLoader,
 } from "@/components/modals";
 import "./styles.css";
+import { SESSION_STORAGE } from '@/constants';
 
 type Props = {
   items: ProductProps[];
@@ -24,7 +25,7 @@ type Props = {
 
 const MyOrders = (props: Props) => {
   const { items, onChange, totalAmount, onItemsDone } = props;
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
   const [openConfirmation, setOpenConfirmation] = useState<boolean>(false);
   const [openCongratulation, setOpenCongratulation] = useState<boolean>(false);
@@ -83,6 +84,15 @@ const MyOrders = (props: Props) => {
       products: products.join(" + "),
       quantity: totalAmount.toString(),
     };
+    const consumed = sessionStorage.getItem(SESSION_STORAGE.Consumed);
+    if (consumed) {
+      const total = parseInt(consumed) + totalAmount;
+      sessionStorage.setItem(SESSION_STORAGE.Consumed, total.toString());
+    } else {
+      sessionStorage.setItem(SESSION_STORAGE.Consumed, totalAmount.toString());
+    }
+
+    setUser({ ...user, score: user.score - totalAmount });
     sendProducts(data);
   };
 
@@ -148,12 +158,13 @@ const MyOrders = (props: Props) => {
                     inputAmountProps={{
                       onChange: (value) => onChange({ ...item, value }),
                       value: item.value,
+                      disabled: true,
                     }}
                     onDelete={() => {
                       onChange({ ...item, value: 0 });
                     }}
                   >
-                    <p className="dl-subtitle-xxs">
+                    <p className="dl-subtitle-xxs dl-text-highlight-medium">
                       {numberWithCommas(item.points)}pts
                     </p>
                   </DlCheckOut>
@@ -161,7 +172,7 @@ const MyOrders = (props: Props) => {
               })}
             </div>
 
-            <div className="dl-flex dl-justify-between dl-justify-items-center dl-p-6 dl-border-t dl-border-[#DEDEDE]">
+            <div className="dl-flex dl-justify-between dl-items-center dl-p-6 dl-border-t dl-border-[#DEDEDE]">
               <div>
                 <p className="dl-body-quarck">
                   {handleRemainingProducts()}{" "}
@@ -171,7 +182,7 @@ const MyOrders = (props: Props) => {
                   {numberWithCommas(totalAmount)}pts
                 </div>
               </div>
-              <DlButton onClick={() => setOpenConfirmation(true)}>
+              <DlButton onClick={() => setOpenConfirmation(true)} className='dl-w-full dl-justify-center dl-max-w-48'>
                 Canjear
               </DlButton>
             </div>

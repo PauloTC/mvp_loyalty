@@ -25,7 +25,6 @@ export default function LoginForm() {
   const [status, setStatus] = useState<undefined | "success" | "error">(
     undefined
   );
-
   const { user, setUser } = useContext(AuthContext);
 
   const router = useRouter();

@@ -33,7 +33,7 @@ const config: Config = {
         "my-gray": "#F7F7F7",
         "neutrals-dark": "#6c6c6c",
         "brand-primary-medium": "#EC3A0E",
-        "brand-highlight-medium": "#0064D1",
+        "highlight-medium": "#0064D1",
         "link-blue": "#0064D1",
       },
       backgroundImage: {

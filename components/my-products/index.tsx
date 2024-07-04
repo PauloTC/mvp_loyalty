@@ -27,7 +27,8 @@ const MyProducts = (props: Props) => {
             className='my-products'
             inputAmountProps={{
               value: item.value,
-              onChange: (value) => onChange({ ...item, value }) ,
+              onChange: (value) => onChange({ ...item, value }),
+              disabled: true
             }}
           >
             <p className='dl-subtitle-xxs'>{numberWithCommas(item.points)}pts</p>
