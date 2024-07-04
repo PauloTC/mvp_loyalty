@@ -25,6 +25,9 @@ const config: Config = {
       },
     },
     extend: {
+      gridTemplateColumns: {
+        'products': 'repeat(auto-fit, minmax(156px, 1fr))'
+      },
       colors: {
         "my-white": "#FCFCFC",
         "my-gray": "#F7F7F7",

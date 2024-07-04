@@ -32,7 +32,7 @@ const MyProducts = (props: Props) => {
           >
             <p className='dl-subtitle-xxs'>{numberWithCommas(item.points)}pts</p>
             {item.unit &&
-              <div className='dl-flex dl-items-center dl-gap-1'>
+              <div className='dl-flex dl-items-center dl-gap-1 dl-mt-auto'>
                 <DlIcon name='info' color='#E20867' />
                 <p className='dl-comp-text-quarck'>{item.unit}</p>
               </div>

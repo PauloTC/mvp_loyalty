@@ -168,11 +168,12 @@ export default function LoginForm() {
             <a
               className="
                 dl-flex dl-justify-center dl-items-center
-                dl-h-12 dl-bg-brand-primary-medium 
+                dl-h-12 dl-bg-brand-primary-medium
                 dl-w-full
-                dl-rounded-lg dl-text-base 
+                dl-rounded-lg dl-text-base
                 dl-font-semibold dl-text-my-white"
               href="https://wa.link/295pks"
+              target='_blank'
             >
               Ir a whatsapp
             </a>

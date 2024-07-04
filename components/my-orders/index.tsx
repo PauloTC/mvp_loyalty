@@ -2,6 +2,7 @@
 import { DlButton, DlCheckOut, DlSnackbar } from "@alicorpdigital/dali-react";
 import React, { useContext, useState } from "react";
 import Image from "next/image";
+import cn from "classnames";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import { ProductProps } from "@/services/products";
@@ -38,7 +39,7 @@ const MyOrders = (props: Props) => {
     items.forEach((item) => {
       total += (item.value || 0) * item.points;
     });
-    return user?.score - total;
+    return numberWithCommas(user?.score - total);
   };
 
   const handleRemainingProducts = () => {
@@ -93,9 +94,21 @@ const MyOrders = (props: Props) => {
         </h4>
 
         <div className="my-orders-background dl-flex lg:dl-hidden">
-          <div className="dl-body-nano">
-            Te quedarían:{" "}
-            <span className="dl-subtitle-xxs">
+          <div className={cn({ 'dl-flex dl-items-center dl-gap-1': items.length })}>
+            <p
+              className={cn({
+                'dl-text-xs': !items.length,
+                'dl-text-sm': items.length
+              })}
+            >
+              Te quedarían:
+            </p>
+            <span
+              className={cn({
+                'dl-text-2xl dl-font-bold': !items.length,
+                'dl-text-base dl-font-semibold': items.length
+              })}
+            >
               {handleRemainingPoints()} pts
             </span>
           </div>

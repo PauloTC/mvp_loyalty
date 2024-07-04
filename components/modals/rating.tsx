@@ -1,7 +1,7 @@
 "use client";
 import { DlModal } from "@alicorpdigital/dali-react";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DlButton } from "@alicorpdigital/dali-react";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { sendProducts } from '@/services/form';
@@ -65,6 +65,10 @@ export const ModalRating = (props: Props) => {
     },
   ];
 
+  useEffect(() => {
+    setSelectedOption('');
+  }, [open])
+
   return (
     <DlModal open={open} onClose={onClose}>
       <div className="dl-flex dl-flex-col dl-items-center">
@@ -114,7 +118,7 @@ export const ModalRating = (props: Props) => {
         </ul>
         <DlButton
           style={{ outline: "none" }}
-          disabled={selectedOption === null}
+          disabled={!selectedOption}
           onClick={handleButtonClick}
         >
           Enviar

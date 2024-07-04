@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@alicorpdigital/dali-css-library':
-        specifier: ^1.32.1-canary.26
-        version: 1.32.1-canary.26
+        specifier: 1.32.2-canary.6
+        version: 1.32.2-canary.6
       '@alicorpdigital/dali-react':
-        specifier: 0.0.3-canary.11
-        version: 0.0.3-canary.11
+        specifier: 1.0.0
+        version: 1.0.0
       '@next/third-parties':
         specifier: ^14.2.2
         version: 14.2.3(next@14.2.2(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -63,11 +63,11 @@ importers:
 
 packages:
 
-  '@alicorpdigital/dali-css-library@1.32.1-canary.26':
-    resolution: {integrity: sha512-AKTzMCZp3Cm/144MJD0wqMcAKdvQ/oKjx+qT4whzxrPbTu9zXiBZbEj7gEZkNTptmz0Vxc+EvBKfNiU1UPajKA==}
+  '@alicorpdigital/dali-css-library@1.32.2-canary.6':
+    resolution: {integrity: sha512-uVg2WkxTN/N2kPvUklZ2zhfx0rJYJhC1NY9T6IpzdM+K0me7G3lT/kOsA0ThBimgA8Hnww0K2gfPRi6Mz0hmYg==}
 
-  '@alicorpdigital/dali-react@0.0.3-canary.11':
-    resolution: {integrity: sha512-VOHD28x3Z752Y+oUTs/WfAvLmkLTeAbXxEBrjILOiB5PZxUItgVGrkJX4y0gOuRjWNIlKt2G8xz4FHmZh0M4AA==}
+  '@alicorpdigital/dali-react@1.0.0':
+    resolution: {integrity: sha512-ijW1hWmaBBcN5GWmS0ysv0nHczIzGjsagBSwxBPqFvTLp06FZu/S0CdD+hzH/RbXNlB41IuKF/mUtWQhAS6fcg==}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -2888,9 +2888,9 @@ packages:
 
 snapshots:
 
-  '@alicorpdigital/dali-css-library@1.32.1-canary.26': {}
+  '@alicorpdigital/dali-css-library@1.32.2-canary.6': {}
 
-  '@alicorpdigital/dali-react@0.0.3-canary.11':
+  '@alicorpdigital/dali-react@1.0.0':
     dependencies:
       '@uidotdev/usehooks': 2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames: 2.5.1

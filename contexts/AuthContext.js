@@ -8,7 +8,6 @@ export const AuthContext = createContext();
 export function AuthProvider(props) {
   const { children } = props;
   const router = useRouter();
-
   const [user, setUser] = useState({ score: 0 });
 
   useEffect(() => {
