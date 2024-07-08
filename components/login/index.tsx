@@ -87,8 +87,8 @@ export default function LoginForm() {
   };
 
   const handleManagePassword = () => {
+    if (passwordStatus && !password.length) return 'Este campo es requerido.';
     if (passwordStatus === 'error') return 'Contraseña incorrecta.';
-    if (passwordStatus && password.length) return 'Este campo es requerido.';
     return undefined;
   };
 
