@@ -111,7 +111,7 @@ const MyOrders = (props: Props) => {
                 'dl-text-sm': items.length
               })}
             >
-              Te quedarían:
+              {items.length ? 'Te quedarían:' : 'Tienes disponible:'}
             </p>
             <span
               className={cn({

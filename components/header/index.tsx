@@ -147,11 +147,11 @@ export default function HeaderComponent({ hideOnMobile }: any) {
           className="header-sidebar"
           open={open}
           items={[
-            {
-              key: "history-canjea",
-              label: <span className='dl-font-semibold'>Historial de canjes</span>,
-              onClick: () => router.push("/home"),
-            },
+            // {
+            //   key: "history-canjea",
+            //   label: <span className='dl-font-semibold'>Historial de canjes</span>,
+            //   onClick: () => router.push("/home"),
+            // },
             {
               key: "how-work",
               label: <span className='dl-font-semibold'>¿Cómo funciona?</span>,

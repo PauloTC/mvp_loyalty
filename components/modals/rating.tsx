@@ -7,6 +7,7 @@ import { sendGTMEvent } from "@next/third-parties/google";
 import { sendProducts } from '@/services/form';
 import { AuthContext } from "../../contexts/AuthContext";
 import './styles.css';
+import { useMediaQuery } from '@/utils/widthMedia';
 
 type Props = {
   open?: boolean;
@@ -17,6 +18,7 @@ type Props = {
 export const ModalRating = (props: Props) => {
   const { user } = useContext(AuthContext);
   const { open, onClose, onSubmit } = props;
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
   const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleButtonClick = () => {
@@ -83,7 +85,7 @@ export const ModalRating = (props: Props) => {
         <h2 className="dl-text-center dl-text-2xl lg:dl-text-2.5xl dl-font-bold dl-mb-8 dl-tracking-wide">
           ¿Qué tan satisfecho/a estás con Insuma puntos?
         </h2>
-        <ul className="dl-flex dl-mb-10">
+        <ul className="dl-flex dl-mb-10 dl-gap-1">
           {RatingOptions.map((option, index) => (
             <li
               className={`dl-transition-all dl-border dl-flex-1 dl-flex dl-items-center dl-justify-between dl-flex-col dl-pt-2 ${
@@ -101,8 +103,8 @@ export const ModalRating = (props: Props) => {
                 <Image
                   className="dl-mb-3"
                   alt="face"
-                  height={47}
-                  width={47}
+                  height={isDesktop ? 47 : 32}
+                  width={isDesktop ? 47 : 32}
                   src={option.image}
                 />
                 <span
