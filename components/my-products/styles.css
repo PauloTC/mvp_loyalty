@@ -1,3 +1,11 @@
+.dl-card-product {
+  height: auto;
+}
+.dl-card-product__content,
+.dl-card-product__body {
+  height: 100%;
+}
+
 @media screen and (max-width: 1024px) {
   .dl-card-product__amount .dl-input-amount {
     grid-template-columns: 32px 40px 32px;

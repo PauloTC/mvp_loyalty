@@ -1,15 +1,15 @@
 "use client";
-
 import Image from "next/image";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import classNames from "classnames";
 import './styles.css';
 
-interface BannerPointsProps {}
-
-export default function BannerPoints(props: BannerPointsProps) {
+export default function BannerPoints() {
   const { user } = useContext(AuthContext);
+
+  const numberWithCommas = (points: number) => {
+    return points.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   return (
     <section className='banner-points dl-mb-8 dl-relative'>
@@ -25,7 +25,7 @@ export default function BannerPoints(props: BannerPointsProps) {
         <div className='dl-flex dl-items-center dl-gap-20'>
           <div>
             <span className='dl-subtitle-xxs'>Puntos disponibles</span>
-            <p className='dl-title-md'>{user?.score.toLocaleString()} pts</p>
+            <p className='dl-title-md'>{numberWithCommas(user?.score || 0)} pts</p>
           </div>
           <Image
             alt="stars"

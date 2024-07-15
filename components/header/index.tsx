@@ -7,6 +7,7 @@ import { ModalRating } from "@/components/modals";
 import { DlIcon, DlSidebar, DlSnackbar } from "@alicorpdigital/dali-react";
 import { useRouter } from "next/navigation";
 import "./styles.css";
+import { Span } from 'next/dist/trace';
 
 export default function HeaderComponent({ hideOnMobile }: any) {
   const router = useRouter();
@@ -141,41 +142,47 @@ export default function HeaderComponent({ hideOnMobile }: any) {
       >
         Calificación enviada.
       </DlSnackbar>
-      <DlSidebar
-        className="header-sidebar"
-        open={open}
-        items={[
-          {
-            key: "history-canjea",
-            label: "Historial de canjes",
-            onClick: () => router.push("/home"),
-          },
-          {
-            key: "how-work",
-            label: "¿Cómo funciona?",
-            onClick: () => router.push("/como-funciona"),
-          },
-          {
-            key: "calificanos",
-            label: "Califícanos",
-            onClick: () => {
-              setOpenModal(true);
-              setOpen(false);
+      {open &&
+        <DlSidebar
+          className="header-sidebar"
+          open={open}
+          items={[
+            // {
+            //   key: "history-canjea",
+            //   label: <span className='dl-font-semibold'>Historial de canjes</span>,
+            //   onClick: () => router.push("/home"),
+            // },
+            {
+              key: "how-work",
+              label: <span className='dl-font-semibold'>¿Cómo funciona?</span>,
+              onClick: () => {
+                const element = document.querySelector('#how-work') as HTMLElement;
+                window.scrollTo({ top: element?.offsetTop - 520, behavior: 'smooth' });
+                setOpen(false);
+              },
             },
-          },
-        ]}
-        itemsFooter={[
-          {
-            key: "sign-out",
-            onClick: logout,
-            label: (
-              <div className='sidebar-divider'>
-                Cerrar sesión
-              </div>
-            ),
-          },
-        ]}
-      />
+            {
+              key: "calificanos",
+              label: <span className='dl-font-semibold'>Califícanos</span>,
+              onClick: () => {
+                setOpenModal(true);
+                setOpen(false);
+              },
+            },
+          ]}
+          itemsFooter={[
+            {
+              key: "sign-out",
+              onClick: logout,
+              label: (
+                <div className='sidebar-divider dl-font-semibold'>
+                  Cerrar sesión
+                </div>
+              ),
+            },
+          ]}
+        />
+      }
     </>
   );
 }

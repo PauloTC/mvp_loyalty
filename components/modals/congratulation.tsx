@@ -14,11 +14,11 @@ type Props = {
 };
 
 const nps = [
-  { name: "Muy fácil", slug: "muy-facil" },
+  { name: "Muy <br /> fácil", slug: "muy-facil" },
   { name: "Fácil", slug: "facil" },
   { name: "Neutro", slug: "neutro" },
   { name: "Difícil", slug: "dificil" },
-  { name: "Muy difícil", slug: "muy-dificil" },
+  { name: "Muy <br /> difícil", slug: "muy-dificil" },
 ];
 
 export const ModalCongratulation = (props: Props) => {
@@ -72,8 +72,8 @@ export const ModalCongratulation = (props: Props) => {
           Pronto nos comunicaremos contigo por whatsapp y actualizaremos tus
           puntos disponibles.
         </p>
-        <div className="dl-nps">
-          <p>¿Qué tan fácil o difícil es canjear tus puntos?</p>
+        <div className="dl-nps dl-w-full">
+          <p>¿Qué tan fácil o difícil es <br /> canjear tus puntos?</p>
 
           <div className="dl-nps-container">
             {nps.map((nps) => (
@@ -84,9 +84,8 @@ export const ModalCongratulation = (props: Props) => {
                 className={cn("dl-nps-btn", {
                   "dl-nps-btn-selected": npsSelected === nps.slug,
                 })}
-              >
-                {nps.name}
-              </div>
+                dangerouslySetInnerHTML={{ __html: nps.name }}
+              />
             ))}
           </div>
         </div>
