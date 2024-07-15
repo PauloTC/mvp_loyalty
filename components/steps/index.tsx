@@ -1,15 +1,10 @@
 "use client";
 import Image from "next/image";
 
-interface StepsComponentProps {
-  title: string;
-  buttonText: string;
-}
-
-export default function StepsComponent({ title }: StepsComponentProps) {
+export default function StepsComponent() {
   return (
-    <section className="dl-container dl-mx-auto dl-mb-8">
-      <h4 className="dl-text-2xl dl-font-bold dl-mb-6">{title}</h4>
+    <section className="dl-container dl-mx-auto dl-mb-8" id='how-work'>
+      <h4 className="dl-text-2xl dl-font-bold dl-mb-6">¿Cómo funciona?</h4>
       <ul className="dl-grid dl-grid-cols-1 lg:dl-grid-cols-2 dl-gap-8">
         <li className="dl-grow">
           <p className="dl-text-sm dl-mb-3">

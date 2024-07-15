@@ -1,7 +1,9 @@
 @media screen and (max-width: 768px) {
   .dl-modal-content {
-    max-width: 360px;
+    max-width: 340px;
     padding-top: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 

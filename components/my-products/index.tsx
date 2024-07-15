@@ -27,16 +27,19 @@ const MyProducts = (props: Props) => {
             className='my-products'
             inputAmountProps={{
               value: item.value,
-              onChange: (value) => onChange({ ...item, value }) ,
+              onChange: (value) => onChange({ ...item, value }),
+              disabled: true
             }}
           >
-            <p className='dl-subtitle-xxs'>{numberWithCommas(item.points)}pts</p>
-            {item.unit &&
-              <div className='dl-flex dl-items-center dl-gap-1'>
-                <DlIcon name='info' color='#E20867' />
-                <p className='dl-comp-text-quarck'>{item.unit}</p>
-              </div>
-            }
+            <div className='dl-mt-auto'>
+              <p className='dl-subtitle-xxs'>{numberWithCommas(item.points)}pts</p>
+              {item.unit &&
+                <div className='dl-flex dl-items-center dl-gap-1'>
+                  <DlIcon name='info' color='#E20867' />
+                  <p className='dl-comp-text-quarck'>{item.unit}</p>
+                </div>
+              }
+            </div>
           </DlCardProduct>
         )
       })}

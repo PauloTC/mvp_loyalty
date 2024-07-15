@@ -44,6 +44,7 @@ export default function NeedHelp() {
               dl-text-base
               dl-text-brand-primary-medium"
           href="https://wa.link/vd5a1e"
+          target='_blank'
         >
           <Image
             src={"/home/whatsapp.svg"}

@@ -8,6 +8,7 @@ import { DlModal } from "@alicorpdigital/dali-react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
+import { SESSION_STORAGE } from '@/constants';
 
 type User = {
   username: string;
@@ -22,10 +23,12 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
-  const [status, setStatus] = useState<undefined | "success" | "error">(
+  const [userStatus, setUserStatus] = useState<undefined | "success" | "error">(
     undefined
   );
-
+  const [passwordStatus, setPasswordStatus] = useState<undefined | "success" | "error">(
+    undefined
+  );
   const { user, setUser } = useContext(AuthContext);
 
   const router = useRouter();
@@ -44,9 +47,11 @@ export default function LoginForm() {
 
   const handleLogin = (event: any) => {
     event.preventDefault();
-
-    const user = users.find(
+    const user: User | undefined = users.find(
       (user) => user.username === username && user.password === password
+    );
+    const userUsername: User | undefined = users.find(
+      (user) => user.username === username
     );
 
     if (user) {
@@ -57,6 +62,7 @@ export default function LoginForm() {
         business: user.business,
       });
       localStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem(SESSION_STORAGE.Consumed, '0');
       sendGTMEvent({
         event: "loginUser",
         usuario: user.username,
@@ -65,12 +71,25 @@ export default function LoginForm() {
       });
       router.push("/home");
     } else {
-      setStatus("error");
+      setUserStatus("error")
+      setPasswordStatus("error");
+      if (userUsername) setUserStatus(undefined);
     }
   };
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
+  const handleManageUser = () => {
+    const userUsername: User | undefined = users.find(
+      (user) => user.username === username
+    );
+    if (userStatus && !username.length) return 'Este campo es requerido.';
+    if (userStatus === 'error' && !userUsername) return 'Usuario incorrecto.';
+    return undefined;
+  };
+
+  const handleManagePassword = () => {
+    if (passwordStatus && !password.length) return 'Este campo es requerido.';
+    if (passwordStatus === 'error') return 'Contraseña incorrecta.';
+    return undefined;
   };
 
   return (
@@ -82,16 +101,12 @@ export default function LoginForm() {
             label="Nombre de usuario"
             placeholder="Ingresa el usuario"
             value={username}
-            status={status}
-            suffix={
-              status === "error" ? <DlIcon name="warning-circle" /> : undefined
-            }
-            helperText={
-              status === "error" ? "Este campo es requerido." : undefined
-            }
+            status={userStatus}
+            suffix={handleManageUser() ? <DlIcon name="warning-circle" /> : undefined}
+            helperText={handleManageUser()}
             onChange={(e) => {
               setUsername(e.target.value);
-              setStatus(undefined);
+              setUserStatus(undefined);
             }}
           />
           <DlInput
@@ -100,16 +115,12 @@ export default function LoginForm() {
             label="Contraseña"
             placeholder="Ingresa la contraseña"
             value={password}
-            status={status}
-            suffix={
-              status === "error" ? <DlIcon name="warning-circle" /> : undefined
-            }
-            helperText={
-              status === "error" ? "Este campo es requerido." : undefined
-            }
+            status={passwordStatus}
+            suffix={handleManagePassword() ? <DlIcon name="warning-circle" /> : undefined}
+            helperText={handleManagePassword()}
             onChange={(e) => {
               setPassword(e.target.value);
-              setStatus(undefined);
+              setPasswordStatus(undefined);
             }}
           />
         </div>
@@ -161,18 +172,19 @@ export default function LoginForm() {
               block
               size="md"
               variant="tertiary"
-              onClick={handleCloseModal}
+              onClick={() => setModalOpen(false)}
             >
               Cancelar
             </DlButton>
             <a
               className="
                 dl-flex dl-justify-center dl-items-center
-                dl-h-12 dl-bg-brand-primary-medium 
+                dl-h-12 dl-bg-brand-primary-medium
                 dl-w-full
-                dl-rounded-lg dl-text-base 
+                dl-rounded-lg dl-text-base
                 dl-font-semibold dl-text-my-white"
               href="https://wa.link/295pks"
+              target='_blank'
             >
               Ir a whatsapp
             </a>
