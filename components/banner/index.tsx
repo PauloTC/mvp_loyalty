@@ -18,14 +18,14 @@ export default function PrincipalBanner({
 
   return (
     <section
-      className="dl-flex xl:dl-h-80 dl-mb-6 md:dl-mb-12"
+      className="dl-flex dl-justify-center xl:dl-h-80 dl-mb-6 md:dl-mb-12"
       style={{ backgroundColor: "#F2F7FF" }}
     >
       <div
         className={classNames(
           "dl-py-12",
           "dl-container",
-          "dl-mx-auto",
+          "dl-w-full",
           "dl-flex",
           "dl-items-center",
           "dl-flex-col",
