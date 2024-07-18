@@ -25,7 +25,6 @@ export default function PrincipalBanner({
         className={classNames(
           "dl-py-12",
           "dl-container",
-          // "dl-mx-auto",
           "dl-w-full",
           "dl-flex",
           "dl-items-center",

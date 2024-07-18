@@ -23,7 +23,6 @@ export default function LandingComponent() {
         title="Impulsamos el crecimiento de tu negocio"
         subtitle="Queremos recompensar ese gran esfuerzo diario. Ahora podrás canjear productos sin costo."
       />
-      {/* <StepsComponent  /> */}
       <NeedHelp />
       <a
         style={{ backgroundColor: "#32BA46" }}
