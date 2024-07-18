@@ -9,11 +9,13 @@ type Props = {
 
 const NestedLayout: React.FC<Props> = ({ children, hideOnMobile }) => {
   return (
-    <section>
+    <>
       <HeaderComponent hideOnMobile={hideOnMobile} />
-      <div>{children}</div>
+      <div style={{ minHeight: 'calc(100vh - 73px - 52px)'}} className='dl-flex dl-flex-col'>
+        {children}
+      </div>
       <Footer />
-    </section>
+    </>
   );
 };
 
