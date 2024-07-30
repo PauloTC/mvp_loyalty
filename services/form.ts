@@ -5,23 +5,23 @@ const base = axios.create({
 });
 
 export const sendProducts = async (data: ProductProps) => {
-  // const bodyFormData = new FormData();
-  // bodyFormData.append('entry.1485978671', data.business);
-  // bodyFormData.append('entry.795126901', data.code);
-  // bodyFormData.append('entry.192754056', data.name);
-  // bodyFormData.append('entry.1587142754', data.products);
-  // bodyFormData.append('entry.1149661235', data.quantity);
-  // bodyFormData.append('entry.1041228902', data.satisfied || '');
-  // bodyFormData.append('entry.485025787', data.npsSelected || '');
+  const bodyFormData = new FormData();
+  bodyFormData.append('entry.1485978671', data.business);
+  bodyFormData.append('entry.795126901', data.code);
+  bodyFormData.append('entry.192754056', data.name);
+  bodyFormData.append('entry.1587142754', data.products);
+  bodyFormData.append('entry.1149661235', data.quantity);
+  bodyFormData.append('entry.1041228902', data.satisfied || '');
+  bodyFormData.append('entry.485025787', data.npsSelected || '');
 
-  // await base({
-  //   method: 'POST',
-  //   url: '',
-  //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  //   data: bodyFormData
-  // })
-  // .then((response) => console.log('response'))
-  // .catch(() => console.log('error'))
+  await base({
+    method: 'POST',
+    url: '',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    data: bodyFormData
+  })
+  .then((response) => console.log('response'))
+  .catch(() => console.log('error'))
 }
 
 type ProductProps = {
