@@ -77,6 +77,28 @@ const HomePage = () => {
     handleGetProducts();
   }, [user]);
 
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((registration) => {
+          registration.addEventListener("updatefound", () => {
+            const newWorker = registration.installing;
+            newWorker?.addEventListener("statechange", () => {
+              if (
+                newWorker.state === "installed" &&
+                navigator.serviceWorker.controller
+              ) {
+                newWorker.postMessage({ type: "SKIP_WAITING" });
+              }
+            });
+          });
+        })
+        .catch((error) => {
+          console.log("Registro de Service Worker fallido:", error);
+        });
+    }
+  }, []);
   return (
     <NestedLayout hideOnMobile={false}>
       <div className="dl-hidden lg:dl-block">
@@ -84,15 +106,13 @@ const HomePage = () => {
       </div>
 
       <section className="dl-container dl-mx-auto dl-flex lg:dl-gap-24">
-        <div className='dl-w-full'>
-          <div className="dl-font-semibold dl-mb-4">
-            Productos Disponibles
-          </div>
+        <div className="dl-w-full">
+          <div className="dl-font-semibold dl-mb-4">Productos Disponibles</div>
           <div className="dl-grid dl-gap-4 dl-grid-cols-products">
             <MyProducts products={itemList} onChange={handleSelectItem} />
           </div>
         </div>
-        <div className='lg:dl-w-full lg:dl-max-w-md'>
+        <div className="lg:dl-w-full lg:dl-max-w-md">
           <MyOrders
             items={selectedItems}
             onChange={handleSelectItem}
