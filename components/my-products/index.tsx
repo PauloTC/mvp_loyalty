@@ -20,9 +20,8 @@ const MyProducts = (props: Props) => {
     <>
       {products.map((item, index) => {
         return (
-          <div className={cn({ 'is-disabled': !item.available })}>
+          <div key={index} className={cn({ 'is-disabled': !item.available })}>
             <DlCardProduct
-              key={index}
               src={item.image}
               title={item.name}
               tag={!item.available ? { content: 'Sin stock', variant: 'pink' } : undefined}
