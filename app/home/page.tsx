@@ -62,7 +62,7 @@ const HomePage = () => {
   const handleGetProducts = async () => {
     const products = await getProducts();
     const filtered = products.filter(
-      (product) => product.business === user.business
+      (product) => product.business === user?.business
     );
     const items = filtered.map((product) => ({ ...product, value: 0 }));
     setItemList(items);
@@ -74,7 +74,7 @@ const HomePage = () => {
   }, [itemList]);
 
   useEffect(() => {
-    handleGetProducts();
+    if (user) handleGetProducts();
   }, [user]);
 
   return (
