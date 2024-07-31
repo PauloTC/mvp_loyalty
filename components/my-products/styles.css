@@ -22,3 +22,11 @@
     height: 32px !important;
   }
 }
+
+.is-disabled {
+  filter: grayscale(1);
+}
+
+.is-disabled .dl-card-product__amount {
+  display: none;
+}
