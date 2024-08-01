@@ -17,4 +17,5 @@ export type ProductProps = {
   points: number;
   unit: string;
   value?: number;
+  available?: number;
 }
