@@ -14,7 +14,7 @@ import {
   ModalLoader,
 } from "@/components/modals";
 import "./styles.css";
-import { SESSION_STORAGE } from '@/constants';
+import { SESSION_STORAGE } from "@/constants";
 
 type Props = {
   items: ProductProps[];
@@ -63,7 +63,7 @@ const MyOrders = (props: Props) => {
   };
 
   const handlerRedemptionConfirmation = () => {
-    const storageData = localStorage.getItem("user");
+    const storageData = sessionStorage.getItem("user");
     if (storageData) {
       const user = JSON.parse(storageData);
       sendGTMEvent({
@@ -104,19 +104,21 @@ const MyOrders = (props: Props) => {
         </h4>
 
         <div className="my-orders-background dl-flex lg:dl-hidden">
-          <div className={cn({ 'dl-flex dl-items-center dl-gap-1': items.length })}>
+          <div
+            className={cn({ "dl-flex dl-items-center dl-gap-1": items.length })}
+          >
             <p
               className={cn({
-                'dl-text-xs': !items.length,
-                'dl-text-sm': items.length
+                "dl-text-xs": !items.length,
+                "dl-text-sm": items.length,
               })}
             >
-              {items.length ? 'Te quedarían:' : 'Tienes disponible:'}
+              {items.length ? "Te quedarían:" : "Tienes disponible:"}
             </p>
             <span
               className={cn({
-                'dl-text-2xl dl-font-bold': !items.length,
-                'dl-text-base dl-font-semibold': items.length
+                "dl-text-2xl dl-font-bold": !items.length,
+                "dl-text-base dl-font-semibold": items.length,
               })}
             >
               {handleRemainingPoints()} pts
@@ -182,7 +184,10 @@ const MyOrders = (props: Props) => {
                   {numberWithCommas(totalAmount)}pts
                 </div>
               </div>
-              <DlButton onClick={() => setOpenConfirmation(true)} className='dl-w-full dl-justify-center dl-max-w-48'>
+              <DlButton
+                onClick={() => setOpenConfirmation(true)}
+                className="dl-w-full dl-justify-center dl-max-w-48"
+              >
                 Canjear
               </DlButton>
             </div>

@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { DlButton } from "@alicorpdigital/dali-react";
 import { sendGTMEvent } from "@next/third-parties/google";
-import { sendProducts } from '@/services/form';
+import { sendProducts } from "@/services/form";
 import { AuthContext } from "../../contexts/AuthContext";
-import './styles.css';
-import { useMediaQuery } from '@/utils/widthMedia';
+import "./styles.css";
+import { useMediaQuery } from "@/utils/widthMedia";
 
 type Props = {
   open?: boolean;
@@ -18,11 +18,11 @@ type Props = {
 export const ModalRating = (props: Props) => {
   const { user } = useContext(AuthContext);
   const { open, onClose, onSubmit } = props;
-  const isDesktop = useMediaQuery('(min-width: 1024px)')
-  const [selectedOption, setSelectedOption] = useState<string>('');
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const [selectedOption, setSelectedOption] = useState<string>("");
 
   const handleButtonClick = () => {
-    const storageData = localStorage.getItem("user");
+    const storageData = sessionStorage.getItem("user");
     const data = {
       business: user.business,
       code: user.username,
@@ -30,7 +30,7 @@ export const ModalRating = (props: Props) => {
       products: "",
       quantity: "",
       npsSelected: "",
-      satisfied: selectedOption
+      satisfied: selectedOption,
     };
 
     sendProducts(data);
@@ -68,8 +68,8 @@ export const ModalRating = (props: Props) => {
   ];
 
   useEffect(() => {
-    setSelectedOption('');
-  }, [open])
+    setSelectedOption("");
+  }, [open]);
 
   return (
     <DlModal open={open} onClose={onClose}>

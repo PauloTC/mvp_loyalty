@@ -8,7 +8,7 @@ import { DlModal } from "@alicorpdigital/dali-react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
-import { SESSION_STORAGE } from '@/constants';
+import { SESSION_STORAGE } from "@/constants";
 
 type User = {
   username: string;
@@ -26,9 +26,9 @@ export default function LoginForm() {
   const [userStatus, setUserStatus] = useState<undefined | "success" | "error">(
     undefined
   );
-  const [passwordStatus, setPasswordStatus] = useState<undefined | "success" | "error">(
-    undefined
-  );
+  const [passwordStatus, setPasswordStatus] = useState<
+    undefined | "success" | "error"
+  >(undefined);
   const { user, setUser } = useContext(AuthContext);
 
   const router = useRouter();
@@ -61,8 +61,8 @@ export default function LoginForm() {
         name: user.name,
         business: user.business,
       });
-      localStorage.setItem("user", JSON.stringify(user));
-      sessionStorage.setItem(SESSION_STORAGE.Consumed, '0');
+      sessionStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem(SESSION_STORAGE.Consumed, "0");
       sendGTMEvent({
         event: "loginUser",
         usuario: user.username,
@@ -71,7 +71,7 @@ export default function LoginForm() {
       });
       router.push("/home");
     } else {
-      setUserStatus("error")
+      setUserStatus("error");
       setPasswordStatus("error");
       if (userUsername) setUserStatus(undefined);
     }
@@ -81,14 +81,14 @@ export default function LoginForm() {
     const userUsername: User | undefined = users.find(
       (user) => user.username === username
     );
-    if (userStatus && !username.length) return 'Este campo es requerido.';
-    if (userStatus === 'error' && !userUsername) return 'Usuario incorrecto.';
+    if (userStatus && !username.length) return "Este campo es requerido.";
+    if (userStatus === "error" && !userUsername) return "Usuario incorrecto.";
     return undefined;
   };
 
   const handleManagePassword = () => {
-    if (passwordStatus && !password.length) return 'Este campo es requerido.';
-    if (passwordStatus === 'error') return 'Contraseña incorrecta.';
+    if (passwordStatus && !password.length) return "Este campo es requerido.";
+    if (passwordStatus === "error") return "Contraseña incorrecta.";
     return undefined;
   };
 
@@ -102,7 +102,9 @@ export default function LoginForm() {
             placeholder="Ingresa el usuario"
             value={username}
             status={userStatus}
-            suffix={handleManageUser() ? <DlIcon name="warning-circle" /> : undefined}
+            suffix={
+              handleManageUser() ? <DlIcon name="warning-circle" /> : undefined
+            }
             helperText={handleManageUser()}
             onChange={(e) => {
               setUsername(e.target.value);
@@ -116,7 +118,11 @@ export default function LoginForm() {
             placeholder="Ingresa la contraseña"
             value={password}
             status={passwordStatus}
-            suffix={handleManagePassword() ? <DlIcon name="warning-circle" /> : undefined}
+            suffix={
+              handleManagePassword() ? (
+                <DlIcon name="warning-circle" />
+              ) : undefined
+            }
             helperText={handleManagePassword()}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -184,7 +190,7 @@ export default function LoginForm() {
                 dl-rounded-lg dl-text-base
                 dl-font-semibold dl-text-my-white"
               href="https://wa.link/295pks"
-              target='_blank'
+              target="_blank"
             >
               Ir a whatsapp
             </a>

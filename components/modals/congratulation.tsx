@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import cn from "classnames";
 import Image from "next/image";
 import { sendGTMEvent } from "@next/third-parties/google";
-import { sendProducts } from '@/services/form';
-import { AuthContext } from '@/contexts/AuthContext';
+import { sendProducts } from "@/services/form";
+import { AuthContext } from "@/contexts/AuthContext";
 import "./styles.css";
 
 type Props = {
@@ -27,7 +27,7 @@ export const ModalCongratulation = (props: Props) => {
   const [npsSelected, setNpsSelected] = useState<string>("");
 
   const handlerSendRateSatisfaction = () => {
-    const storageData = localStorage.getItem("user");
+    const storageData = sessionStorage.getItem("user");
     const data = {
       business: user.business,
       code: user.username,
@@ -35,7 +35,7 @@ export const ModalCongratulation = (props: Props) => {
       products: "",
       quantity: "",
       satisfied: "",
-      npsSelected: npsSelected
+      npsSelected: npsSelected,
     };
 
     sendProducts(data);
@@ -73,7 +73,9 @@ export const ModalCongratulation = (props: Props) => {
           puntos disponibles.
         </p>
         <div className="dl-nps dl-w-full">
-          <p>¿Qué tan fácil o difícil es <br /> canjear tus puntos?</p>
+          <p>
+            ¿Qué tan fácil o difícil es <br /> canjear tus puntos?
+          </p>
 
           <div className="dl-nps-container">
             {nps.map((nps) => (
