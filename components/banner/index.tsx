@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { DlSnackbar } from "@alicorpdigital/dali-react";
 import { AuthContext } from "../../contexts/AuthContext";
 import classNames from "classnames";
 
@@ -15,6 +16,7 @@ export default function PrincipalBanner({
   subtitle,
 }: PrincipalBannerProps) {
   const { user } = useContext(AuthContext);
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
 
   return (
     <section
@@ -67,14 +69,15 @@ export default function PrincipalBanner({
             {subtitle}
           </p>
 
-          <a
-            href={user && user.username ? "/home" : "/login"}
+          <span
+            // href={user && user.username ? "/home" : "/login"}
+            onClick={() => setOpenSnackbar(true)}
             className={classNames(
-              "dl-hidden dl-mx-auto dl-w-full md:dl-ml-0 dl-text-white xl:dl-flex dl-items-center dl-justify-center dl-rounded-lg lg:dl-max-w-72 dl-bg-link-blue dl-h-12"
+              "dl-hidden dl-mx-auto dl-w-full dl-cursor-pointer md:dl-ml-0 dl-text-white xl:dl-flex dl-items-center dl-justify-center dl-rounded-lg lg:dl-max-w-72 dl-bg-link-blue dl-h-12"
             )}
           >
             Ir a canjear
-          </a>
+          </span>
         </div>
 
         <Image
@@ -87,19 +90,28 @@ export default function PrincipalBanner({
           src="/home/banner.png"
           alt="banner"
         />
-        <a
-          href={user && user.username ? "/home" : "/login"}
+        <span
+          // href={user && user.username ? "/home" : "/login"}
+          onClick={() => setOpenSnackbar(true)}
           className="
               dl-mt-8 dl-mx-auto
               xl:dl-ml-0 dl-text-white
               dl-flex xl:dl-hidden
+              dl-cursor-pointer
               dl-items-center dl-justify-center
               dl-rounded-lg dl-w-full
               dl-bg-link-blue dl-h-12"
         >
           Ir a canjear
-        </a>
+        </span>
       </div>
+      <DlSnackbar
+        onClose={() => setOpenSnackbar(false)}
+        variant="warning"
+        open={openSnackbar}
+      >
+        Gracias por tu interés en Insuma Puntos, pero el programa ha finalizado.
+      </DlSnackbar>
     </section>
   );
 }

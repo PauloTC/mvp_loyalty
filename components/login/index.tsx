@@ -1,6 +1,5 @@
 "use client";
-import { DlIcon, DlInput } from "@alicorpdigital/dali-react";
-import { DlCheckbox } from "@alicorpdigital/dali-react";
+import { DlIcon, DlInput, DlSnackbar } from "@alicorpdigital/dali-react";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DlButton } from "@alicorpdigital/dali-react";
@@ -21,6 +20,7 @@ type User = {
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
   const [userStatus, setUserStatus] = useState<undefined | "success" | "error">(
@@ -94,7 +94,7 @@ export default function LoginForm() {
 
   return (
     <>
-      <form className="dl-pb-10 dl-flex dl-flex-col">
+      <div className="dl-pb-10 dl-flex dl-flex-col">
         <div className="dl-grid dl-gap-4 dl-mb-6">
           <DlInput
             size="lg"
@@ -134,7 +134,8 @@ export default function LoginForm() {
         <button
           style={{ outline: "none" }}
           className="dl-h-14 dl-bg-brand-primary-medium dl-rounded-lg dl-text-base dl-font-semibold dl-text-my-white"
-          onClick={() => handleLogin(event)}
+          // onClick={() => handleLogin(event)}
+          onClick={() => setOpenSnackbar(true)}
         >
           Ingresar
         </button>
@@ -145,7 +146,7 @@ export default function LoginForm() {
         >
           ¿Olvidaste tu contraseña?
         </a>
-      </form>
+      </div>
 
       <DlModal
         open={modalOpen}
@@ -197,6 +198,13 @@ export default function LoginForm() {
           </div>
         </div>
       </DlModal>
+      <DlSnackbar
+        onClose={() => setOpenSnackbar(false)}
+        variant="warning"
+        open={openSnackbar}
+      >
+        Gracias por tu interés en Insuma Puntos, pero el programa ha finalizado.
+      </DlSnackbar>
     </>
   );
 }
