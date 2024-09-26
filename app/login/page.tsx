@@ -1,8 +1,16 @@
 "use client";
+import { useRouter } from "next/navigation";
 import LoginForm from "@/components/login";
 import Image from "next/image";
+import { useEffect } from 'react';
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/');
+  }, [])
+
   return (
     <div className="dl-flex  dl-flex-col md:dl-flex-row  dl-column dl-h-[100vh]">
       <div className=" dl-h-[10.125rem]  md:dl-w-4/5 md:dl-h-[100vh]  dl-flex dl-justify-center  dl-items-center dl-align-items dl-bg-[#F2F7FF]  ">
@@ -21,10 +29,10 @@ export default function LoginPage() {
             </a>
             <p
               className="
-              dl-font-bold 
-              dl-font-alicorpSans 
+              dl-font-bold
+              dl-font-alicorpSans
               dl-mb-10
-              dl-text-2xl dl-leading-[1.92rem] 
+              dl-text-2xl dl-leading-[1.92rem]
               dl-text-[#202020]"
             >
               Iniciar sesión
