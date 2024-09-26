@@ -7,7 +7,6 @@ import { ModalRating } from "@/components/modals";
 import { DlIcon, DlSidebar, DlSnackbar } from "@alicorpdigital/dali-react";
 import { useRouter } from "next/navigation";
 import "./styles.css";
-import { Span } from 'next/dist/trace';
 
 export default function HeaderComponent({ hideOnMobile }: any) {
   const router = useRouter();
@@ -74,7 +73,7 @@ export default function HeaderComponent({ hideOnMobile }: any) {
             } md:dl-flex`}
           >
             <button
-              onClick={logout}
+              onClick={() => setOpenSnackbar(true)}
               style={{ outline: "none" }}
               className="
                     dl-font-semibold
@@ -137,10 +136,10 @@ export default function HeaderComponent({ hideOnMobile }: any) {
       />
       <DlSnackbar
         onClose={() => setOpenSnackbar(false)}
-        variant="positive"
+        variant="warning"
         open={openSnackbar}
       >
-        Calificación enviada.
+        Gracias por tu interés en Insuma Puntos, pero el programa ha finalizado.
       </DlSnackbar>
       {open &&
         <DlSidebar

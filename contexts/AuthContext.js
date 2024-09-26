@@ -2,7 +2,7 @@
 import { createContext, use, useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { SESSION_STORAGE } from '@/constants';
+import { SESSION_STORAGE } from "@/constants";
 // Crea el contexto con el tipo definido
 export const AuthContext = createContext();
 
@@ -12,7 +12,7 @@ export function AuthProvider(props) {
   const [user, setUser] = useState({ score: 0 });
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
+    const user = sessionStorage.getItem("user");
 
     if (user) {
       const userParsed = JSON.parse(user);
@@ -29,7 +29,7 @@ export function AuthProvider(props) {
   const logout = () => {
     router.push("/login");
     setUser(null);
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
   };
 
   const data = {
