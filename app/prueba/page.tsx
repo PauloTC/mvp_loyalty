@@ -1,6 +1,14 @@
 "use client";
+import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
 
 export default function PruebaPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/');
+  }, [])
+
   return (
     <>
       {/* <button className="dl-bg-red-600 dl-py-3 dl-px-8 dl-rounded-lg dl-text-white">

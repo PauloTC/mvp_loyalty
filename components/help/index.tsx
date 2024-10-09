@@ -1,6 +1,10 @@
 import Image from "next/image";
+import { DlSnackbar } from "@alicorpdigital/dali-react";
+import { useState } from 'react';
 
 export default function NeedHelp() {
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
+
   return (
     <section
       className="
@@ -40,7 +44,7 @@ export default function NeedHelp() {
           <p className="dl-text-sm dl-mb-6">
             Despeja todas tus dudas y prepárate para ganar.
           </p>
-          <a
+          <span
             className="
                 dl-flex
                 dl-gap-2
@@ -48,9 +52,11 @@ export default function NeedHelp() {
                 sm:dl-self-center
                 dl-font-semibold
                 dl-text-base
+                dl-cursor-pointer
                 dl-text-brand-primary-medium"
-            href="https://wa.link/vd5a1e"
-            target='_blank'
+            // href="https://wa.link/vd5a1e"
+            // target='_blank'
+            onClick={() => setOpenSnackbar(true)}
           >
             <Image
               src={"/home/whatsapp.svg"}
@@ -59,7 +65,7 @@ export default function NeedHelp() {
               width={16}
             />
             Consultar
-          </a>
+          </span>
         </div>
       </div>
       <div className="dl-hidden sm:dl-block dl-ml-4 dl-absolute dl-right-1/3 dl-top-16">
@@ -70,6 +76,14 @@ export default function NeedHelp() {
           src="/home/first_star.svg"
         />
       </div>
+
+      <DlSnackbar
+        onClose={() => setOpenSnackbar(false)}
+        variant="warning"
+        open={openSnackbar}
+      >
+        Gracias por tu interés en Insuma Puntos, pero el programa ha finalizado.
+      </DlSnackbar>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 import NestedLayout from "@/components/layout";
+import { useRouter } from "next/navigation";
 import NeedHelp from "@/components/help";
 import withAuth from "@/utils/withAuth";
 import { useEffect, useState, useContext } from "react";
@@ -12,6 +13,7 @@ import { DlDivider, DlSnackbar } from "@alicorpdigital/dali-react";
 import StepsComponent from "@/components/steps";
 
 const HomePage = () => {
+  const router = useRouter();
   const { user } = useContext(AuthContext);
   const [itemList, setItemList] = useState<ProductProps[]>([]);
   const [selectedItems, setSelectedItems] = useState<ProductProps[]>([]);
@@ -76,6 +78,10 @@ const HomePage = () => {
   useEffect(() => {
     if (user) handleGetProducts();
   }, [user]);
+
+  useEffect(() => {
+    router.push('/');
+  }, [])
 
   useEffect(() => {
     if ("serviceWorker" in navigator) {
